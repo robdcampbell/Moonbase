@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { signup } from "../firebase/auth";
+import { login } from "../firebase/auth";
 import { Link } from "react-router-dom";
 
 // Because this componenet is being passed as a Prop (in Route) - it has access
@@ -8,6 +9,8 @@ import { Link } from "react-router-dom";
 function Signup(props) {
   const { register, handleSubmit, reset } = useForm();
   const [isLoading, setLoading] = useState(false);
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const onSubmit = async (data) => {
     let newUser;
@@ -22,6 +25,14 @@ function Signup(props) {
     } else {
       setLoading(false);
     }
+  };
+
+  const loginGuest = async (e) => {
+    e.preventDefault();
+    let user;
+    // STORE THIS IN .ENV !!!! JUST FOR DEVELOPMENT
+    user = login({ email: "guestuser@email.com", password: "1234567" });
+    props.history.push(`/profile/${user.uid}`);
   };
 
   const formClassName = `ui form ${isLoading ? "loading" : ""}`;
@@ -78,12 +89,16 @@ function Signup(props) {
               </label>
             </div>
             <div className="field actions">
-              <Link to="/login">Guest login</Link>
+              <button className="other-link" onClick={loginGuest}>
+                Guest Login
+              </button>
               <div>
                 <button className="ui primary button login" type="submit">
                   Sign up
                 </button>
-                <Link to="/login">Log in</Link>
+                <Link className="other-link" to="/login">
+                  Log in
+                </Link>
               </div>
             </div>
           </form>

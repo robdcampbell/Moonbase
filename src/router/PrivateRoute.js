@@ -14,7 +14,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       render={(props) => {
         // Will get the props from the url params
         const id = props.match.params.id;
-        if (!!user && user.uid == id) {
+        if (!!user && user.uid === id) {
           return <Component {...props} />;
         } else {
           return <Redirect to="/login" />;

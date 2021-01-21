@@ -78,3 +78,17 @@ header h2 {
 .actions a {
   margin-left: 5px;
 }
+.other-link {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #212121;
+}
+.other-link:hover {
+  padding: none;
+  color: #c0c0c0;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}

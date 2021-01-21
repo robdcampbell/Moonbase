@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 const Login = (props) => {
   const { register, handleSubmit, reset } = useForm();
   const [isLoading, setLoading] = useState(false);
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const onSubmit = async (data) => {
     let user;
@@ -22,6 +24,19 @@ const Login = (props) => {
     } else {
       setLoading(false);
     }
+  };
+
+  const loginGuest = async (e) => {
+    e.preventDefault();
+    // const guestPass = process.env.REACT_APP_GUEST_PASSWORD;
+    // console.log(guestPass);
+    let user;
+    // STORE THIS IN .ENV !!!! HARDCODED JUST FOR DEVELOPMENT
+    user = login({
+      email: "guestuser@email.com",
+      password: "1234567",
+    });
+    props.history.push(`/profile/${user.uid}`);
   };
 
   const formClassName = `ui form ${isLoading ? "loading" : ""}`;
@@ -39,6 +54,8 @@ const Login = (props) => {
                   name="email"
                   placeholder="Email"
                   ref={register}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
             </div>
@@ -50,17 +67,23 @@ const Login = (props) => {
                   name="password"
                   placeholder="Password"
                   ref={register}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </label>
             </div>
 
             <div className="field actions">
-              <Link to="/signup">Guest Login</Link>
+              <button className="other-link" onClick={loginGuest}>
+                Guest Login
+              </button>
               <div>
                 <button className="ui primary button login" type="submit">
                   Log in
                 </button>
-                <Link to="/signup">Sign up</Link>
+                <Link className="other-link" to="/signup">
+                  Sign up
+                </Link>
               </div>
             </div>
           </form>
