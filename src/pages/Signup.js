@@ -78,10 +78,13 @@ function Signup(props) {
               </label>
             </div>
             <div className="field actions">
-              <button className="ui primary button login" type="submit">
-                Sign up
-              </button>
-              <Link to="/login">Log in</Link>
+              <Link to="/login">Guest login</Link>
+              <div>
+                <button className="ui primary button login" type="submit">
+                  Sign up
+                </button>
+                <Link to="/login">Log in</Link>
+              </div>
             </div>
           </form>
         </div>

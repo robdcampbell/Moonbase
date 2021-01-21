@@ -67,7 +67,10 @@ header h2 {
 }
 
 .actions {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* text-align: right; */
 }
 .actions button {
   margin-right: 5px;

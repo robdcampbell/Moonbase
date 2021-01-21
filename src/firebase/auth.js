@@ -28,3 +28,5 @@ export const login = async ({ email, password }) => {
     .signInWithEmailAndPassword(email, password);
   return resp.user;
 };
+
+// ****LOG IN AS GUEST USER****

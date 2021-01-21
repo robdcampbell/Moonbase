@@ -53,11 +53,15 @@ const Login = (props) => {
                 />
               </label>
             </div>
+
             <div className="field actions">
-              <button className="ui primary button login" type="submit">
-                Log in
-              </button>
-              <Link to="/signup">Sign up</Link>
+              <Link to="/signup">Guest Login</Link>
+              <div>
+                <button className="ui primary button login" type="submit">
+                  Log in
+                </button>
+                <Link to="/signup">Sign up</Link>
+              </div>
             </div>
           </form>
         </div>
