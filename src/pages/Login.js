@@ -11,6 +11,16 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const routeOnLogin = async (user) => {
+    // Get token of the user to see if they're an Admin
+    const token = await user.getIdTokenResult();
+    if (token.claims.admin) {
+      props.history.push("/users");
+    } else {
+      props.history.push(`/profile/${user.uid}`);
+    }
+  };
+
   const onSubmit = async (data) => {
     let user;
     setLoading(true);
@@ -20,7 +30,7 @@ const Login = (props) => {
       console.log(e);
     }
     if (user) {
-      props.history.push(`/profile/${user.uid}`);
+      routeOnLogin(user);
     } else {
       setLoading(false);
     }

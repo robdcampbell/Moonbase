@@ -1,7 +1,7 @@
 // functions that update user data
 // Functions where the project cards can be edited
 
-import { firestore } from "./config";
+import { firestore, storage } from "./config";
 
 export const createUserDocument = async (user) => {
   // get a reference to the firestore doc of a particular User ie.
@@ -42,4 +42,36 @@ export const createUserDocument = async (user) => {
 
   //write to cloud firestore
   return docRef.set(userProfile);
+};
+
+// UPDATE USER DOCUMENT
+export const updateUserDocument = async (user) => {
+  const docRef = firestore.doc(`/users/${user.uid}`);
+  docRef.update(user);
+};
+
+// Upload image
+export const uploadImage = (userId, file, progress) => {
+  return new Promise((resolve, reject) => {
+    // create file reference
+    const filePath = `users/${userId}/profile-image`;
+    const fileRef = storage.ref().child(filePath);
+
+    // upload task
+    const uploadTask = fileRef.put(file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => progress(snapshot),
+      (err) => reject(err),
+      () => {
+        resolve(uploadTask.snapshot.ref);
+      }
+    );
+  });
+};
+
+export const getDownloadURL = (userId) => {
+  const filePath = `users/${userId}/profile-image`;
+  return storage.ref().child(filePath).getDownloadURL();
 };

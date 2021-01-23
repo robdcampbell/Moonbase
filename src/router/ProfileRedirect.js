@@ -6,7 +6,7 @@ import { useSession } from "../firebase/UserProvider";
 
 const ProfileRedirect = ({ component: Component, ...rest }) => {
   // Get user
-  const { user } = useSession();
+  const { user, isAdmin } = useSession();
 
   return (
     <Route
@@ -17,7 +17,7 @@ const ProfileRedirect = ({ component: Component, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: `/profile/${user.uid}`,
+              pathname: isAdmin ? `/users` : `/profile/${user.uid}`,
               state: { from: props.location },
             }}
           />

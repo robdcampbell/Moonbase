@@ -10,6 +10,8 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import ProfileRedirect from "./router/ProfileRedirect";
 import PrivateRoute from "./router/PrivateRoute";
+import AdminRoute from "./router/AdminRoute";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
               <ProfileRedirect exact path="/signup" component={Signup} />
               <PrivateRoute exact path="/profile/:id" component={Profile} />
               <ProfileRedirect exact path="/login" component={Login} />
+              <AdminRoute exat path="/users" component={Users} />
               <Route exact path="*">
                 <Redirect to="/login" />
               </Route>
