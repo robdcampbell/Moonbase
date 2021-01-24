@@ -38,16 +38,14 @@ const Profile = () => {
   //User PROJECTS Collection (come back to after viewing how to display all Users from a collection)
   useEffect(() => {
     // create a Firebase Document Reference to speciic user
-    const docRef = firestore
+    const projectsRef = firestore
       .collection("users")
       .doc(params.id)
       .collection("projects");
     //Listen for realtime changes
-    const unsubscribe = docRef.onSnapshot((doc) => {
-      if (doc.exists) {
-        const documentData = doc.data();
-        setUserProjects(documentData);
-      }
+    const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
+      const projects = querySnapshot.docs.map((doc) => doc.data());
+      setUserProjects(projects);
     });
     return unsubscribe;
   }, [user.uid]);
@@ -106,7 +104,7 @@ const Profile = () => {
           </form>
         </div>
       </div>
-      <Feed />
+      <Feed projects={userProjects} />
     </div>
   );
 };

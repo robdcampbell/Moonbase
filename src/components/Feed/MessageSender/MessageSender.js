@@ -1,52 +1,78 @@
 import React, { useState, useEffect } from "react";
-// import { Avatar } from "@material-ui/core";
 import "./MessageSender.css";
-// import VideoCamIcon from "@material-ui/icons/Videocam";
-// import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
-// import InsertEmoticon from "@material-ui/icons/InsertEmoticon";
+import { useSession } from "../../../firebase/UserProvider";
+//"../firebase/UserProvider";
+import { firestore } from "../../../firebase/config";
+import { useParams } from "react-router-dom";
 // import { useStateValue } from "../../Context/StateProvider";
 // import db from "../../../firebase";
 // import firebase from "firebase";
 
 const MessageSender = () => {
-  const [input, setInput] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  // const [{ user }, dispatch] = useStateValue();
+  const [projectTitle, setProjectTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [projectDeadline, setProjectDeadline] = useState("");
+  const params = useParams();
+  const { user } = useSession();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // db.collection("posts").add({
-    //   message: input,
-    //   timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    //   profilePic: user.photoURL,
-    //   username: user.displayName,
-    //   image: imageUrl,
-    // });
+    const projectsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects");
 
-    setInput("");
-    setImageUrl("");
+    projectsRef.add({
+      description: description,
+      title: projectTitle,
+      deadline: projectDeadline,
+      status: "in-progress",
+    });
+
+    setDescription("");
+    setProjectDeadline("");
+    setProjectTitle("");
   };
 
   return (
     <div className="messageSender">
       <div className="messageSender__top">
         <form>
+          <label htmlFor="project-title">Project Title</label>
           <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="messageSender__input"
+            name="project-title"
+            value={projectTitle}
+            onChange={(e) => setProjectTitle(e.target.value)}
             type="text"
             placeholder={`What's next ?`}
           />
-          <input
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
+          <label htmlFor="project-description">Project Description</label>
+          <textarea
+            name="project-description"
+            value={description}
+            rows="4"
+            onChange={(e) => setDescription(e.target.value)}
             type="text"
-            placeholder="Image URL (Optional)"
+            placeholder={`...`}
+            className="project-description"
+          />
+          {/* <input
+            name="project-description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            type="text"
+            placeholder={`How are we going to get from "a" to "b"... `}
+          /> */}
+          <label htmlFor="project-deadline">Project Deadline</label>
+          <input
+            value={projectDeadline}
+            onChange={(e) => setProjectDeadline(e.target.value)}
+            type="text"
+            placeholder="Deadline..."
           />
           <button onClick={handleSubmit} type="submit">
-            Hidden Submit
+            Add Project
           </button>
         </form>
       </div>

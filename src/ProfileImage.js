@@ -25,7 +25,7 @@ export const ProfileImage = ({ id }) => {
     <div className="four wide column profile-image">
       <img
         className="ui image"
-        src={imageUrl || "/profile-placeholder.png"}
+        src={imageUrl || "/drawCollection.png"}
         alt="profile"
       />
       <input
