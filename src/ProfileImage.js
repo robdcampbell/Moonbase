@@ -6,9 +6,9 @@ export const ProfileImage = ({ id }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  useEffect(() => {
-    getDownloadURL(id).then((url) => !!url && setImageUrl(url));
-  }, [id]);
+  // useEffect(() => {
+  //   getDownloadURL(id).then((url) => !!url && setImageUrl(url));
+  // }, [id]);
 
   const fileChange = async (files) => {
     const ref = await uploadImage(id, files[0], updateProgress);
@@ -23,12 +23,9 @@ export const ProfileImage = ({ id }) => {
 
   return (
     <div className="four wide column profile-image">
-      <img
-        className="ui image"
-        src={imageUrl || "/drawCollection.png"}
-        alt="profile"
-      />
-      <input
+      {/* Disabling the image fetch for now */}
+      <img className="ui image" src={"/drawCollection.png"} alt="profile" />
+      {/* <input
         className="file-input"
         type="file"
         accept=".png, .jpg"
@@ -41,7 +38,7 @@ export const ProfileImage = ({ id }) => {
         onClick={() => fileInput.current.click()}
       >
         Upload/Update Photo
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import "./Post.css";
@@ -18,7 +18,49 @@ const Post = ({
   docId,
 }) => {
   const params = useParams();
+  const [editProject, setEditProject] = useState({
+    docId: null,
+    description: "",
+    status: "in-progress",
+  });
 
+  // EDIT PROJECT - start with window prompt, then add Semantic UI modal later.
+  const editProjectPost = (e) => {
+    e.preventDefault();
+    // Get current ProjectDoc Contents
+    // Edit select ones
+    // Re-set that doc
+
+    const newDescription = window.prompt(
+      `Edit Project Description: ${description}?`
+    );
+
+    const projectsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects")
+      .doc(docId);
+
+    projectsRef.set({ docId, description: newDescription }, { merge: true });
+
+    // let userPreference;
+
+    // if (window.confirm(`Edit "${projectTitle}" ?`) == true) {
+    //   userPreference = "Project deleted!";
+
+    //   const projectsRef = firestore
+    //     .collection("users")
+    //     .doc(params.id)
+    //     .collection("projects");
+
+    //   return projectsRef.doc(docId).set({});
+    // } else {
+    //   userPreference = "Project not deleted";
+    // }
+    // console.log(`Pterodactyl ${projectTitle}`);
+  };
+
+  //  DELETE PROJECT
   const deleteProject = (e) => {
     let userPreference;
 
@@ -27,7 +69,7 @@ const Post = ({
       true
     ) {
       userPreference = "Project deleted!";
-      console.log(docId);
+
       const projectsRef = firestore
         .collection("users")
         .doc(params.id)
@@ -37,6 +79,8 @@ const Post = ({
     } else {
       userPreference = "Project not deleted";
     }
+
+    // EDIT PROJECT Description (and deadline?)
   };
 
   return (
@@ -61,7 +105,7 @@ const Post = ({
         <div className="post__option">
           <p>Update Progress</p>
         </div>
-        <div className="post__option">
+        <div className="post__option" onClick={editProjectPost}>
           <p>Edit Project</p>
         </div>
         <div className="post__option" onClick={deleteProject}>

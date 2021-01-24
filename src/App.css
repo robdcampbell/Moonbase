@@ -1,7 +1,19 @@
 /* GLOBAL STYLES */
+html {
+  height: 1005;
+}
 
 body {
   background-color: #f9f9f9 !important;
+  height: 100%;
+  /* background: linear-gradient(
+    180deg,
+    rgb(240, 185, 160) 0%,
+    rgb(177, 185, 255) 100%
+  ); */
+  background-repeat: no-repeat;
+  /* background-attachment necessary to fill entire window */
+  background-attachment: fixed;
   font-size: 15px;
   font-family: "Titillium Web", sans-serif !important;
 }

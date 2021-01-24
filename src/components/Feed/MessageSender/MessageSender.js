@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./MessageSender.css";
 import { useSession } from "../../../firebase/UserProvider";
 import { firestore } from "../../../firebase/config";
@@ -9,12 +9,17 @@ const MessageSender = () => {
   const [description, setDescription] = useState("");
   const [projectDeadline, setProjectDeadline] = useState("");
   const params = useParams();
+  const projectTitleRef = useRef(null);
   const { user } = useSession();
+
+  useEffect(() => {
+    projectTitleRef.current.focus();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const timeCreation = new Date().valueOf().toString();
-    console.log(timeCreation);
+
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
@@ -49,6 +54,7 @@ const MessageSender = () => {
             onChange={(e) => setProjectTitle(e.target.value)}
             type="text"
             placeholder={`What's next ?`}
+            ref={projectTitleRef}
             required
           />
           <label htmlFor="project-description">Project Description *</label>
