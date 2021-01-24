@@ -25,23 +25,24 @@
   display: flex;
   outline-width: 0;
   border: none;
-  padding: 5px 20px;
+  /* padding: 5px 20px; */
   margin: 10px;
-  border-radius: 999px;
+  border-radius: 1rem;
   background-color: #eff2f5;
 }
 .messageSender__top > form > input {
   outline-width: 0;
   border: none;
-  padding: 5px 20px;
-  margin: 10px;
-  border-radius: 999px;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 0.25rem;
   background-color: #eff2f5;
 }
 .project-description {
   background-color: #eff2f5;
   border: #fff solid 1px;
-  border-radius: 1rem;
+  border-radius: 0.35rem;
+  resize: none;
 }
 
 .messageSender__top > form > button {

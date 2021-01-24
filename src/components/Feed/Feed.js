@@ -7,7 +7,6 @@ import { useSession } from "../../firebase/UserProvider";
 import { firestore } from "../../firebase/config";
 
 const Feed = () => {
-  const [posts, setPosts] = useState([]);
   const { user } = useSession();
   const [userProjects, setUserProjects] = useState([]);
   const params = useParams();
@@ -37,11 +36,15 @@ const Feed = () => {
       .doc(params.id)
       .collection("projects");
     //Listen for realtime changes
-    const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
-      const projects = querySnapshot.docs.map((doc) => doc.data());
-      setUserProjects(projects);
-    });
-    return unsubscribe;
+
+    console.log(projectsRef.docs());
+
+    // const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
+    //   const projects = querySnapshot.docs.map((doc) => doc.data());
+    //   //console.log(projects);
+    //   setUserProjects(projects);
+    // });
+    // return unsubscribe;
   }, [user.uid]);
 
   return (
@@ -55,13 +58,15 @@ const Feed = () => {
 
       <h2 className="projects__heading">Ongoing projects:</h2>
       {/* description, id, deadline */}
-      {userProjects.map((project) => {
+      {userProjects.map((project, index) => {
         const { id, description, deadline, title, status } = project;
+        //console.log(project);
 
         return (
           <Post
             key={id}
             id={id}
+            index={index}
             description={description}
             deadline={deadline}
             projectTitle={title}

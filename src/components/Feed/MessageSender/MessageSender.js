@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./MessageSender.css";
 import { useSession } from "../../../firebase/UserProvider";
-//"../firebase/UserProvider";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
-// import { useStateValue } from "../../Context/StateProvider";
-// import db from "../../../firebase";
-// import firebase from "firebase";
 
 const MessageSender = () => {
   const [projectTitle, setProjectTitle] = useState("");
@@ -17,18 +13,21 @@ const MessageSender = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
       .collection("projects");
 
-    projectsRef.add({
-      description: description,
-      title: projectTitle,
-      deadline: projectDeadline,
-      status: "in-progress",
-    });
+    if (description !== "" && projectTitle !== "") {
+      projectsRef.add({
+        description: description,
+        title: projectTitle,
+        deadline: projectDeadline,
+        status: "in-progress",
+      });
+    } else {
+      alert("Required Fields Dumbass!");
+    }
 
     setDescription("");
     setProjectDeadline("");
@@ -39,31 +38,26 @@ const MessageSender = () => {
     <div className="messageSender">
       <div className="messageSender__top">
         <form>
-          <label htmlFor="project-title">Project Title</label>
+          <label htmlFor="project-title">Project Title *</label>
           <input
             name="project-title"
             value={projectTitle}
             onChange={(e) => setProjectTitle(e.target.value)}
             type="text"
             placeholder={`What's next ?`}
+            required
           />
-          <label htmlFor="project-description">Project Description</label>
+          <label htmlFor="project-description">Project Description *</label>
           <textarea
             name="project-description"
             value={description}
             rows="4"
             onChange={(e) => setDescription(e.target.value)}
             type="text"
-            placeholder={`...`}
+            placeholder={``}
             className="project-description"
+            required
           />
-          {/* <input
-            name="project-description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            type="text"
-            placeholder={`How are we going to get from "a" to "b"... `}
-          /> */}
           <label htmlFor="project-deadline">Project Deadline</label>
           <input
             value={projectDeadline}
@@ -74,6 +68,7 @@ const MessageSender = () => {
           <button onClick={handleSubmit} type="submit">
             Add Project
           </button>
+          <p>*field is required.</p>
         </form>
       </div>
       {/*       
