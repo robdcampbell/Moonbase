@@ -8,15 +8,25 @@ import "./Post.css";
   "https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/08/detroit_red_wings_logo-58b8da213df78c353c2346cb.jpg?w=1000&h=600&crop=1";
 */
 
-const Post = ({ id, description, deadline, projectTitle, status, index }) => {
+const Post = ({
+  id,
+  description,
+  deadline,
+  projectTitle,
+  status,
+  index,
+  docId,
+}) => {
   const params = useParams();
 
-  const deleteCollection = () => {
+  const deleteProject = (e) => {
+    console.log(docId);
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
       .collection("projects");
-    return projectsRef.doc(id).delete();
+
+    return projectsRef.doc(docId).delete();
   };
 
   return (
@@ -45,7 +55,7 @@ const Post = ({ id, description, deadline, projectTitle, status, index }) => {
         <div className="post__option">
           <p>Edit Project</p>
         </div>
-        <div className="post__option" onClick={deleteCollection}>
+        <div className="post__option" onClick={deleteProject}>
           <p>Delete</p>
         </div>
       </div>

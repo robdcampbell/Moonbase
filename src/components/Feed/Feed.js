@@ -37,14 +37,16 @@ const Feed = () => {
       .collection("projects");
     //Listen for realtime changes
 
-    console.log(projectsRef.docs());
+    projectsRef.onSnapshot((querySnapshot) => {
+      querySnapshot.docs.map((doc) => console.log(doc));
+    });
 
-    // const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
-    //   const projects = querySnapshot.docs.map((doc) => doc.data());
-    //   //console.log(projects);
-    //   setUserProjects(projects);
-    // });
-    // return unsubscribe;
+    const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
+      const projects = querySnapshot.docs.map((doc) => doc.data());
+      //console.log(projects);
+      setUserProjects(projects);
+    });
+    return unsubscribe;
   }, [user.uid]);
 
   return (
@@ -59,7 +61,7 @@ const Feed = () => {
       <h2 className="projects__heading">Ongoing projects:</h2>
       {/* description, id, deadline */}
       {userProjects.map((project, index) => {
-        const { id, description, deadline, title, status } = project;
+        const { id, description, deadline, title, status, docId } = project;
         //console.log(project);
 
         return (
@@ -71,6 +73,7 @@ const Feed = () => {
             deadline={deadline}
             projectTitle={title}
             status={status}
+            docId={docId}
           />
         );
       })}

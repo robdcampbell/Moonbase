@@ -13,20 +13,24 @@ const MessageSender = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const timeCreation = new Date().valueOf().toString();
+    console.log(timeCreation);
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
-      .collection("projects");
+      .collection("projects")
+      .doc(timeCreation);
 
     if (description !== "" && projectTitle !== "") {
-      projectsRef.add({
+      projectsRef.set({
         description: description,
         title: projectTitle,
         deadline: projectDeadline,
         status: "in-progress",
+        docId: timeCreation,
       });
     } else {
-      alert("Required Fields Dumbass!");
+      alert("Required Fields!");
     }
 
     setDescription("");
