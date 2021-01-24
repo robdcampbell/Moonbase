@@ -1,6 +1,6 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./projectsdashboard-de093-firebase-adminsdk-ltb59-3db108ef2f.json");
+var serviceAccount = require("./projectdashboard-production-firebase-adminsdk-shzjt-23b50df62b.json");
 
 var uid = process.argv[2];
 

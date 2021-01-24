@@ -31,7 +31,7 @@ const Users = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id}>
+            <tr key={user.uid}>
               <td>
                 <Link to={`/profile/${user.uid}`}>{user.name}</Link>
               </td>
