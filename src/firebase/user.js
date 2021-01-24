@@ -8,7 +8,7 @@ export const createUserDocument = async (user) => {
   // ( App Cloud Firestore / Users / Logged in User .
   const docRef = firestore.doc(`/users/${user.uid}`);
 
-  // ADD DEFAULT PROJECTS COLLECTION ON USER SIGNUP
+  // ADD DEFAULT PROJECTS COLLECTION ON USER SIGNUP, so default project shows up in feed.
   const projectsCollectionRef = firestore
     .doc(`/users/${user.uid}/`)
     .collection("projects")
@@ -19,22 +19,16 @@ export const createUserDocument = async (user) => {
     uid: user.uid,
     email: user.email,
     name: user.displayName,
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
-    phone: "",
-    specialty: "",
-    ip: "",
-    // Option 1) trying this out. Create a doc, that is an array, then push objects (new posts) to this array? Bad idea - each project should be a separate doc with an ID within the "projects collection"
-    posts: [],
+    // Get rid of the these additional fields as well
   };
 
   //example project
   const projectTest = {
-    id: 1,
     description: "This is an example project",
     deadline: "May 29",
+    title: "Welcome to your first project",
+    status: "in-progress",
+    docId: "DEFAULT_PROJECT",
   };
 
   //

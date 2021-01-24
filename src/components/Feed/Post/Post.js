@@ -20,17 +20,27 @@ const Post = ({
   const params = useParams();
 
   const deleteProject = (e) => {
-    console.log(docId);
-    const projectsRef = firestore
-      .collection("users")
-      .doc(params.id)
-      .collection("projects");
+    let userPreference;
 
-    return projectsRef.doc(docId).delete();
+    if (
+      window.confirm(`Are you sure you want to delete "${projectTitle}" ?`) ==
+      true
+    ) {
+      userPreference = "Project deleted!";
+      console.log(docId);
+      const projectsRef = firestore
+        .collection("users")
+        .doc(params.id)
+        .collection("projects");
+
+      return projectsRef.doc(docId).delete();
+    } else {
+      userPreference = "Project not deleted";
+    }
   };
 
   return (
-    <div className="post" key={id}>
+    <div className="post" key={docId}>
       <div className="post__top">
         <div className="post__topInfo">
           <h2>{`${
@@ -38,7 +48,6 @@ const Post = ({
           }: ${projectTitle}`}</h2>
           <h4>{`Project status: ${status}`}</h4>
           <h4>{`Deadline: ${deadline}`}</h4>
-          <h4>{`Database ID: ${id}`}</h4>
           {/* <p>{new Date(timestamp?.toDate()).toUTCString()}</p> */}
         </div>
       </div>

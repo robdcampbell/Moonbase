@@ -10,6 +10,7 @@ const Feed = () => {
   const { user } = useSession();
   const [userProjects, setUserProjects] = useState([]);
   const params = useParams();
+  const [numberOfProjects, setNumberOfProjects] = useState(0);
 
   useEffect(() => {
     // db.collection("posts")
@@ -57,8 +58,8 @@ const Feed = () => {
 
       <h2 className="add__heading">Add a project:</h2>
       <MessageSender />
-
-      <h2 className="projects__heading">Ongoing projects:</h2>
+      {/* ${numberOfProjects}  */}
+      <h2 className="projects__heading">{`Ongoing projects:`}</h2>
       {/* description, id, deadline */}
       {userProjects.map((project, index) => {
         const { id, description, deadline, title, status, docId } = project;
