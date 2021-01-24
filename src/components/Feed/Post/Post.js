@@ -31,17 +31,20 @@ const Post = ({
     // Edit select ones
     // Re-set that doc
 
-    const newDescription = window.prompt(
-      `Edit Project Description: ${description}?`
-    );
-
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
       .collection("projects")
       .doc(docId);
 
-    projectsRef.set({ docId, description: newDescription }, { merge: true });
+    const newDescription = window.prompt(
+      `Edit Project Description: ${projectTitle}?`,
+      `${description}`
+    );
+
+    if (newDescription) {
+      projectsRef.set({ docId, description: newDescription }, { merge: true });
+    }
 
     // let userPreference;
 
