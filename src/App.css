@@ -6,12 +6,15 @@ html {
 body {
   background-color: #f9f9f9 !important;
   height: 100%;
-  /* background: linear-gradient(
+  /*
+  background: linear-gradient(
     180deg,
-    rgb(240, 185, 160) 0%,
-    rgb(177, 185, 255) 100%
-  ); */
+    rgb(226, 226, 226) 0%,
+    rgb(206, 210, 245) 100%
+  );
   background-repeat: no-repeat;
+
+  */
   /* background-attachment necessary to fill entire window */
   background-attachment: fixed;
   font-size: 15px;
@@ -29,7 +32,7 @@ a {
 }
 
 header {
-  height: 50px;
+  height: 75px;
   background: #1a2129;
   position: fixed;
   top: 0px;
@@ -38,6 +41,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem;
 }
 
 header h2 {
@@ -49,13 +53,17 @@ header h2 {
 }
 
 .app {
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 
 .login-container {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.profile__container {
+  padding-top: 3rem;
 }
 
 .ui.card.login-card {

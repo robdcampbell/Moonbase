@@ -70,7 +70,7 @@ const Profile = () => {
   }`;
 
   return (
-    <div>
+    <div className="profile__container">
       {/* <p>{JSON.stringify(userDocument)}</p>
       <p>{JSON.stringify(userProjects)}</p> */}
       {/* Imported form, to be edited */}

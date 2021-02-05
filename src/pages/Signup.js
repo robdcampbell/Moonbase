@@ -41,6 +41,7 @@ function Signup(props) {
     <div className="login-container">
       <div className="ui card login-card">
         <div className="content">
+          <h1 style={{ textAlign: "center" }}>Sign Up</h1>
           <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
             <div className="two fields">
               <div className="field">
