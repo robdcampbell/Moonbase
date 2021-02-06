@@ -85,8 +85,8 @@ const Login = (props) => {
             </div>
 
             <div className="field actions">
-              <button className="other-link" onClick={loginGuest}>
-                Guest Login
+              <button className="demo-link" onClick={loginGuest}>
+                Demo Login
               </button>
               <div>
                 <button className="ui primary button login" type="submit">
@@ -99,6 +99,12 @@ const Login = (props) => {
             </div>
           </form>
         </div>
+      </div>
+      <div className="under__container">
+        <p>Forgot password? </p>
+        <Link className="other-link" to="/forgot-password">
+          Reset it via email here.
+        </Link>
       </div>
     </div>
   );

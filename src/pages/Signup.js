@@ -91,19 +91,22 @@ function Signup(props) {
             </div>
             <div className="field actions">
               <button className="other-link" onClick={loginGuest}>
-                Guest Login
+                Demo Login
               </button>
               <div>
                 <button className="ui primary button login" type="submit">
                   Sign up
                 </button>
-                <Link className="other-link" to="/login">
-                  Log in
-                </Link>
               </div>
             </div>
           </form>
         </div>
+      </div>
+      <div className="under__container">
+        <p>Already have an account? </p>
+        <Link className="other-link" to="/login">
+          Log in here.
+        </Link>
       </div>
     </div>
   );

@@ -48,22 +48,43 @@ header h2 {
   color: #fff;
   margin: 0;
   padding: 10px;
-  /* position: absolute;
-  left: 10px; */
 }
 
 .app {
   /* margin-top: 100px; */
 }
 
+/* LOGIN/SIGNUP/RESET MODALS */
+
 .login-container {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
+.under__container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: -12px 0 0 -12px;
+}
+
+.message__link {
+  text-decoration: none;
+  color: #254aaf;
+}
+
+.under__container > * {
+  margin: 12px 0 0 12px;
+}
+
+/* Targets the Link from React Router */
+.under__container > a {
+  color: #254aaf;
+}
+
 .profile__container {
-  padding-top: 3rem;
+  padding-top: 4rem;
 }
 
 .ui.card.login-card {
@@ -79,18 +100,10 @@ header h2 {
   margin-top: 10px;
 }
 
-.logout {
-  /* float: right;
-  position: relative;
-  top: 4px;
-  right: 15px; */
-}
-
 .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* text-align: right; */
 }
 .actions button {
   margin-right: 5px;
@@ -112,8 +125,22 @@ header h2 {
   border: none;
   cursor: pointer;
 }
+.demo-link {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #aca8a8;
+}
+.demo-link:hover {
+  padding: none;
+  color: #c0c0c0;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
 
-/* Profile image */
+/* PROILE UPLOADS/UPDATES */
 .profile-image {
   padding: 20px;
 }

@@ -45,22 +45,6 @@ const Post = ({
     if (newDescription) {
       projectsRef.set({ docId, description: newDescription }, { merge: true });
     }
-
-    // let userPreference;
-
-    // if (window.confirm(`Edit "${projectTitle}" ?`) == true) {
-    //   userPreference = "Project deleted!";
-
-    //   const projectsRef = firestore
-    //     .collection("users")
-    //     .doc(params.id)
-    //     .collection("projects");
-
-    //   return projectsRef.doc(docId).set({});
-    // } else {
-    //   userPreference = "Project not deleted";
-    // }
-    // console.log(`Pterodactyl ${projectTitle}`);
   };
 
   //  DELETE PROJECT
@@ -105,6 +89,9 @@ const Post = ({
       </div>
 
       <div className="post__options">
+        <div className="post__option">
+          <p>Comments</p>
+        </div>
         <div className="post__option">
           <p>Update Progress</p>
         </div>

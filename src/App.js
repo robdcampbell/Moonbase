@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import { UserProvider } from "./firebase/UserProvider";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
 import ProfileRedirect from "./router/ProfileRedirect";
 import PrivateRoute from "./router/PrivateRoute";
 import AdminRoute from "./router/AdminRoute";
@@ -24,6 +25,11 @@ function App() {
               <ProfileRedirect exact path="/signup" component={Signup} />
               <PrivateRoute exact path="/profile/:id" component={Profile} />
               <ProfileRedirect exact path="/login" component={Login} />
+              <ProfileRedirect
+                exact
+                path="/forgot-password"
+                component={ForgotPassword}
+              />
               <AdminRoute exat path="/users" component={Users} />
               <Route exact path="*">
                 <Redirect to="/login" />
