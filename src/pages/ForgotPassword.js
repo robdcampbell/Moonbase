@@ -1,38 +1,47 @@
 import React, { useState, useRef } from "react";
-import { useForm } from "react-hook-form";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useAuth } from "../firebase/AuthContext";
 import { login } from "../firebase/auth";
 import { Link } from "react-router-dom";
 
 // Because this componenet is being passed as a Prop (in Route) - it has access
-// to the *history prop* , and can be useful for re-routing/redirection
+// to the *history prop* , and can be useful for re-routing/redirection  - here for the Demo route.
 const ForgotPassword = (props) => {
-  const { register, handleSubmit, reset } = useForm();
   const emailRef = useRef();
   const [message, setMessage] = useState("");
+  const { resetPassword } = useAuth();
 
-  const routeOnLogin = async (user) => {
-    // Get token of the user to see if they're an Admin
-    const token = await user.getIdTokenResult();
-    if (token.claims.admin) {
-      props.history.push("/users");
-    } else {
-      props.history.push(`/profile/${user.uid}`);
-    }
-  };
+  // const routeOnLogin = async (user) => {
+  //   // Get token of the user to see if they're an Admin
+  //   const token = await user.getIdTokenResult();
+  //   if (token.claims.admin) {
+  //     props.history.push("/users");
+  //   } else {
+  //     props.history.push(`/profile/${user.uid}`);
+  //   }
+  // };
 
-  const onSubmit = async (data) => {
-    setMessage("Check your email and return to login.");
-    let user;
+  // const resetPassword = (email) => {
+  //   setMessage("Check your email and return to login.");
+
+  //   console.log("Pterodactyl");
+
+  //   //firebase.auth.sendPasswordResetEmail()
+  //   //firebase.auth.sendPasswordResetEmail()
+  // };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
     try {
-      user = await login(data);
+      await resetPassword(emailRef.current.value);
+      console.log(emailRef.current.value);
+      setMessage("Check your email and return to login.");
     } catch (e) {
-      console.log(e);
+      setMessage("didn't work...");
     }
-    if (user) {
-      routeOnLogin(user);
-    } else {
-    }
+    //console.log(emailRef.current.value);
   };
 
   const loginGuest = async (e) => {
@@ -54,11 +63,13 @@ const ForgotPassword = (props) => {
         <div className="content">
           <h1 style={{ textAlign: "center" }}>Forgot your Password?</h1>
           {message && (
-            <Link className="message__link" to="/login">
-              Check your email and return to Log in
-            </Link>
+            <div style={{ textAlign: "center" }}>
+              <Link className="message__link" to="/login">
+                Check your email and return to Log in
+              </Link>
+            </div>
           )}
-          <form className="ui form" onSubmit={handleSubmit(onSubmit)}>
+          <form className="ui form" onSubmit={onSubmit}>
             {!message && (
               <>
                 <div className="field">
@@ -75,11 +86,19 @@ const ForgotPassword = (props) => {
                 </div>
 
                 <div className="field actions">
-                  <button className="demo-link" onClick={loginGuest}>
+                  <button
+                    className="demo-link"
+                    onClick={loginGuest}
+                    type="button"
+                  >
                     Demo Login
                   </button>
                   <div>
-                    <button className="ui primary button login" type="submit">
+                    <button
+                      className="ui primary button login"
+                      type="submit"
+                      onSubmit={(e) => resetPassword()}
+                    >
                       Reset by email
                     </button>
                   </div>

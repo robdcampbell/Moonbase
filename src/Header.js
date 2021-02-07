@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <header>
-      <h2>MoonBase: Projects Dashboard</h2>
+      <h2>MoonBase.</h2>
       {!!user && (
         <button className="ui secondary button logout" onClick={logoutUser}>
           LOGOUT

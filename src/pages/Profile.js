@@ -79,9 +79,9 @@ const Profile = () => {
         style={{ maxWidth: 960, margin: "50px auto" }}
       >
         <div className="ui grid stackable">
-          <ProfileImage id={params.id} />
+          {/* <ProfileImage id={params.id} /> */}
           <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
-            <div className="fields">
+            <div>
               <div className="eight wide field">
                 <label>
                   Name
@@ -93,14 +93,14 @@ const Profile = () => {
                   Email
                   <input type="text" name="email" readOnly ref={register} />
                 </label>
+                <button
+                  type="submit"
+                  className="ui submit large grey button right floated "
+                >
+                  Change/Update Name
+                </button>
               </div>
             </div>
-            <button
-              type="submit"
-              className="ui submit large grey button right floated"
-            >
-              Change/Update Name
-            </button>
           </form>
         </div>
       </div>

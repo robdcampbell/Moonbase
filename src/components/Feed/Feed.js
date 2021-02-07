@@ -44,13 +44,21 @@ const Feed = () => {
   return (
     <div className="feed">
       <div className="feed__heading">
-        <h1 className="feed__heading">{`Let's get crackin'.`}</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam velit
+          nobis nisi facere magni qui, officia quas eos. Dicta debitis et,
+          adipisci iure nulla quas eaque voluptas doloremque consequatur aliquid
+          quaerat exercitationem. Porro ratione alias dignissimos vitae magnam.
+          Quo dignissimos repellendus dolorem, autem obcaecati quaerat
+          voluptates ducimus sunt aliquid ullam.
+        </p>
+        <h1 className="feed__heading">Ok, Let's go.</h1>
       </div>
 
       <h2 className="add__heading">Add a project:</h2>
       <MessageSender />
       {/* ${numberOfProjects}  */}
-      <h2 className="projects__heading">{`Ongoing projects:`}</h2>
+      <h2 className="projects__heading">{`Projects Dashboard:`}</h2>
       {/* description, id, deadline */}
       {userProjects.map((project, index) => {
         const { id, description, deadline, title, status, docId } = project;

@@ -19,11 +19,15 @@
 }
 
 .feed__heading {
-  padding: 0.5rem 1rem;
-  font-size: 3rem;
-  color: #fff;
-  background-color: #3b86db;
+  /* padding: 0.5rem 1rem; */
+  color: #292929;
+  /* background-color: #3b86db; */
+  background: transparent;
   border-radius: 1rem 1rem 1rem 0rem;
+}
+
+.feed_heading > h1 {
+  font-size: 3rem;
 }
 
 .add__heading {

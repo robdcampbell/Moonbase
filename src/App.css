@@ -4,8 +4,12 @@ html {
 }
 
 body {
-  background-color: #f9f9f9 !important;
+  /* background-color: #f9f9f9 !important; */
   height: 100%;
+  /* background: radial-gradient(#e66465, #9198e5); */
+  /* background: radial-gradient(#504f4f, #666666); */
+  background: radial-gradient(ellipse at top, #e0e0e0, transparent),
+    radial-gradient(ellipse at bottom, #f39f94, transparent);
   /*
   background: linear-gradient(
     180deg,
@@ -32,8 +36,8 @@ a {
 }
 
 header {
-  height: 75px;
-  background: #1a2129;
+  /* height: 75px; */
+  background: transparent;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -42,12 +46,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  border-bottom: #c0c0c0 solid 1px;
 }
 
 header h2 {
-  color: #fff;
+  color: #292929;
   margin: 0;
-  padding: 10px;
 }
 
 .app {
@@ -57,11 +61,19 @@ header h2 {
 /* LOGIN/SIGNUP/RESET MODALS */
 
 .login-container {
-  height: 100vh;
+  min-height: 100vh;
+  /* margin-top: 5rem; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+@media screen and (max-height: 600px) {
+  .login-container {
+    margin: 4rem 0;
+    padding-top: 2rem;
+    /* background-color: red; */
+  }
 }
 .under__container {
   display: inline-flex;

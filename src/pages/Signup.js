@@ -90,7 +90,7 @@ function Signup(props) {
               </label>
             </div>
             <div className="field actions">
-              <button className="other-link" onClick={loginGuest}>
+              <button type="button" className="other-link" onClick={loginGuest}>
                 Demo Login
               </button>
               <div>

@@ -92,18 +92,34 @@ const Login = (props) => {
                 <button className="ui primary button login" type="submit">
                   Log in
                 </button>
-                <Link className="other-link" to="/signup">
-                  Sign up
-                </Link>
               </div>
             </div>
           </form>
         </div>
+        <div
+          className="bottom__modal"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "baseline",
+            width: "80%",
+            margin: "0 auto",
+          }}
+        >
+          <p>Forgot password? </p>
+          <Link
+            style={{ marginLeft: "1rem", color: "#254aaf" }}
+            className="other-link"
+            to="/forgot-password"
+          >
+            Reset it via email here.
+          </Link>
+        </div>
       </div>
       <div className="under__container">
-        <p>Forgot password? </p>
-        <Link className="other-link" to="/forgot-password">
-          Reset it via email here.
+        <p>Need an account? </p>
+        <Link className="other-link" to="/signup">
+          Sign up
         </Link>
       </div>
     </div>
