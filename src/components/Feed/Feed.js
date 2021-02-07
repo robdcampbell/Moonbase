@@ -5,6 +5,7 @@ import MessageSender from "./MessageSender/MessageSender";
 import Post from "./Post/Post";
 import { useSession } from "../../firebase/UserProvider";
 import { firestore } from "../../firebase/config";
+import Modal from "../Modal/Modal";
 
 const Feed = () => {
   const { user } = useSession();
@@ -44,21 +45,16 @@ const Feed = () => {
   return (
     <div className="feed">
       <div className="feed__heading">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam velit
-          nobis nisi facere magni qui, officia quas eos. Dicta debitis et,
-          adipisci iure nulla quas eaque voluptas doloremque consequatur aliquid
-          quaerat exercitationem. Porro ratione alias dignissimos vitae magnam.
-          Quo dignissimos repellendus dolorem, autem obcaecati quaerat
-          voluptates ducimus sunt aliquid ullam.
-        </p>
-        <h1 className="feed__heading">Ok, Let's go.</h1>
+        <h2>"Never give up - and good luck will find you" - Falkor</h2>
+        <h3 className="feed__heading">Ok, Let's go.</h3>
       </div>
 
       <h2 className="add__heading">Create a new project:</h2>
+
       <MessageSender />
       {/* ${numberOfProjects}  */}
       <h2 className="projects__heading">{`Projects Dashboard:`}</h2>
+
       {/* description, id, deadline */}
       <div className="dashboard">
         {userProjects.map((project, index) => {

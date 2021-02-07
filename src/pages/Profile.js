@@ -69,6 +69,8 @@ const Profile = () => {
     isLoading ? "loading" : ""
   }`;
 
+  console.log(userDocument.name);
+
   return (
     <div className="profile__container">
       <div className="add-form-container">
@@ -80,8 +82,9 @@ const Profile = () => {
               className="profile__top"
               // style={{ backgroundColor: "lightblue" }}
             >
+              <h3>Welcome, {userDocument.name}.</h3>
               {/* <div className="eight wide field"> */}
-              <div className="">
+              {/* <div className="">
                 <label>
                   Username
                   <input type="text" name="name" ref={register} />
@@ -92,9 +95,9 @@ const Profile = () => {
                   Email
                   <input type="text" name="email" readOnly ref={register} />
                 </label>
-              </div>
+              </div> */}
 
-              <button
+              {/* <button
                 type="submit"
                 className="update__button"
                 style={{
@@ -106,13 +109,16 @@ const Profile = () => {
                 }}
               >
                 Update Username
-              </button>
+              </button> */}
             </div>
             {/* Profile-top */}
           </form>
         </div>
       </div>
       <Feed projects={userProjects} />
+
+      {/* <Footer /> */}
+      {/* <About ? /> */}
     </div>
   );
 };

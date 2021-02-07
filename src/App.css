@@ -8,7 +8,7 @@ body {
   height: 100%;
   /* background: radial-gradient(#e66465, #9198e5); */
   /* background: radial-gradient(#504f4f, #666666); */
-  background: radial-gradient(ellipse at top, #e0e0e0, transparent),
+  background: radial-gradient(ellipse at top, #f8f8f8, transparent),
     radial-gradient(ellipse at bottom, #f7cac4, transparent);
   /*
   background: linear-gradient(
@@ -37,7 +37,9 @@ a {
 
 header {
   /* height: 75px; */
-  background: rgba(255, 255, 255, 0.8);
+  /* background: rgba(255, 255, 255, 0.5); */
+  background: radial-gradient(ellipse at bottom, #f7cac4, transparent),
+    radial-gradient(ellipse at top, #e0e0e0, transparent);
   position: fixed;
   top: 0px;
   width: 100%;
@@ -46,12 +48,13 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  border-bottom: #c0c0c0 solid 1px;
+  border-bottom: #eeeaea solid 1px;
 }
 
 header h2 {
   color: #292929;
   margin: 0;
+  font-size: 2rem;
 }
 
 .app {
@@ -61,7 +64,7 @@ header h2 {
 .profile__top {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: baseline;
   margin-top: 1.5rem;
   padding: 1rem 3rem;
