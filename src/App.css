@@ -9,7 +9,7 @@ body {
   /* background: radial-gradient(#e66465, #9198e5); */
   /* background: radial-gradient(#504f4f, #666666); */
   background: radial-gradient(ellipse at top, #e0e0e0, transparent),
-    radial-gradient(ellipse at bottom, #f39f94, transparent);
+    radial-gradient(ellipse at bottom, #f7cac4, transparent);
   /*
   background: linear-gradient(
     180deg,
@@ -37,7 +37,7 @@ a {
 
 header {
   /* height: 75px; */
-  background: transparent;
+  background: rgba(255, 255, 255, 0.8);
   position: fixed;
   top: 0px;
   width: 100%;
@@ -56,6 +56,18 @@ header h2 {
 
 .app {
   /* margin-top: 100px; */
+}
+
+.profile__top {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  margin-top: 1.5rem;
+  padding: 1rem 3rem;
+}
+.profile__top > * {
+  margin: 1rem;
 }
 
 /* LOGIN/SIGNUP/RESET MODALS */
@@ -97,6 +109,9 @@ header h2 {
 
 .profile__container {
   padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ui.card.login-card {
@@ -166,6 +181,15 @@ header h2 {
   display: none;
 }
 .upload-button {
-  float: right;
-  margin-top: 20px;
+  /* float: right;
+  margin-top: 20px; */
+}
+
+@media screen and (max-width: 800px) {
+  .profile__top {
+    flex-direction: column;
+  }
+  .upload-button {
+    margin: 1rem;
+  }
 }

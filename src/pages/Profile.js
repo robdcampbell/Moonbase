@@ -71,36 +71,44 @@ const Profile = () => {
 
   return (
     <div className="profile__container">
-      {/* <p>{JSON.stringify(userDocument)}</p>
-      <p>{JSON.stringify(userProjects)}</p> */}
-      {/* Imported form, to be edited */}
-      <div
-        className="add-form-container"
-        style={{ maxWidth: 960, margin: "50px auto" }}
-      >
-        <div className="ui grid stackable">
+      <div className="add-form-container">
+        {/* className="ui grid stackable" */}
+        <div>
           {/* <ProfileImage id={params.id} /> */}
           <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <div className="eight wide field">
+            <div
+              className="profile__top"
+              // style={{ backgroundColor: "lightblue" }}
+            >
+              {/* <div className="eight wide field"> */}
+              <div className="">
                 <label>
-                  Name
+                  Username
                   <input type="text" name="name" ref={register} />
                 </label>
               </div>
-              <div className="eight wide field">
+              <div className="">
                 <label>
                   Email
                   <input type="text" name="email" readOnly ref={register} />
                 </label>
-                <button
-                  type="submit"
-                  className="ui submit large grey button right floated "
-                >
-                  Change/Update Name
-                </button>
               </div>
+
+              <button
+                type="submit"
+                className="update__button"
+                style={{
+                  padding: "1rem",
+                  border: "none",
+                  height: "fit-content",
+                  cursor: "pointer",
+                  alignItems: "bottom",
+                }}
+              >
+                Update Username
+              </button>
             </div>
+            {/* Profile-top */}
           </form>
         </div>
       </div>
@@ -110,63 +118,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-/* 
-
-OLD FIELDS : KEEP TEMPORARILY 
-              
-            <div className="fields">
-              <div className="six wide field">
-                <label>
-                  Address
-                  <input type="text" name="address" ref={register} />
-                </label>
-              </div>
-              <div className="five wide field">
-                <label>
-                  City
-                  <input type="text" name="city" ref={register} />
-                </label>
-              </div>
-              <div className="two wide field">
-                <label>
-                  State
-                  <input type="text" name="state" ref={register} />
-                </label>
-              </div>
-              <div className="three wide field">
-                <label>
-                  Zip
-                  <input type="text" name="zip" ref={register} />
-                </label>
-              </div>
-            </div> 
-
-             <div className="equal width fields">
-              <div className="field">
-                <label>
-                  Phone
-                  <input type="text" name="phone" ref={register} />
-                </label>
-              </div>
-              <div className="field">
-                <label>
-                  Specialty
-                  <select className="specialty" name="specialty" ref={register}>
-                    <option value="field agent">Field Agent</option>
-                    <option value="covert operations">Covert Operations</option>
-                    <option value="intelligence officer">
-                      Intelligence Officer
-                    </option>
-                  </select>
-                </label>
-              </div>
-              <div className="field">
-                <label>
-                  ip
-                  <input type="text" name="ip" ref={register} />
-                </label>
-              </div>
-            </div> 
-
-*/

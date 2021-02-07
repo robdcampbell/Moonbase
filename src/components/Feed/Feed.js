@@ -55,27 +55,29 @@ const Feed = () => {
         <h1 className="feed__heading">Ok, Let's go.</h1>
       </div>
 
-      <h2 className="add__heading">Add a project:</h2>
+      <h2 className="add__heading">Create a new project:</h2>
       <MessageSender />
       {/* ${numberOfProjects}  */}
       <h2 className="projects__heading">{`Projects Dashboard:`}</h2>
       {/* description, id, deadline */}
-      {userProjects.map((project, index) => {
-        const { id, description, deadline, title, status, docId } = project;
+      <div className="dashboard">
+        {userProjects.map((project, index) => {
+          const { id, description, deadline, title, status, docId } = project;
 
-        return (
-          <Post
-            key={docId}
-            id={id}
-            index={index}
-            description={description}
-            deadline={deadline}
-            projectTitle={title}
-            status={status}
-            docId={docId}
-          />
-        );
-      })}
+          return (
+            <Post
+              key={docId}
+              id={id}
+              index={index}
+              description={description}
+              deadline={deadline}
+              projectTitle={title}
+              status={status}
+              docId={docId}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -11,6 +11,7 @@
 @media screen and (max-width: 800px) {
   .feed {
     padding: 30px 30px;
+    flex-direction: column;
   }
 }
 
@@ -39,4 +40,20 @@
   padding-top: 2rem;
   border-top: #777777 solid 1px;
   font-size: 2rem;
+}
+
+.dashboard {
+  display: flex;
+  /* flex-wrap: wrap; */
+}
+
+.dashboard > * {
+  margin: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard {
+    padding: 1rem;
+    flex-direction: column;
+  }
 }
