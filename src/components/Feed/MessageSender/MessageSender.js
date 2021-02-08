@@ -78,7 +78,7 @@ const MessageSender = () => {
           <button onClick={handleSubmit} type="submit">
             Add Project
           </button>
-          <p>*field is required.</p>
+          <p>*Field is required.</p>
         </form>
       </div>
     </div>

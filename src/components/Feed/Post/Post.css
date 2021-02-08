@@ -1,3 +1,93 @@
+.post__card {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: #c0c0c0 solid 1px;
+  border-radius: 1rem;
+  box-shadow: 0px 9px 7px -7px rgba(0, 0, 0, 0.75);
+  width: 100%;
+  max-width: 800px;
+  transition: 100ms ease-in;
+  padding: 1rem;
+}
+
+.post__card:hover {
+  transform: scale(1.02);
+}
+
+.post__card > form {
+  margin-top: 1rem;
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+}
+
+.project__title {
+  font-size: 1.5rem;
+}
+.post__card > form * {
+  margin-top: 1rem;
+  flex: 1;
+  flex-direction: column;
+}
+
+.edit__field {
+  outline-width: 0;
+  border: none;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+.edit__field:focus {
+  outline-width: 1;
+  border: #292929 solid 1px;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+
+.project-description {
+  background-color: #fff;
+  border: #fff solid 1px;
+  border-radius: 0.35rem;
+  resize: none;
+}
+.project-description:focus {
+  outline-width: 0;
+  border: #292929 solid 1px;
+  border-radius: 0.25rem;
+}
+
+.post__card > form > button {
+  outline-width: 0;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 0.25rem;
+  background-color: #c0c0c0;
+  cursor: pointer;
+}
+
+.post__card > form > * {
+  /* margin-bottom: 0.25rem; */
+}
+
+.post__card > form > button:hover {
+  background-color: #cfcfcf;
+}
+
+.messageSender__bottom {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* BEFORE REFACTOR */
+
+/*
 .post {
   width: 100%;
   margin-top: 2rem;
@@ -11,11 +101,9 @@
   transform: scale(1.02);
 }
 
-/*  POST TOP */
+
 .post__top {
-  /* background-color: #e9e9e9; */
-  /* background-color: #3b86db; */
-  /* background: radial-gradient(#5ba1f1, #3b86db); */
+
   background: rgba(255, 255, 255, 0.8);
   border-radius: 15px 15px 0 0;
   color: #292929;
@@ -43,7 +131,7 @@
   color: #808080;
 }
 
-/*  POST BODY */
+
 
 .post__body {
   display: flex;
@@ -61,7 +149,7 @@
   padding: 15px 25px;
 }
 
-/*  POST BOTTOM */
+
 
 .post__bottom {
   margin: 10px 0;
@@ -96,4 +184,4 @@
 .post__option:hover {
   background-color: #eff2f5;
   border-radius: 0 0 10px 10px;
-}
+} */

@@ -246,7 +246,12 @@ header h2 {
   margin-right: 1rem;
   color: #292929;
 }
+
+.footer__logo > a {
+  color: #c0c0c0;
+}
+
 .footer__logo > a:hover {
   margin-right: 1rem;
-  color: #c0c0c0;
+  color: #292929;
 }

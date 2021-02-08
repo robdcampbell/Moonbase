@@ -14,11 +14,16 @@
 
 .messageSender__top {
   display: flex;
-  border-bottom: 1px solid #eff2f5;
   padding: 1rem;
 }
 
 .messageSender__top > form {
+  margin-top: 1rem;
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+}
+.messageSender__top > form * {
   margin-top: 1rem;
   flex: 1;
   flex-direction: column;
@@ -39,7 +44,7 @@
   padding: 10px;
   margin: 10px 0px;
   border-radius: 0.25rem;
-  background-color: #eff2f5;
+  background-color: #fff;
 }
 .project-description {
   background-color: #fff;
@@ -47,27 +52,20 @@
   border-radius: 0.35rem;
   resize: none;
 }
-
 .messageSender__top > form > button {
-  /* display: none; */
-  outline-width: 0;
-  border: none;
-  padding: 5px 20px;
-  margin: 10px;
-  border-radius: 999px;
-  background-color: #888b8b;
-  cursor: pointer;
-}
-.messageSender__top > form > button {
-  /* display: none; */
   outline-width: 0;
   color: #fff;
   border: none;
   padding: 5px 20px;
-  margin: 10px;
-  border-radius: 999px;
-  background-color: #888b8b;
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 0.25rem;
+  background-color: #c0c0c0;
   cursor: pointer;
+}
+
+.messageSender__top > form > * {
+  margin-bottom: 0.25rem;
 }
 
 .messageSender__top > form > button:hover {
