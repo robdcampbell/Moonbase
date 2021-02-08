@@ -5,9 +5,17 @@ import { useSession } from "../../../firebase/UserProvider";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 
-const Post = () => {
-  const [projectTitle, setProjectTitle] = useState("");
-  const [description, setDescription] = useState("");
+const Post = ({
+  id,
+  description,
+  deadline,
+  projectTitle,
+  status,
+  index,
+  docId,
+}) => {
+  const [projectCardTitle, setProjectCardTitle] = useState(projectTitle);
+  const [projectDescription, setProjectDescription] = useState(description);
   const [projectDeadline, setProjectDeadline] = useState("");
   const params = useParams();
   const projectTitleRef = useRef(null);
@@ -40,21 +48,21 @@ const Post = () => {
     //   alert("Required Fields!");
     // }
 
-    setDescription("");
+    setProjectDescription("");
     setProjectDeadline("");
-    setProjectTitle("");
+    setProjectCardTitle("");
   };
 
   return (
     <div className="post__card">
       <form>
         <label htmlFor="project-title" className="project__title">
-          Project Title
+          {projectTitle}
         </label>
         <input
           name="project-title"
           value={projectTitle}
-          onChange={(e) => setProjectTitle(e.target.value)}
+          onChange={(e) => setProjectCardTitle(e.target.value)}
           type="text"
           placeholder={`What's next ?`}
           ref={projectTitleRef}
@@ -64,11 +72,11 @@ const Post = () => {
         <label htmlFor="project-description">Project Description *</label>
         <textarea
           name="project-description"
-          value={description}
+          value={projectDescription}
           rows="4"
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => setProjectDescription(e.target.value)}
           type="text"
-          placeholder={``}
+          placeholder={projectDescription}
           className="project-description"
           required
         />
