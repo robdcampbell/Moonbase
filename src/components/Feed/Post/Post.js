@@ -1,4 +1,94 @@
-import React, { useState } from "react";
+// import React, { useState, useEffect, useRef } from "react";
+// //import "./MessageSender.css";
+// import { useSession } from "../../../firebase/UserProvider";
+// import { firestore } from "../../../firebase/config";
+// import { useParams } from "react-router-dom";
+
+// const Post = () => {
+//   const [projectTitle, setProjectTitle] = useState("");
+//   const [description, setDescription] = useState("");
+//   const [projectDeadline, setProjectDeadline] = useState("");
+//   const params = useParams();
+//   const projectTitleRef = useRef(null);
+//   const { user } = useSession();
+
+//   useEffect(() => {
+//     projectTitleRef.current.focus();
+//   }, []);
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     const timeCreation = new Date().valueOf().toString();
+
+//     const projectsRef = firestore
+//       .collection("users")
+//       .doc(params.id)
+//       .collection("projects")
+//       .doc(timeCreation);
+
+//     if (description !== "" && projectTitle !== "") {
+//       projectsRef.set({
+//         description: description,
+//         title: projectTitle,
+//         deadline: projectDeadline,
+//         status: "in-progress",
+//         docId: timeCreation,
+//       });
+//     } else {
+//       alert("Required Fields!");
+//     }
+
+//     setDescription("");
+//     setProjectDeadline("");
+//     setProjectTitle("");
+//   };
+
+//   return (
+//     <div>
+//       {/* className="messageSender" */}
+//       <div className="messageSender__top">
+//         <form>
+//           <label htmlFor="project-title">Project Title *</label>
+//           <input
+//             name="project-title"
+//             value={projectTitle}
+//             onChange={(e) => setProjectTitle(e.target.value)}
+//             type="text"
+//             placeholder={`What's next ?`}
+//             ref={projectTitleRef}
+//             required
+//           />
+//           <label htmlFor="project-description">Project Description *</label>
+//           <textarea
+//             name="project-description"
+//             value={description}
+//             rows="4"
+//             onChange={(e) => setDescription(e.target.value)}
+//             type="text"
+//             placeholder={``}
+//             className="project-description"
+//             required
+//           />
+//           <label htmlFor="project-deadline">Project Deadline</label>
+//           <input
+//             value={projectDeadline}
+//             onChange={(e) => setProjectDeadline(e.target.value)}
+//             type="text"
+//             placeholder="Deadline..."
+//           />
+//           <button onClick={handleSubmit} type="submit">
+//             Add Project
+//           </button>
+//           <p>*field is required.</p>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Post;
+
+import React, { useState, useRef } from "react";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import "./Post.css";
@@ -18,11 +108,8 @@ const Post = ({
   docId,
 }) => {
   const params = useParams();
-  const [editProject, setEditProject] = useState({
-    docId: null,
-    description: "",
-    status: "in-progress",
-  });
+  const [editingProject, setEditingProject] = useState(false);
+  const descriptionRef = useRef();
 
   // EDIT PROJECT - start with window prompt, then add Semantic UI modal later.
   const editProjectPost = (e) => {
@@ -30,7 +117,8 @@ const Post = ({
     // Get current ProjectDoc Contents
     // Edit select ones
     // Re-set that doc
-
+    setEditingProject(!editingProject);
+    /*
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
@@ -45,6 +133,7 @@ const Post = ({
     if (newDescription) {
       projectsRef.set({ docId, description: newDescription }, { merge: true });
     }
+  */
   };
 
   //  DELETE PROJECT
@@ -66,8 +155,6 @@ const Post = ({
     } else {
       userPreference = "Project not deleted";
     }
-
-    // EDIT PROJECT Description (and deadline?)
   };
 
   return (
@@ -83,15 +170,26 @@ const Post = ({
         </div>
       </div>
 
-      <div className="post__body">
-        <h3>Project Description:</h3>
-        <p>{description}</p>
+      <div
+        className={editingProject ? "post__body editing__body" : "post__body"}
+        // style={
+        //   editingProject
+        //     ? { backgroundColor: "rgba(173, 216, 230, 0.3)" }
+        //     : { backgroundColor: "transparent" }
+        // }
+      >
+        <h3>
+          {editingProject ? "Edit Description..." : `Project Description:`}
+        </h3>
+        <input
+          placeholder={editingProject ? "EDITNG...." : description}
+        ></input>
       </div>
 
       <div className="post__options">
-        <div className="post__option">
+        {/* <div className="post__option">
           <p>Comments</p>
-        </div>
+        </div> */}
         <div className="post__option">
           <p>Update Progress</p>
         </div>
