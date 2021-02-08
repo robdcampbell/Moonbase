@@ -6,6 +6,7 @@ import { firestore } from "../firebase/config";
 import { updateUserDocument } from "../firebase/user";
 import { ProfileImage } from "../ProfileImage";
 import Feed from "../components/Feed/Feed";
+import Footer from "../components/Footer";
 
 const Profile = () => {
   const { user } = useSession();
@@ -116,7 +117,7 @@ const Profile = () => {
       </div>
       <Feed projects={userProjects} />
 
-      {/* <Footer /> */}
+      <Footer />
       {/* <About ? /> */}
     </div>
   );

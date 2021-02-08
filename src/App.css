@@ -101,6 +101,16 @@ header h2 {
   margin: -12px 0 0 -12px;
 }
 
+.image__container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.image__container > img {
+  height: 150px;
+  border-radius: 3rem;
+}
+
 .message__link {
   text-decoration: none;
   color: #254aaf;

@@ -56,6 +56,12 @@ const Login = (props) => {
       <div className="ui card login-card">
         <div className="content">
           <h1 style={{ textAlign: "center" }}>Login</h1>
+          <div className="image__container">
+            <img src="../images/begin__cropped.png" alt="begin-photo" />
+          </div>
+          {/* <div className="image__container">
+            <img src="../images/begin.png" alt="begin-photo" />
+          </div> */}
           <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
             <div className="field">
               <label>

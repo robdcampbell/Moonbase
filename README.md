@@ -1,4 +1,4 @@
-## Lunarbase: Projects Dashboard
+## MoonBase: Projects Dashboard
 
 This app is a project tracker to keep lofty ideas in check (and progress.)
 
