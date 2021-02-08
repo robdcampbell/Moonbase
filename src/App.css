@@ -211,3 +211,42 @@ header h2 {
     margin: 1rem;
   }
 }
+
+/* FOOTER */
+.footer__container {
+  width: 100%;
+  border-top: #c0c0c0 solid 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+.footer__container > * {
+  margin: 0 3rem;
+}
+
+.footer__container > a {
+  text-decoration: none;
+  color: #292929;
+  cursor: pointer;
+}
+
+.footer__container > a:hover {
+  text-decoration: none;
+  color: #c0c0c0;
+  cursor: pointer;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: baseline;
+}
+.footer__logo > * {
+  margin-right: 1rem;
+  color: #292929;
+}
+.footer__logo > a:hover {
+  margin-right: 1rem;
+  color: #c0c0c0;
+}
