@@ -44,10 +44,10 @@ const Feed = () => {
 
   return (
     <div className="feed">
-      <div className="feed__heading">
+      {/* <div className="feed__heading">
         <h2>"Never give up - and good luck will find you" - Falkor</h2>
-        <h3 className="feed__heading">Ok, Let's go.</h3>
-      </div>
+        <h3 className="feed__heading">(Ok, Let's go.)</h3>
+      </div> */}
 
       <h2 className="add__heading">Create a new project:</h2>
 

@@ -69,8 +69,6 @@ const Profile = () => {
     isLoading ? "loading" : ""
   }`;
 
-  console.log(userDocument.name);
-
   return (
     <div className="profile__container">
       <div className="add-form-container">
@@ -106,6 +104,7 @@ const Profile = () => {
                   height: "fit-content",
                   cursor: "pointer",
                   alignItems: "bottom",
+                  background: "transparent",
                 }}
               >
                 Update Username

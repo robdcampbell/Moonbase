@@ -16,24 +16,20 @@
 }
 
 .feed__heading {
-  padding-top: 0;
-}
-
-.feed__heading {
-  /* padding: 0.5rem 1rem; */
   color: #292929;
-  /* background-color: #3b86db; */
+
   background: transparent;
   border-radius: 1rem 1rem 1rem 0rem;
 }
 
-.feed_heading > h1 {
+.feed_heading > h2 {
   font-size: 3rem;
 }
 
 .add__heading {
   padding: 0;
-  margin-top: 4rem;
+  margin-top: 2rem;
+  font-size: 4rem;
 }
 
 .projects__heading {

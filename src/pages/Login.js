@@ -85,7 +85,7 @@ const Login = (props) => {
             </div>
 
             <div className="field actions">
-              <button className="demo-link" onClick={loginGuest}>
+              <button className="demo-link" onClick={loginGuest} type="button">
                 Demo Login
               </button>
               <div>

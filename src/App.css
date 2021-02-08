@@ -70,7 +70,12 @@ header h2 {
   padding: 1rem 3rem;
 }
 .profile__top > * {
-  margin: 1rem;
+  /* margin: 1rem; */
+}
+.profile__top > h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: left;
 }
 
 /* LOGIN/SIGNUP/RESET MODALS */
