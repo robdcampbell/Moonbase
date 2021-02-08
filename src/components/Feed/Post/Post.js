@@ -16,7 +16,8 @@ const Post = ({
 }) => {
   const [projectCardTitle, setProjectCardTitle] = useState(projectTitle);
   const [projectDescription, setProjectDescription] = useState(description);
-  const [projectDeadline, setProjectDeadline] = useState("");
+  const [projectDeadline, setProjectDeadline] = useState(deadline);
+  const [projectStatus, setProjectStatus] = useState(status);
   const params = useParams();
   const projectTitleRef = useRef(null);
   const { user } = useSession();
@@ -47,29 +48,26 @@ const Post = ({
     // } else {
     //   alert("Required Fields!");
     // }
-
-    setProjectDescription("");
-    setProjectDeadline("");
-    setProjectCardTitle("");
+    console.log(`Pterodactyl : ${projectCardTitle}`);
   };
 
   return (
     <div className="post__card">
+      <div className="post__heading">
+        <h4 className="project__title">{projectCardTitle}</h4>
+      </div>
       <form>
-        <label htmlFor="project-title" className="project__title">
-          {projectTitle}
-        </label>
+        <label htmlFor="project-title">Edit Title</label>
         <input
           name="project-title"
-          value={projectTitle}
+          value={projectCardTitle}
           onChange={(e) => setProjectCardTitle(e.target.value)}
           type="text"
           placeholder={`What's next ?`}
           ref={projectTitleRef}
-          required
           className="edit__field"
         />
-        <label htmlFor="project-description">Project Description *</label>
+        <label htmlFor="project-description">Edit Project Description </label>
         <textarea
           name="project-description"
           value={projectDescription}
@@ -78,18 +76,30 @@ const Post = ({
           type="text"
           placeholder={projectDescription}
           className="project-description"
-          required
         />
-        <label htmlFor="project-deadline">Project Deadline</label>
-        <input
-          value={projectDeadline}
-          onChange={(e) => setProjectDeadline(e.target.value)}
-          type="text"
-          placeholder="Deadline..."
-          className="edit__field"
-        />
+
+        <div className="bottom__items">
+          <label htmlFor="project-status">Update Project Status</label>
+          <input
+            value={projectStatus}
+            onChange={(e) => setProjectStatus(e.target.value)}
+            type="text"
+            placeholder="Project Status"
+            className="edit__field"
+          />
+
+          <label htmlFor="project-deadline">Update Project Deadline</label>
+          <input
+            value={projectDeadline}
+            onChange={(e) => setProjectDeadline(e.target.value)}
+            type="text"
+            placeholder="Deadline..."
+            className="edit__field"
+          />
+        </div>
+
         <button onClick={handleSubmit} type="submit">
-          Edit Project
+          Save Project Edits
         </button>
       </form>
     </div>
