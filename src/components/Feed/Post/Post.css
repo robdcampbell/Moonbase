@@ -19,10 +19,11 @@
   z-index: 100;
   padding: 1rem;
   height: 20rem;
-  top: 8rem;
+  bottom: 0;
   left: 0;
   width: 100%;
-  border-radius: 1rem;
+  height: 80%;
+  border-radius: 0 0 1rem 1rem;
   background-color: rgba(255, 255, 255, 1);
 }
 
@@ -37,7 +38,7 @@
   cursor: pointer;
 }
 
-.delete__modal > button:hover {
+.delete__modalButtons > button:hover {
   background-color: #cfcfcf;
 }
 
@@ -46,7 +47,7 @@
 }
 
 .post__heading {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: #fff;
   border-radius: 1rem 1rem 0 0;
   padding: 1rem;
   height: 8rem;
