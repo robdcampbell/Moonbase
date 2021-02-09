@@ -27,31 +27,60 @@ const Post = ({
     projectTitleRef.current.focus();
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // EDIT PROJECT
+  const updateProjectInfo = (e) => {
+    console.log(docId);
+    console.log(projectDescription);
+    console.log(projectDeadline);
+    console.log(projectStatus);
+    console.log(projectCardTitle);
+    // Get current ProjectDoc Contents
+    // Edit select ones
+    // Re-set that doc
 
+    const projectsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects")
+      .doc(docId);
+
+    // const newDescription = window.prompt(
+    //   `Edit Project Description: ${projectTitle}?`,
+    //   `${description}`
+    // );
+
+    return projectsRef.set(
+      {
+        docId,
+        title: projectCardTitle,
+        description: projectDescription,
+        status: projectStatus,
+        deadline: projectDeadline,
+      },
+      { merge: true }
+    );
+
+    /*
     const timeCreation = new Date().valueOf().toString();
 
-    // const projectsRef = firestore
-    //   .collection("users")
-    //   .doc(params.id)
-    //   .collection("projects")
-    //   .doc(timeCreation);
+    const projectsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects")
+      .doc(timeCreation);
 
-    // if (description !== "" && projectTitle !== "") {
-    //   projectsRef.set({
-    //     description: description,
-    //     title: projectTitle,
-    //     deadline: projectDeadline,
-    //     status: "in-progress",
-    //     docId: timeCreation,
-    //   });
-    // } else {
-    //   alert("Required Fields!");
-    // }
+    projectsRef.set({
+      description: description,
+      title: projectTitle,
+      deadline: projectDeadline,
+      status: "in-progress",
+      docId: timeCreation,
+    });
+
     console.log(`Pterodactyl : ${projectCardTitle}`);
   };
-
+*/
+  };
   //  DELETE PROJECT
   const deleteProject = async () => {
     const projectsRef = firestore
@@ -62,12 +91,10 @@ const Post = ({
     return projectsRef.doc(docId).delete();
   };
 
-  const handleDelete = async (e) => {};
-
   return (
     <div className="post__card">
       <div className="post__heading">
-        <h4 className="project__title">{projectCardTitle}</h4>
+        <h4 className="project__title">{projectTitle}</h4>
       </div>
 
       <form>
@@ -137,7 +164,7 @@ const Post = ({
           />
         </div>
         <div className="post__cardButtons">
-          <button onClick={handleSubmit} type="button">
+          <button onClick={updateProjectInfo} type="button">
             Save Project Edits
           </button>
           <button
