@@ -21,6 +21,7 @@ const Post = ({
   const params = useParams();
   const projectTitleRef = useRef(null);
   const { user } = useSession();
+  const [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
     projectTitleRef.current.focus();
@@ -51,12 +52,49 @@ const Post = ({
     console.log(`Pterodactyl : ${projectCardTitle}`);
   };
 
+  //  DELETE PROJECT
+  const deleteProject = async () => {
+    const projectsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects");
+
+    return projectsRef.doc(docId).delete();
+  };
+
+  const handleDelete = async (e) => {};
+
   return (
     <div className="post__card">
       <div className="post__heading">
         <h4 className="project__title">{projectCardTitle}</h4>
       </div>
+
       <form>
+        {deleteModal && (
+          <div className="delete__modal">
+            <h3>Are you sure you want to delete this post?</h3>
+            <div className="delete__modalButtons">
+              <button
+                onClick={(e) => {
+                  return setDeleteModal(false);
+                }}
+                type="button"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={(e) => {
+                  return deleteProject();
+                }}
+                type="button"
+              >
+                Delete Project
+              </button>
+            </div>
+          </div>
+        )}
+
         <label htmlFor="project-title">Edit Title</label>
         <input
           name="project-title"
@@ -67,6 +105,7 @@ const Post = ({
           ref={projectTitleRef}
           className="edit__field"
         />
+
         <label htmlFor="project-description">Edit Project Description </label>
         <textarea
           name="project-description"
@@ -78,7 +117,7 @@ const Post = ({
           className="project-description"
         />
 
-        <div className="bottom__items">
+        <div className="bottom__inputItems">
           <label htmlFor="project-status">Update Project Status</label>
           <input
             value={projectStatus}
@@ -90,17 +129,26 @@ const Post = ({
 
           <label htmlFor="project-deadline">Update Project Deadline</label>
           <input
-            value={projectDeadline}
+            value={projectDeadline ? projectDeadline : "(No deadline set)"}
             onChange={(e) => setProjectDeadline(e.target.value)}
             type="text"
             placeholder="Deadline..."
             className="edit__field"
           />
         </div>
-
-        <button onClick={handleSubmit} type="submit">
-          Save Project Edits
-        </button>
+        <div className="post__cardButtons">
+          <button onClick={handleSubmit} type="button">
+            Save Project Edits
+          </button>
+          <button
+            onClick={(e) => {
+              setDeleteModal(true);
+            }}
+            type="button"
+          >
+            Delete Project
+          </button>
+        </div>
       </form>
     </div>
   );
