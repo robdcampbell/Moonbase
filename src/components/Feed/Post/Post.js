@@ -22,6 +22,7 @@ const Post = ({
   const projectTitleRef = useRef(null);
   const { user } = useSession();
   const [deleteModal, setDeleteModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
 
   useEffect(() => {
     projectTitleRef.current.focus();
@@ -164,17 +165,48 @@ const Post = ({
           />
         </div>
         <div className="post__cardButtons">
-          <button onClick={updateProjectInfo} type="button">
-            Save Project Edits
-          </button>
-          <button
-            onClick={(e) => {
-              setDeleteModal(true);
-            }}
-            type="button"
-          >
-            Delete Project
-          </button>
+          {!updateModal ? (
+            <>
+              <h4>::</h4>
+              <button onClick={(e) => setUpdateModal(true)} type="button">
+                Update Project Details
+              </button>
+
+              <button
+                onClick={(e) => {
+                  setDeleteModal(true);
+                }}
+                type="button"
+              >
+                Delete Project
+              </button>
+            </>
+          ) : (
+            // <div className="update__modal">
+            <>
+              <h4>Are you sure?</h4>
+
+              <button
+                onClick={(e) => {
+                  setUpdateModal(false);
+                  return updateProjectInfo();
+                }}
+                type="button"
+              >
+                Save Project Edits
+              </button>
+
+              <button
+                onClick={(e) => {
+                  return setUpdateModal(false);
+                }}
+                type="button"
+              >
+                Cancel
+              </button>
+            </>
+            //</div>
+          )}
         </div>
       </form>
     </div>

@@ -113,7 +113,7 @@
 
 .post__cardButtons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .post__cardButtons > button {
@@ -131,15 +131,27 @@
   background-color: #cfcfcf;
 }
 
-/* DELETE CONFIRMATION*/
-
-.delete__confirm {
+.update__modal {
   background-color: red;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
+.update__modal > button {
+  outline-width: 0;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  border-radius: 0.25rem;
+  background-color: #c0c0c0;
+  cursor: pointer;
+}
+
+.update__modal > button:hover {
+  background-color: #cfcfcf;
+}
 /* BEFORE REFACTOR */
 
 /*
