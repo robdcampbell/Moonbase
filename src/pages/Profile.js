@@ -117,7 +117,6 @@ const Profile = () => {
       </div>
       <Feed projects={userProjects} />
 
-      <Footer />
       {/* <About ? /> */}
     </div>
   );

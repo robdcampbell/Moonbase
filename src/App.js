@@ -14,6 +14,7 @@ import ProfileRedirect from "./router/ProfileRedirect";
 import PrivateRoute from "./router/PrivateRoute";
 import AdminRoute from "./router/AdminRoute";
 import Users from "./pages/Users";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               </Switch>
             </div>
           </div>
+          <Footer />
         </BrowserRouter>
       </UserProvider>
     </AuthProvider>

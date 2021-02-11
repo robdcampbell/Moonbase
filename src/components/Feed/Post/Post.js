@@ -94,11 +94,14 @@ const Post = ({
 
   return (
     <div className="post__card">
+      {/* PROJECT CARD HEADER */}
       <div className="post__heading">
         <h4 className="project__title">{projectTitle}</h4>
+        <p>{deadline || "no deadline set"}</p>
       </div>
 
       <form>
+        {/* DELETE MODAL - will import as a component */}
         {deleteModal && (
           <div className="delete__modal">
             <h3>Are you sure you want to delete this post?</h3>
@@ -116,6 +119,7 @@ const Post = ({
                   return deleteProject();
                 }}
                 type="button"
+                style={{ backgroundColor: "rgba(255, 0, 0, 0.7)" }}
               >
                 Delete Project
               </button>
@@ -123,90 +127,93 @@ const Post = ({
           </div>
         )}
 
-        <label htmlFor="project-title">Edit Title</label>
-        <input
-          name="project-title"
-          value={projectCardTitle}
-          onChange={(e) => setProjectCardTitle(e.target.value)}
-          type="text"
-          placeholder={`What's next ?`}
-          ref={projectTitleRef}
-          className="edit__field"
-        />
-
-        <label htmlFor="project-description">Edit Project Description </label>
-        <textarea
-          name="project-description"
-          value={projectDescription}
-          rows="4"
-          onChange={(e) => setProjectDescription(e.target.value)}
-          type="text"
-          placeholder={projectDescription}
-          className="project-description"
-        />
-
-        <div className="bottom__inputItems">
-          <label htmlFor="project-status">Update Project Status</label>
+        {/* PROJECT CARD BODY */}
+        <div className="form__body hidden">
+          <label htmlFor="project-title">Edit Title</label>
           <input
-            value={projectStatus}
-            onChange={(e) => setProjectStatus(e.target.value)}
+            name="project-title"
+            value={projectCardTitle}
+            onChange={(e) => setProjectCardTitle(e.target.value)}
             type="text"
-            placeholder="Project Status"
+            placeholder={`What's next ?`}
+            ref={projectTitleRef}
             className="edit__field"
           />
 
-          <label htmlFor="project-deadline">Update Project Deadline</label>
-          <input
-            value={projectDeadline ? projectDeadline : "(No deadline set)"}
-            onChange={(e) => setProjectDeadline(e.target.value)}
+          <label htmlFor="project-description">Edit Project Description </label>
+          <textarea
+            name="project-description"
+            value={projectDescription}
+            rows="4"
+            onChange={(e) => setProjectDescription(e.target.value)}
             type="text"
-            placeholder="Deadline..."
-            className="edit__field"
+            placeholder={projectDescription}
+            className="project-description"
           />
-        </div>
-        <div className="post__cardButtons">
-          {!updateModal ? (
-            <>
-              <h4>::</h4>
-              <button onClick={(e) => setUpdateModal(true)} type="button">
-                Update Project Details
-              </button>
 
-              <button
-                onClick={(e) => {
-                  setDeleteModal(true);
-                }}
-                type="button"
-              >
-                Delete Project
-              </button>
-            </>
-          ) : (
-            // <div className="update__modal">
-            <>
-              <h4>Are you sure?</h4>
+          <div className="bottom__inputItems">
+            <label htmlFor="project-status">Update Project Status</label>
+            <input
+              value={projectStatus}
+              onChange={(e) => setProjectStatus(e.target.value)}
+              type="text"
+              placeholder="Project Status"
+              className="edit__field"
+            />
 
-              <button
-                onClick={(e) => {
-                  setUpdateModal(false);
-                  return updateProjectInfo();
-                }}
-                type="button"
-              >
-                Save Project Edits
-              </button>
+            <label htmlFor="project-deadline">Update Project Deadline</label>
+            <input
+              value={projectDeadline ? projectDeadline : "(No deadline set)"}
+              onChange={(e) => setProjectDeadline(e.target.value)}
+              type="text"
+              placeholder="Deadline..."
+              className="edit__field"
+            />
+          </div>
+          <div className="post__cardButtons">
+            {!updateModal ? (
+              <>
+                <h4>::</h4>
+                <button onClick={(e) => setUpdateModal(true)} type="button">
+                  Update Project Details
+                </button>
 
-              <button
-                onClick={(e) => {
-                  return setUpdateModal(false);
-                }}
-                type="button"
-              >
-                Cancel
-              </button>
-            </>
-            //</div>
-          )}
+                <button
+                  onClick={(e) => {
+                    setDeleteModal(true);
+                  }}
+                  type="button"
+                >
+                  Delete Project
+                </button>
+              </>
+            ) : (
+              // <div className="update__modal">
+              <>
+                <h4>Are you sure?</h4>
+
+                <button
+                  onClick={(e) => {
+                    setUpdateModal(false);
+                    return updateProjectInfo();
+                  }}
+                  type="button"
+                >
+                  Save Project Edits
+                </button>
+
+                <button
+                  onClick={(e) => {
+                    return setUpdateModal(false);
+                  }}
+                  type="button"
+                >
+                  Cancel
+                </button>
+              </>
+              //</div>
+            )}
+          </div>
         </div>
       </form>
     </div>
