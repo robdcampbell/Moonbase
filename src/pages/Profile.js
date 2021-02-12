@@ -70,9 +70,11 @@ const Profile = (props) => {
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <h3 className="user__welcomeHeading">
-              Welcome, {userDocument.name}.
-            </h3>
+            <div>
+              <h3 className="user__welcomeHeading">
+                Welcome, {userDocument.name}.
+              </h3>
+            </div>
           </div>
         </form>
       </div>
