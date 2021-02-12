@@ -1,0 +1,12 @@
+.profile__container {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.user__welcomeHeading {
+  font-size: 3rem;
+  color: #131111;
+  padding: 0;
+  margin-bottom: 1rem;
+}

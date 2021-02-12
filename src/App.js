@@ -28,11 +28,7 @@ function App() {
               <Switch>
                 <ProfileRedirect exact path="/signup" component={Signup} />
                 <PrivateRoute exact path="/profile/:id" component={Profile} />
-                <PrivateRoute
-                  exact
-                  path="/profile/:id/:id"
-                  component={PostPage}
-                />
+                <Route path="/post/:id" component={PostPage} />
                 <ProfileRedirect exact path="/login" component={Login} />
                 <ProfileRedirect
                   exact

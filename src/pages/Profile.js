@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { firestore } from "../firebase/config";
 import { updateUserDocument } from "../firebase/user";
 import Feed from "../components/Feed/Feed";
+import "./Profile.css";
 
 const Profile = (props) => {
   const { user } = useSession();
@@ -64,54 +65,16 @@ const Profile = (props) => {
     return null;
   }
 
-  const formClassName = `ui big form twelve wide column ${
-    isLoading ? "loading" : ""
-  }`;
-
   return (
     <div className="profile__container">
-      <div className="add-form-container">
-        {/* className="ui grid stackable" */}
-        <div>
-          {/* <ProfileImage id={params.id} /> */}
-          <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
-            <div
-              className="profile__top"
-              // style={{ backgroundColor: "lightblue" }}
-            >
-              <h3>Welcome, {userDocument.name}.</h3>
-              {/* <div className="eight wide field"> */}
-              {/* <div className="">
-                <label>
-                  Username
-                  <input type="text" name="name" ref={register} />
-                </label>
-              </div>
-              <div className="">
-                <label>
-                  Email
-                  <input type="text" name="email" readOnly ref={register} />
-                </label>
-              </div> */}
-
-              {/* <button
-                type="submit"
-                className="update__button"
-                style={{
-                  padding: "1rem",
-                  border: "none",
-                  height: "fit-content",
-                  cursor: "pointer",
-                  alignItems: "bottom",
-                  background: "transparent",
-                }}
-              >
-                Update Username
-              </button> */}
-            </div>
-            {/* Profile-top */}
-          </form>
-        </div>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <h3 className="user__welcomeHeading">
+              Welcome, {userDocument.name}.
+            </h3>
+          </div>
+        </form>
       </div>
       <Feed projects={userProjects} />
 

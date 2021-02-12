@@ -56,27 +56,6 @@ header h2 {
   font-size: 2rem;
 }
 
-.app {
-  /* margin-top: 100px; */
-}
-
-.profile__top {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: baseline;
-  margin-top: 1.5rem;
-  padding: 1rem 3rem;
-}
-.profile__top > * {
-  /* margin: 1rem; */
-}
-.profile__top > h3 {
-  font-size: 2rem;
-  font-weight: 400;
-  text-align: left;
-}
-
 /* LOGIN/SIGNUP/RESET MODALS */
 
 .login-container {
@@ -122,13 +101,6 @@ header h2 {
 /* Targets the Link from React Router */
 .under__container > a {
   color: #254aaf;
-}
-
-.profile__container {
-  padding-top: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .ui.card.login-card {
