@@ -15,6 +15,7 @@ import PrivateRoute from "./router/PrivateRoute";
 import AdminRoute from "./router/AdminRoute";
 import Users from "./pages/Users";
 import Footer from "./components/Footer";
+import PostPage from "./pages/PostPage.js/PostPage";
 
 function App() {
   return (
@@ -27,6 +28,11 @@ function App() {
               <Switch>
                 <ProfileRedirect exact path="/signup" component={Signup} />
                 <PrivateRoute exact path="/profile/:id" component={Profile} />
+                <PrivateRoute
+                  exact
+                  path="/profile/:id/:id"
+                  component={PostPage}
+                />
                 <ProfileRedirect exact path="/login" component={Login} />
                 <ProfileRedirect
                   exact

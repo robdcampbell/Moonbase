@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-//import "./MessageSender.css";
+import React, { useState, useRef } from "react";
 import "./Post.css";
-import { useSession } from "../../../firebase/UserProvider";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
+import DeleteModal from "./DeleteModal";
+import { Link } from "react-router-dom";
 
 const Post = ({
   id,
@@ -13,28 +13,29 @@ const Post = ({
   status,
   index,
   docId,
+  showProjectDetails,
+  setShowProjectDetails,
+  activeProject,
+  setActiveProject,
 }) => {
+  const params = useParams();
+  const projectTitleRef = useRef(null);
+  //const { user } = useSession();
   const [projectCardTitle, setProjectCardTitle] = useState(projectTitle);
   const [projectDescription, setProjectDescription] = useState(description);
   const [projectDeadline, setProjectDeadline] = useState(deadline);
   const [projectStatus, setProjectStatus] = useState(status);
-  const params = useParams();
-  const projectTitleRef = useRef(null);
-  const { user } = useSession();
   const [deleteModal, setDeleteModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
 
-  useEffect(() => {
-    projectTitleRef.current.focus();
-  }, []);
+  const expandDetails = () => {
+    if (activeProject) {
+      console.log(docId);
+    }
+  };
 
   // EDIT PROJECT
   const updateProjectInfo = (e) => {
-    console.log(docId);
-    console.log(projectDescription);
-    console.log(projectDeadline);
-    console.log(projectStatus);
-    console.log(projectCardTitle);
     // Get current ProjectDoc Contents
     // Edit select ones
     // Re-set that doc
@@ -44,11 +45,6 @@ const Post = ({
       .doc(params.id)
       .collection("projects")
       .doc(docId);
-
-    // const newDescription = window.prompt(
-    //   `Edit Project Description: ${projectTitle}?`,
-    //   `${description}`
-    // );
 
     return projectsRef.set(
       {
@@ -92,43 +88,41 @@ const Post = ({
     return projectsRef.doc(docId).delete();
   };
 
+  // ROUTE TO PROJECT PAGE
+
   return (
     <div className="post__card">
-      {/* PROJECT CARD HEADER */}
       <div className="post__heading">
         <h4 className="project__title">{projectTitle}</h4>
-        <p>{deadline || "no deadline set"}</p>
+        <p>{deadline || "No deadline set."}</p>
+        <p>{activeProject.toString()}</p>
+        <button
+          onClick={(e) => {
+            setShowProjectDetails((prevState) => !prevState);
+            setActiveProject(docId);
+            return expandDetails();
+          }}
+        >
+          View Project Details
+        </button>
       </div>
 
       <form>
-        {/* DELETE MODAL - will import as a component */}
         {deleteModal && (
-          <div className="delete__modal">
-            <h3>Are you sure you want to delete this post?</h3>
-            <div className="delete__modalButtons">
-              <button
-                onClick={(e) => {
-                  return setDeleteModal(false);
-                }}
-                type="button"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={(e) => {
-                  return deleteProject();
-                }}
-                type="button"
-                style={{ backgroundColor: "rgba(255, 0, 0, 0.7)" }}
-              >
-                Delete Project
-              </button>
-            </div>
-          </div>
+          <DeleteModal
+            deleteModal={deleteModal}
+            setDeleteModal={setDeleteModal}
+            deleteProject={deleteProject}
+            projectCardTitle={projectCardTitle}
+          ></DeleteModal>
         )}
 
-        {/* PROJECT CARD BODY */}
-        <div className="form__body hidden">
+        <div
+          className={"form__body hidden"}
+          // className={
+          //   showProjectDetails && docId ? "form__body" : "form__body hidden"
+          // }
+        >
           <label htmlFor="project-title">Edit Title</label>
           <input
             name="project-title"
@@ -170,6 +164,7 @@ const Post = ({
               className="edit__field"
             />
           </div>
+
           <div className="post__cardButtons">
             {!updateModal ? (
               <>
@@ -188,11 +183,14 @@ const Post = ({
                 </button>
               </>
             ) : (
-              // <div className="update__modal">
               <>
                 <h4>Are you sure?</h4>
 
                 <button
+                  style={{
+                    backgroundColor: "rgba(255,255,255,.7)",
+                    color: "#292929",
+                  }}
                   onClick={(e) => {
                     setUpdateModal(false);
                     return updateProjectInfo();
@@ -211,7 +209,6 @@ const Post = ({
                   Cancel
                 </button>
               </>
-              //</div>
             )}
           </div>
         </div>
@@ -221,123 +218,3 @@ const Post = ({
 };
 
 export default Post;
-
-// OLD POST
-
-// import React, { useState, useRef } from "react";
-// import { firestore } from "../../../firebase/config";
-// import { useParams } from "react-router-dom";
-// import "./Post.css";
-
-// // {new Date(timestamp?.toDate()).toUTCString()}
-// /*const testImg =
-//   "https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/08/detroit_red_wings_logo-58b8da213df78c353c2346cb.jpg?w=1000&h=600&crop=1";
-// */
-
-// const Post = ({
-//   id,
-//   description,
-//   deadline,
-//   projectTitle,
-//   status,
-//   index,
-//   docId,
-// }) => {
-//   const params = useParams();
-//   const [editingProject, setEditingProject] = useState(false);
-//   const descriptionRef = useRef();
-
-//   // EDIT PROJECT - start with window prompt, then add Semantic UI modal later.
-//   const editProjectPost = (e) => {
-//     e.preventDefault();
-//     // Get current ProjectDoc Contents
-//     // Edit select ones
-//     // Re-set that doc
-//     setEditingProject(!editingProject);
-//     /*
-//     const projectsRef = firestore
-//       .collection("users")
-//       .doc(params.id)
-//       .collection("projects")
-//       .doc(docId);
-
-//     const newDescription = window.prompt(
-//       `Edit Project Description: ${projectTitle}?`,
-//       `${description}`
-//     );
-
-//     if (newDescription) {
-//       projectsRef.set({ docId, description: newDescription }, { merge: true });
-//     }
-//   */
-//   };
-
-//   //  DELETE PROJECT
-//   const deleteProject = (e) => {
-//     let userPreference;
-
-//     if (
-//       window.confirm(`Are you sure you want to delete "${projectTitle}" ?`) ==
-//       true
-//     ) {
-//       userPreference = "Project deleted!";
-
-//       const projectsRef = firestore
-//         .collection("users")
-//         .doc(params.id)
-//         .collection("projects");
-
-//       return projectsRef.doc(docId).delete();
-//     } else {
-//       userPreference = "Project not deleted";
-//     }
-//   };
-
-//   return (
-//     <div className="post" key={docId}>
-//       <div className="post__top">
-//         <div className="post__topInfo">
-//           <h2>{`${
-//             index < 10 ? `0${index + 1}` : `${index}`
-//           }: ${projectTitle}`}</h2>
-//           <h4>{`Project status: ${status}`}</h4>
-//           <h4>{`Deadline: ${deadline}`}</h4>
-//           {/* <p>{new Date(timestamp?.toDate()).toUTCString()}</p> */}
-//         </div>
-//       </div>
-
-//       <div
-//         className={editingProject ? "post__body editing__body" : "post__body"}
-//         // style={
-//         //   editingProject
-//         //     ? { backgroundColor: "rgba(173, 216, 230, 0.3)" }
-//         //     : { backgroundColor: "transparent" }
-//         // }
-//       >
-//         <h3>
-//           {editingProject ? "Edit Description..." : `Project Description:`}
-//         </h3>
-//         <input
-//           placeholder={editingProject ? "EDITNG...." : description}
-//         ></input>
-//       </div>
-
-//       <div className="post__options">
-//         {/* <div className="post__option">
-//           <p>Comments</p>
-//         </div> */}
-//         <div className="post__option">
-//           <p>Update Progress</p>
-//         </div>
-//         <div className="post__option" onClick={editProjectPost}>
-//           <p>Edit Project</p>
-//         </div>
-//         <div className="post__option" onClick={deleteProject}>
-//           <p>Delete</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Post;

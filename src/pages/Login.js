@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Because this componenet is being passed as a Prop (in Route) - it has access
 // to the *history prop* , and can be useful for re-routing/redirection
 const Login = (props) => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const [isLoading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");

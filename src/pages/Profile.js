@@ -4,15 +4,13 @@ import { useSession } from "../firebase/UserProvider";
 import { useForm } from "react-hook-form";
 import { firestore } from "../firebase/config";
 import { updateUserDocument } from "../firebase/user";
-import { ProfileImage } from "../ProfileImage";
 import Feed from "../components/Feed/Feed";
-import Footer from "../components/Footer";
 
-const Profile = () => {
+const Profile = (props) => {
   const { user } = useSession();
   // Gets the Userparams to update routes later on as an Admin
   const params = useParams();
-  const { register, setValue, handleSubmit } = useForm();
+  const { setValue, handleSubmit } = useForm(); //register,
   const [userDocument, setUserDocument] = useState(null);
   const [userProjects, setUserProjects] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -49,7 +47,7 @@ const Profile = () => {
       setUserProjects(projects);
     });
     return unsubscribe;
-  }, [user.uid]);
+  }, [user.uid, params.id]);
 
   const onSubmit = async (data) => {
     try {

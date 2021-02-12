@@ -8,17 +8,16 @@ body {
   height: 100%;
   /* background: radial-gradient(#e66465, #9198e5); */
   /* background: radial-gradient(#504f4f, #666666); */
-  background: radial-gradient(ellipse at top, #f8f8f8, transparent),
-    radial-gradient(ellipse at bottom, #f7cac4, transparent);
-  /*
+  /* background: radial-gradient(ellipse at top, #f8f8f8, transparent),
+    radial-gradient(ellipse at bottom, #f7cac4, transparent); */
+
   background: linear-gradient(
     180deg,
-    rgb(226, 226, 226) 0%,
-    rgb(206, 210, 245) 100%
+    rgb(255, 138, 130) 0%,
+    rgb(238, 81, 70) 100%
   );
   background-repeat: no-repeat;
 
-  */
   /* background-attachment necessary to fill entire window */
   background-attachment: fixed;
   font-size: 15px;
@@ -37,9 +36,9 @@ a {
 
 header {
   /* height: 75px; */
-  /* background: rgba(255, 255, 255, 0.5); */
-  background: radial-gradient(ellipse at bottom, #f7cac4, transparent),
-    radial-gradient(ellipse at top, #e0e0e0, transparent);
+  background: rgba(228, 227, 227, 0.9);
+  /* background: radial-gradient(ellipse at bottom, #f7cac4, transparent),
+    radial-gradient(ellipse at top, #e0e0e0, transparent); */
   position: fixed;
   top: 0px;
   width: 100%;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MessageSender.css";
-import { useSession } from "../../../firebase/UserProvider";
+//import { useSession } from "../../../firebase/UserProvider";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const MessageSender = () => {
   const [projectDeadline, setProjectDeadline] = useState("");
   const params = useParams();
   const projectTitleRef = useRef(null);
-  const { user } = useSession();
+  // const { user } = useSession();
 
   useEffect(() => {
     projectTitleRef.current.focus();

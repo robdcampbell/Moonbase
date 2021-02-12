@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { auth } from "../firebase/config";
 
 const AuthContext = React.createContext();
@@ -10,8 +10,8 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   // create a current user state to be passed to the Logged in user context
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
+  // const [currentUser, setCurrentUser] = useState();
+  // const [loading, setLoading] = useState(true);
 
   //  *** MODULAR *** can wire up to other servers here  //
   /*

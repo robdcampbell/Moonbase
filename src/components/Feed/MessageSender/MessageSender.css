@@ -4,7 +4,7 @@
   margin-bottom: 2rem;
   flex-direction: column;
   /* background-color: rgba(255, 255, 255, 0.7); */
-  background: none;
+  background: rgba(255, 255, 255, 0.5);
   border: #c0c0c0 solid 1px;
   border-radius: 1rem;
   box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);

@@ -7,7 +7,7 @@ import firebase from "firebase/app";
 export const UserContext = React.createContext();
 
 // TopLevel App Component
-export const UserProvider = (props) => {
+export const UserProvider = ({ children }) => {
   const [session, setSession] = useState({
     user: null,
     loading: true,
@@ -36,7 +36,7 @@ export const UserProvider = (props) => {
   return (
     // value of the UserContext will contain the User-info State and LoadingState
     <UserContext.Provider value={session}>
-      {!session.loading && props.children}
+      {!session.loading && children}
     </UserContext.Provider>
   );
 };
