@@ -67,20 +67,12 @@ const Profile = (props) => {
 
   return (
     <div className="profile__container">
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <div>
-              <h3 className="user__welcomeHeading">
-                Welcome, {userDocument.name}.
-              </h3>
-            </div>
-          </div>
-        </form>
+      {/* <h3 className="user__welcomeHeading" style={{ textAlign: "left" }}>
+        Welcome, {userDocument.name}.
+      </h3> */}
+      <div className="feed__container">
+        <Feed projects={userProjects} userName={userDocument.name} />
       </div>
-      <Feed projects={userProjects} />
-
-      {/* <About ? /> */}
     </div>
   );
 };

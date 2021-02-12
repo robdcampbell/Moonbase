@@ -7,7 +7,7 @@ import { useSession } from "../../firebase/UserProvider";
 import { firestore } from "../../firebase/config";
 import ActivePost from "./Post/ActivePost/ActivePost";
 
-const Feed = () => {
+const Feed = ({ userName }) => {
   const { user } = useSession();
   const [userProjects, setUserProjects] = useState([]);
   const [activeProject, setActiveProject] = useState("");
@@ -74,6 +74,9 @@ const Feed = () => {
 
   return (
     <div className="feed">
+      <h3 className="user__welcomeHeading" style={{ textAlign: "left" }}>
+        Welcome, {userName}.
+      </h3>
       <h2 className="add__heading">Create a new project:</h2>
       <MessageSender />
       <h2 className="projects__heading">{`Projects Dashboard:`}</h2>
