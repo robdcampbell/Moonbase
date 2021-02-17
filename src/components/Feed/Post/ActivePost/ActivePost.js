@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { firestore } from "../../../../firebase/config";
 import { useParams } from "react-router-dom";
+import firebase from "firebase";
 
 const ActivePost = ({
   projectCardTitle,
@@ -11,6 +12,7 @@ const ActivePost = ({
 }) => {
   const params = useParams();
   const [activeTitleUpdate, setActiveTitleUpdate] = useState(projectCardTitle);
+  const projectTitleUpdate = useRef();
 
   // EDIT PROJECT
   const updateProjectInfo = (e) => {
@@ -27,7 +29,7 @@ const ActivePost = ({
     return projectsRef.set(
       {
         docId,
-        title: activeTitleUpdate,
+        title: projectTitleUpdate.current.value,
         description: projectDescription,
         status: projectStatus,
         deadline: projectDeadline,
@@ -47,13 +49,17 @@ const ActivePost = ({
       <input
         type="text"
         value={activeTitleUpdate}
+        ref={projectTitleUpdate}
         onChange={(e) => setActiveTitleUpdate(e.target.value)}
         placeholder={projectCardTitle}
       />
 
       {/* updateProjectInfo() */}
 
-      <button className="gradient__btn" onClick={(e) => updateProjectInfo()}>
+      <button
+        className="gradient__btn"
+        onClick={(e) => console.log(projectTitleUpdate.current.value)}
+      >
         Update Project{" "}
       </button>
       {/* comments section*/}

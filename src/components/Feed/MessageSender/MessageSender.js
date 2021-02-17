@@ -3,6 +3,7 @@ import "./MessageSender.css";
 //import { useSession } from "../../../firebase/UserProvider";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
+import firebase from "firebase";
 
 const MessageSender = () => {
   const [projectTitle, setProjectTitle] = useState("");
@@ -18,13 +19,14 @@ const MessageSender = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const timeCreation = new Date().valueOf().toString();
+    const docId = new Date().valueOf().toString();
+    const timeStamp = firebase.firestore.FieldValue.serverTimestamp();
 
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
       .collection("projects")
-      .doc(timeCreation);
+      .doc(docId);
 
     if (description !== "" && projectTitle !== "") {
       projectsRef.set({
@@ -32,15 +34,15 @@ const MessageSender = () => {
         title: projectTitle,
         deadline: projectDeadline,
         status: "in-progress",
-        docId: timeCreation,
+        timeStamp,
+        docId: docId,
       });
+      setDescription("");
+      setProjectDeadline("");
+      setProjectTitle("");
     } else {
       alert("Required Fields!");
     }
-
-    setDescription("");
-    setProjectDeadline("");
-    setProjectTitle("");
   };
 
   return (

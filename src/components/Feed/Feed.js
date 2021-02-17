@@ -54,7 +54,8 @@ const Feed = ({ userName }) => {
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
-      .collection("projects");
+      .collection("projects")
+      .orderBy("timeStamp", "desc");
 
     //Listen for realtime changes
     // projectsRef.onSnapshot((querySnapshot) => {
