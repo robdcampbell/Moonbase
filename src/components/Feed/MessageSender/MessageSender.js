@@ -47,9 +47,61 @@ const MessageSender = () => {
     <div className="messageSender">
       <div className="messageSender__top">
         <form>
+          <div className="input__left form__input">
+            <label htmlFor="project-title">Project Title *</label>
+            <input
+              name="project-title"
+              className=""
+              value={projectTitle}
+              onChange={(e) => setProjectTitle(e.target.value)}
+              type="text"
+              placeholder={`What's next ?`}
+              ref={projectTitleRef}
+              required
+            />
+            <label htmlFor="project-description">Project Description *</label>
+            <textarea
+              name="project-description"
+              value={description}
+              rows="10"
+              onChange={(e) => setDescription(e.target.value)}
+              type="text"
+              placeholder={``}
+              className="project-description"
+              required
+            />
+          </div>
+
+          <div className="input__right form__input">
+            <label htmlFor="project-deadline">Project Deadline</label>
+            <input
+              value={projectDeadline}
+              onChange={(e) => setProjectDeadline(e.target.value)}
+              type="text"
+              placeholder="Deadline..."
+            />
+          </div>
+          <button onClick={handleSubmit} type="submit">
+            Add Project
+          </button>
+          <p>*Field is required.</p>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default MessageSender;
+
+/*
+return (
+    <div className="messageSender">
+      <div className="messageSender__top">
+        <form>
           <label htmlFor="project-title">Project Title *</label>
           <input
             name="project-title"
+            className=""
             value={projectTitle}
             onChange={(e) => setProjectTitle(e.target.value)}
             type="text"
@@ -84,5 +136,4 @@ const MessageSender = () => {
     </div>
   );
 };
-
-export default MessageSender;
+*/

@@ -94,7 +94,7 @@ const ForgotPassword = (props) => {
                   </button>
                   <div>
                     <button
-                      className="ui primary button login"
+                      className="ui gradient__btn button login"
                       type="submit"
                       onSubmit={(e) => resetPassword()}
                     >

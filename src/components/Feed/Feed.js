@@ -14,6 +14,7 @@ const Feed = ({ userName }) => {
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const params = useParams();
 
+  //ACTIVE POST *****************************
   useEffect(() => {
     // ORDERING POST BY TIMESTAMP, aka most recent. come back to this and use to update docID and updateProject function
     // db.collection("posts")
@@ -21,9 +22,10 @@ const Feed = ({ userName }) => {
     //   .onSnapshot((snapshot) =>
     //     setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
     //   );
-  }, []);
+  }, [activeProject]);
 
   //User PROJECTS Collection (come back to after viewing how to display all Users from a collection)
+  // POST SIDEBAR *****************************
   useEffect(() => {
     // create a Firebase Document Reference to specific project from a user
 
@@ -66,7 +68,7 @@ const Feed = ({ userName }) => {
       setUserProjects(projects);
     });
     return unsubscribe;
-  }, [user.uid, activeProject, params.id]);
+  }, [user.uid, params.id]);
 
   const testProjectRef = () => {
     console.log(activeProject.toString());
@@ -82,48 +84,160 @@ const Feed = ({ userName }) => {
       <h2 className="projects__heading">{`Projects Dashboard:`}</h2>
 
       {/* description, id, deadline */}
-      <div className="dashboard">
-        {/* <div className={showProjectDetails ? "dashboard__active" : "dashboard"}> */}
-        {!activeProject ? (
-          userProjects.map((project, index) => {
-            const { id, description, deadline, title, status, docId } = project;
 
-            return (
-              <Post
-                key={docId}
-                id={id}
-                index={index}
-                description={description}
-                deadline={deadline}
-                projectTitle={title}
-                status={status}
-                docId={docId}
-                showProjectDetails={showProjectDetails}
-                setShowProjectDetails={setShowProjectDetails}
-                activeProject={activeProject}
-                setActiveProject={setActiveProject}
-              />
-            );
-          })
-        ) : (
-          <>
-            <ActivePost
-              key={userProjects.docId}
-              id={userProjects.docId}
-              title={userProjects.title}
-            />
-            {/* setActiveProject(false) */}
-            <button
-              type="button"
-              onClick={(e) => {
-                setActiveProject("");
-              }}
-            >
-              reload.
-            </button>
-          </>
-        )}
+      <div className="feed__bottom">
+        <div className="feed__sidebar">
+          <div
+            className="dashboard"
+            style={{
+              // maxWidth: "300px",
+              borderRight: "#c0c0c0 solid 1px",
+              paddingRight: "2rem",
+            }}
+          >
+            {/* <div className={showProjectDetails ? "dashboard__active" : "dashboard"}> */}
+            {/*  */}
+            {userProjects.map((project, index) => {
+              const {
+                id,
+                description,
+                deadline,
+                title,
+                status,
+                docId,
+              } = project;
+
+              {
+                // index === 0 ? " " : "";
+              }
+
+              return (
+                <Post
+                  key={docId}
+                  id={id}
+                  index={index}
+                  description={description}
+                  deadline={deadline}
+                  projectTitle={title}
+                  status={status}
+                  docId={docId}
+                  showProjectDetails={showProjectDetails}
+                  setShowProjectDetails={setShowProjectDetails}
+                  activeProject={activeProject}
+                  setActiveProject={setActiveProject}
+                />
+              );
+            })}
+            {/* {!activeProject ? (
+              userProjects.map((project, index) => {
+                const {
+                  id,
+                  description,
+                  deadline,
+                  title,
+                  status,
+                  docId,
+                } = project;
+
+                return (
+                  <Post
+                    key={docId}
+                    id={id}
+                    index={index}
+                    description={description}
+                    deadline={deadline}
+                    projectTitle={title}
+                    status={status}
+                    docId={docId}
+                    showProjectDetails={showProjectDetails}
+                    setShowProjectDetails={setShowProjectDetails}
+                    activeProject={activeProject}
+                    setActiveProject={setActiveProject}
+                  />
+                );
+              })
+            ) : (
+              <>
+                <ActivePost
+                  key={userProjects.docId}
+                  id={userProjects.docId}
+                  title={userProjects.title}
+                />
+                
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    setActiveProject("");
+                  }}
+                >
+                  reload.
+                </button>
+              </>
+            )} */}
+            {/*  */}
+          </div>
+        </div>
+        <div className="feed__body">
+          <div className="feed__card">
+            {activeProject ? (
+              <>
+                <h4>ACTIVE!!! </h4>
+                <p>{activeProject.projectCardTitle}</p>
+                <p> {activeProject.projectDescription}</p>
+              </>
+            ) : (
+              <h4>not................!!!</h4>
+            )}
+            {/* {!activeProject ? (
+              userProjects.map((project, index) => {
+                const {
+                  id,
+                  description,
+                  deadline,
+                  title,
+                  status,
+                  docId,
+                } = project;
+
+                return (
+                  <Post
+                    key={docId}
+                    id={id}
+                    index={index}
+                    description={description}
+                    deadline={deadline}
+                    projectTitle={title}
+                    status={status}
+                    docId={docId}
+                    showProjectDetails={showProjectDetails}
+                    setShowProjectDetails={setShowProjectDetails}
+                    activeProject={activeProject}
+                    setActiveProject={setActiveProject}
+                  />
+                );
+              })
+            ) : (
+              <>
+                <ActivePost
+                  key={userProjects.docId}
+                  id={userProjects.docId}
+                  title={userProjects.title}
+                />
+
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    setActiveProject("");
+                  }}
+                >
+                  reload.
+                </button>
+              </>
+            )} */}
+          </div>
+        </div>
       </div>
+      {/*  */}
     </div>
   );
 };

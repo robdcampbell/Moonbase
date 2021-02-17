@@ -94,7 +94,7 @@ function Signup(props) {
                 Demo Login
               </button>
               <div>
-                <button className="ui primary button login" type="submit">
+                <button className="ui gradient__btn button login" type="submit">
                   Sign up
                 </button>
               </div>

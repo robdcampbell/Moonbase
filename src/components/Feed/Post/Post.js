@@ -95,11 +95,11 @@ const Post = ({
       <div className="post__heading">
         <h4 className="project__title">{projectTitle}</h4>
         <p>{deadline || "No deadline set."}</p>
-        <p>{activeProject.toString()}</p>
+
         <button
           onClick={(e) => {
             setShowProjectDetails((prevState) => !prevState);
-            setActiveProject(docId);
+            setActiveProject({ projectCardTitle, projectDescription });
             return expandDetails();
           }}
         >

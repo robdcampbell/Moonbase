@@ -90,7 +90,7 @@ const Login = (props) => {
                 Demo Login
               </button>
               <div>
-                <button className="ui primary button login" type="submit">
+                <button className="ui button login gradient__btn" type="submit">
                   Log in
                 </button>
               </div>
