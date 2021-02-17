@@ -16,6 +16,14 @@ const Feed = ({ userName }) => {
 
   //ACTIVE POST *****************************
   useEffect(() => {
+    const activeProjectsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects")
+      .orderBy("timeStamp", "desc");
+
+    console.log(activeProject);
+
     // ORDERING POST BY TIMESTAMP, aka most recent. come back to this and use to update docID and updateProject function
     // db.collection("posts")
     //   .orderBy("timestamp", "desc")
@@ -28,9 +36,9 @@ const Feed = ({ userName }) => {
   // POST SIDEBAR *****************************
   useEffect(() => {
     // create a Firebase Document Reference to specific project from a user
-
     /*
       //ACTIVE POST
+      
                   const activeProjectRef = firestore
                     .collection("users")
                     .doc(params.id)
@@ -67,6 +75,7 @@ const Feed = ({ userName }) => {
     const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
       const projects = querySnapshot.docs.map((doc) => doc.data());
       setUserProjects(projects);
+      setActiveProject(projects[2]);
     });
     return unsubscribe;
   }, [user.uid, params.id]);
@@ -119,7 +128,7 @@ const Feed = ({ userName }) => {
                   index={index}
                   description={description}
                   deadline={deadline}
-                  projectTitle={title}
+                  title={title}
                   status={status}
                   docId={docId}
                   showProjectDetails={showProjectDetails}
@@ -184,10 +193,10 @@ const Feed = ({ userName }) => {
               <>
                 <ActivePost
                   docId={activeProject.docId}
-                  projectCardTitle={activeProject.projectCardTitle}
-                  projectDescription={activeProject.projectDescription}
-                  projectDeadline={activeProject.projectDeadline}
-                  projectStatus={activeProject.projectStatus}
+                  projectCardTitle={activeProject.title}
+                  projectDescription={activeProject.description}
+                  projectDeadline={activeProject.deadline}
+                  projectStatus={activeProject.status}
                 />
               </>
             ) : (

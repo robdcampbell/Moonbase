@@ -40,7 +40,7 @@ const ActivePost = ({
 
   return (
     <div>
-      <h3 style={{ color: "red" }}>{activeTitleUpdate}</h3>
+      <h3 style={{ color: "red" }}>{projectCardTitle}</h3>
       <p>{projectDescription}</p>
       <p>{projectDeadline}</p>
       <p>{projectStatus}</p>

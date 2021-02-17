@@ -4,12 +4,13 @@ import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
 import { Link } from "react-router-dom";
+import firebase from "firebase";
 
 const Post = ({
   id,
   description,
   deadline,
-  projectTitle,
+  title,
   status,
   index,
   docId,
@@ -21,7 +22,7 @@ const Post = ({
   const params = useParams();
   const projectTitleRef = useRef(null);
   //const { user } = useSession();
-  const [projectCardTitle, setProjectCardTitle] = useState(projectTitle);
+  const [projectCardTitle, setProjectCardTitle] = useState(title);
   const [projectDescription, setProjectDescription] = useState(description);
   const [projectDeadline, setProjectDeadline] = useState(deadline);
   const [projectStatus, setProjectStatus] = useState(status);
@@ -53,6 +54,7 @@ const Post = ({
         description: projectDescription,
         status: projectStatus,
         deadline: projectDeadline,
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
       },
       { merge: true }
     );
@@ -93,7 +95,7 @@ const Post = ({
   return (
     <div className="post__card">
       <div className="post__heading">
-        <h4 className="project__title">{projectTitle}</h4>
+        <h4 className="project__title">{title}</h4>
         <p>{deadline || "No deadline set."}</p>
 
         <button
@@ -101,10 +103,15 @@ const Post = ({
           onClick={(e) => {
             setShowProjectDetails((prevState) => !prevState);
             setActiveProject({
-              projectCardTitle,
-              projectDescription,
-              projectDeadline,
-              projectStatus,
+              // title: projectCardTitle,
+              // description: projectDescription,
+              // deadline: projectDeadline,
+              // status: projectStatus,
+              // docId,
+              title,
+              description,
+              deadline,
+              status,
               docId,
             });
             return expandDetails();
