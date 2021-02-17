@@ -16,13 +16,30 @@ const Feed = ({ userName }) => {
 
   //ACTIVE POST *****************************
   useEffect(() => {
-    const activeProjectsRef = firestore
+    const activeProjectRef = firestore
       .collection("users")
       .doc(params.id)
       .collection("projects")
-      .orderBy("timeStamp", "desc");
+      .doc(activeProject.docId);
 
-    console.log(activeProject);
+    const unsubscribe = activeProjectRef.onSnapshot((querySnapshot) => {
+      const project = querySnapshot.data();
+      console.log(project);
+      //  setUserProjects([...project]);
+    });
+    return unsubscribe;
+
+    ///Listen for realtime changes
+    // projectsRef.onSnapshot((querySnapshot) => {
+    //   querySnapshot.docs.map((doc) => console.log(doc));
+    // });
+
+    // const unsubscribe = activeProjectRef.onSnapshot((querySnapshot) => {
+    //   const project = querySnapshot.data();
+    //   console.log(project);
+    //   setUserProjects([...project]);
+    // });
+    // return unsubscribe;
 
     // ORDERING POST BY TIMESTAMP, aka most recent. come back to this and use to update docID and updateProject function
     // db.collection("posts")
@@ -138,53 +155,6 @@ const Feed = ({ userName }) => {
                 />
               );
             })}
-            {/* {!activeProject ? (
-              userProjects.map((project, index) => {
-                const {
-                  id,
-                  description,
-                  deadline,
-                  title,
-                  status,
-                  docId,
-                } = project;
-
-                return (
-                  <Post
-                    key={docId}
-                    id={id}
-                    index={index}
-                    description={description}
-                    deadline={deadline}
-                    projectTitle={title}
-                    status={status}
-                    docId={docId}
-                    showProjectDetails={showProjectDetails}
-                    setShowProjectDetails={setShowProjectDetails}
-                    activeProject={activeProject}
-                    setActiveProject={setActiveProject}
-                  />
-                );
-              })
-            ) : (
-              <>
-                <ActivePost
-                  key={userProjects.docId}
-                  id={userProjects.docId}
-                  title={userProjects.title}
-                />
-                
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    setActiveProject("");
-                  }}
-                >
-                  reload.
-                </button>
-              </>
-            )} */}
-            {/*  */}
           </div>
         </div>
 
@@ -197,6 +167,8 @@ const Feed = ({ userName }) => {
                 projectDescription={activeProject.description}
                 projectDeadline={activeProject.deadline}
                 projectStatus={activeProject.status}
+                activeProject={activeProject}
+                setActiveProject={setActiveProject}
               />
             </>
           ) : (

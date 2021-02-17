@@ -3,7 +3,6 @@ import "./Post.css";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
-import { Link } from "react-router-dom";
 import firebase from "firebase";
 
 const Post = ({
@@ -29,18 +28,13 @@ const Post = ({
   const [deleteModal, setDeleteModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
 
-  const expandDetails = () => {
-    if (activeProject) {
-      console.log(docId);
-    }
-  };
+  // const expandDetails = () => {
+  //   if (activeProject) {
+  //     console.log(docId);
+  //   }
+  // };
 
-  // EDIT PROJECT
   const updateProjectInfo = (e) => {
-    // Get current ProjectDoc Contents
-    // Edit select ones
-    // Re-set that doc
-
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
@@ -58,29 +52,8 @@ const Post = ({
       },
       { merge: true }
     );
-
-    /*
-    const timeCreation = new Date().valueOf().toString();
-
-    const projectsRef = firestore
-      .collection("users")
-      .doc(params.id)
-      .collection("projects")
-      .doc(timeCreation);
-
-    projectsRef.set({
-      description: description,
-      title: projectTitle,
-      deadline: projectDeadline,
-      status: "in-progress",
-      docId: timeCreation,
-    });
-
-    console.log(`Pterodactyl : ${projectCardTitle}`);
   };
-*/
-  };
-  //  DELETE PROJECT
+
   const deleteProject = async () => {
     const projectsRef = firestore
       .collection("users")
@@ -90,31 +63,37 @@ const Post = ({
     return projectsRef.doc(docId).delete();
   };
 
-  // ROUTE TO PROJECT PAGE
-
   return (
-    <div className="post__card">
+    <div
+      className="post__card"
+      onClick={(e) => {
+        setShowProjectDetails((prevState) => !prevState);
+        setActiveProject({
+          title,
+          description,
+          deadline,
+          status,
+          docId,
+        });
+        // return expandDetails();
+      }}
+    >
       <div className="post__heading">
         <h4 className="project__title">{title}</h4>
         <p>{deadline || "No deadline set."}</p>
 
         <button
-          className="gradient__btn details__btn"
+          className="gradient__btn details__btn hidden"
           onClick={(e) => {
             setShowProjectDetails((prevState) => !prevState);
             setActiveProject({
-              // title: projectCardTitle,
-              // description: projectDescription,
-              // deadline: projectDeadline,
-              // status: projectStatus,
-              // docId,
               title,
               description,
               deadline,
               status,
               docId,
             });
-            return expandDetails();
+            // return expandDetails();
           }}
         >
           View Project Details
@@ -131,12 +110,7 @@ const Post = ({
           ></DeleteModal>
         )}
 
-        <div
-          className={"form__body hidden"}
-          // className={
-          //   showProjectDetails && docId ? "form__body" : "form__body hidden"
-          // }
-        >
+        <div className={"form__body hidden"}>
           <label htmlFor="project-title">Edit Title</label>
           <input
             name="project-title"

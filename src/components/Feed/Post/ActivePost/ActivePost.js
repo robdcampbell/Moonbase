@@ -10,16 +10,31 @@ const ActivePost = ({
   projectDeadline,
   projectStatus,
   docId,
+  activeProject,
+  setActiveProject,
 }) => {
   const params = useParams();
-  const [activeTitleUpdate, setActiveTitleUpdate] = useState(projectCardTitle);
-  const projectTitleUpdate = useRef();
+  const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
+  const [toggleEdit, setToggleEdit] = useState(true);
+  const titleUpdateRef = useRef();
 
   // EDIT PROJECT
   const updateProjectInfo = (e) => {
     // Get current ProjectDoc Contents
     // Edit select ones
     // Re-set that doc
+    setActiveProject({
+      // title: projectCardTitle,
+      // description: projectDescription,
+      // deadline: projectDeadline,
+      // status: projectStatus,
+      // docId,
+      title: titleUpdateRef.current.value,
+      //  description,
+      //  deadline,
+      //  status,
+      //  docId,
+    });
 
     const projectsRef = firestore
       .collection("users")
@@ -30,10 +45,11 @@ const ActivePost = ({
     return projectsRef.set(
       {
         docId,
-        title: projectTitleUpdate.current.value,
+        title: activeTitleUpdate,
         description: projectDescription,
         status: projectStatus,
         deadline: projectDeadline,
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
       },
       { merge: true }
     );
@@ -41,28 +57,89 @@ const ActivePost = ({
 
   return (
     <section className="activePost__container">
-      <h4 className="active__title">{projectCardTitle}</h4>
-      <p>{projectDescription}</p>
-      <p>{projectDeadline}</p>
-      <p>{projectStatus}</p>
-      <p>{docId}</p>
+      <div className="active__header">
+        <h4 className="active__title">{projectCardTitle}</h4>
+        <div className="active__headerBottm">
+          <p>Status: {projectStatus}</p>
+          <p>Deadline: {projectDeadline}</p>
+          <p>Description: {projectDescription}</p>
+          <button
+            className="edit__btnToggle"
+            onClick={(e) => setToggleEdit(!toggleEdit)}
+          >
+            {toggleEdit ? "Show less" : "Edit Post"}
+          </button>
+        </div>
+      </div>
 
-      <input
-        type="text"
-        value={activeTitleUpdate}
-        ref={projectTitleUpdate}
-        onChange={(e) => setActiveTitleUpdate(e.target.value)}
-        placeholder={projectCardTitle}
-      />
-
-      {/* updateProjectInfo() */}
-
-      <button
-        className="gradient__btn"
-        onClick={(e) => console.log(projectTitleUpdate.current.value)}
+      <div
+        className={
+          toggleEdit ? "active__editSection" : "active__editSection hidden"
+        }
       >
-        Update Project{" "}
-      </button>
+        {/*  */}
+        <label htmlFor="project-title">Edit Title</label>
+        <input
+          type="text"
+          ref={titleUpdateRef}
+          value={activeTitleUpdate}
+          onChange={(e) => {
+            setActiveTitleUpdate(e.target.value);
+            // e.target.value = "";
+          }}
+          placeholder={activeProject.title}
+          name="project-title"
+          // value={projectCardTitle}
+          // onChange={(e) => setProjectCardTitle(e.target.value)}
+          className="active__input"
+        />
+
+        <label htmlFor="project-description">Edit Project Description </label>
+        <textarea
+          name="project-description"
+          rows="4"
+          // value={projectDescription}
+          // onChange={(e) => setProjectDescription(e.target.value)}
+          type="text"
+          placeholder={projectDescription}
+          className="active__textArea"
+        />
+
+        <div className="bottom__inputItems">
+          <label htmlFor="project-status">Update Project Status</label>
+          <input
+            // value={projectStatus}
+            // onChange={(e) => setProjectStatus(e.target.value)}
+            type="text"
+            placeholder="Project Status"
+            className="active__input"
+          />
+
+          <label htmlFor="project-deadline">Update Project Deadline</label>
+          <input
+            // value={projectDeadline ? projectDeadline : "(No deadline set)"}
+            // onChange={(e) => setProjectDeadline(e.target.value)}
+            type="text"
+            placeholder="Deadline..."
+            className="active__input"
+          />
+        </div>
+
+        <div className="active__btn__section">
+          <button
+            className="gradient__btn"
+            onClick={(e) => {
+              updateProjectInfo();
+              setActiveTitleUpdate("");
+            }}
+          >
+            Update Project Info
+          </button>
+          <button className="" onClick={(e) => {}}>
+            DELETE PROJECT
+          </button>
+        </div>
+      </div>
       {/* comments section*/}
     </section>
   );

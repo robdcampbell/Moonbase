@@ -4,11 +4,12 @@
   background: rgba(255, 255, 255);
   /* border: #c0c0c0 solid 1px; */
   border-radius: 1rem;
-  box-shadow: 0px 20px 20px #c0c0c0;
+  box-shadow: 0px 10px 10px 5px #dbdbdb;
   width: 100%;
   max-width: 800px;
   transition: 100ms ease-in;
   position: relative;
+  cursor: pointer;
 }
 
 .project__form {
@@ -78,7 +79,7 @@
   background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
-  height: 8rem;
+  height: 5rem;
   overflow: hidden;
   border-bottom: #292929 solid 1px;
   display: flex;
@@ -207,103 +208,46 @@
 .hidden {
   display: none;
 }
-/* BEFORE REFACTOR */
+/* Works on Firefox */
 
-/*
-.post {
-  width: 100%;
-  margin-top: 2rem;
-  border: #c0c0c0 solid 1px;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
-  transition: transform 100ms ease-in;
-}
-.post:hover {
-  transform: scale(1.02);
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #292929 transparent;
 }
 
-
-.post__top {
-
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 15px 15px 0 0;
-  color: #292929;
-  display: flex;
-  position: relative;
-  align-items: center;
-  padding: 5px 15px;
-  border-bottom: 1px solid #d3d3d3;
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
 }
 
-.post__topInfo > h2 {
-  padding: 0;
-  margin: 10px 0;
+*::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.post__topInfo > h4 {
-  text-transform: uppercase;
-  font-size: small;
-  padding: 0;
-  margin: 0 0 5px 0;
+*::-webkit-scrollbar-thumb {
+  background-color: #292929;
+  border-radius: 20px;
+  border: 3px solid transparent;
 }
 
-.post__topInfo > p {
-  font-size: small;
-  color: #808080;
+@media screen and (max-width: 850px) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #292929 transparent;
+  }
+
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #292929;
+    border-radius: 20px;
+    border: 3px solid transparent;
+  }
 }
-
-
-
-.post__body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 10px 0;
-  padding: 15px 25px;
-}
-.editing__body {
-  display: flex;
-  background-color: red;
-  flex-direction: column;
-  justify-content: center;
-  margin: 10px 0;
-  padding: 15px 25px;
-}
-
-
-
-.post__bottom {
-  margin: 10px 0;
-  padding: 15px 25px;
-}
-
-.post__image > img {
-  width: 100%;
-}
-
-.post__options {
-  border-top: 1px solid #e2e1e1;
-  display: flex;
-  justify-content: space-evenly;
-  font-size: medium;
-  color: #808080;
-  cursor: pointer;
-}
-
-.post__option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3px;
-  flex: 1;
-}
-
-.post__option > p {
-  margin-left: 10px;
-}
-
-.post__option:hover {
-  background-color: #eff2f5;
-  border-radius: 0 0 10px 10px;
-} */

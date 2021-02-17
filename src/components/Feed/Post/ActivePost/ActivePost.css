@@ -2,9 +2,72 @@
   /* background-color: #c0c0c0; */
   margin: 0 2rem;
   margin-top: 0;
+  box-shadow: 0px 10px 10px 10px #dbdbdb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+}
+.active__header {
+  display: flex;
+  flex-direction: column;
+  /* border-bottom: #292929 solid 1px; */
+  margin-bottom: 1rem;
+}
+.active__headerBottom {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: baseline;
+  /* background-color: red; */
+}
+.active__title {
+  font-size: 3rem;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 0.25rem;
+  border-bottom: #c0c0c0 solid 1px;
+}
+.edit__btnToggle {
+  background-color: #dadada;
+  color: #292929;
+  /* width: 100%; */
+  outline: none;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+.description__textArea {
+  width: 100%;
+  /* background-color: red; */
 }
 
-.active__title {
-  font-size: 2rem;
-  margin: 0;
+.active__editSection {
+  /* background-color: red; */
+  padding-top: 1rem;
+  border-top: #c0c0c0 solid 1px;
+}
+.hidden {
+  display: none;
+}
+
+.active__input {
+  border: #dadada solid 1px;
+}
+
+.active__textArea {
+  border: #dadada solid 1px;
+}
+
+.active__btn__section {
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+.active__btn__section > * {
+  border: none;
+  width: 100%;
 }
