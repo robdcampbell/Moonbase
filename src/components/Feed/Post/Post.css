@@ -1,10 +1,10 @@
 .post__card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.5);
-  border: #c0c0c0 solid 1px;
+  background: rgba(255, 255, 255);
+  /* border: #c0c0c0 solid 1px; */
   border-radius: 1rem;
-  box-shadow: 0px 9px 7px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 20px 20px #c0c0c0;
   width: 100%;
   max-width: 800px;
   transition: 100ms ease-in;
@@ -47,6 +47,14 @@
   background-color: rgba(255, 255, 255, 1);
 }
 
+.details__btn {
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.25rem;
+}
+.details__button:hover {
+  color: #f1f1f1 !important;
+}
+
 .delete__modalButtons > button {
   outline-width: 0;
   color: #fff;
@@ -68,7 +76,7 @@
 
 .post__heading {
   background-color: #fff;
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 1rem;
   padding: 1rem;
   height: 15rem;
   overflow: hidden;

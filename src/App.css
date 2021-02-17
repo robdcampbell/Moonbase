@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background-color: #f9f9f9 !important;
+  background-color: rgba(242, 250, 255, 0.3) !important;
   height: 100%;
   /* background: radial-gradient(#e66465, #9198e5); */
   /* background: radial-gradient(#504f4f, #666666); */
@@ -37,7 +37,7 @@ a {
 
 header {
   /* height: 75px; */
-  background: rgb(250, 250, 250);
+  background: rgb(255, 255, 255);
   box-shadow: 0px 1px 10px #d4d4d4;
   position: fixed;
   top: 0px;

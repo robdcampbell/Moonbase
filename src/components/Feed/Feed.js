@@ -181,59 +181,17 @@ const Feed = ({ userName }) => {
           <div className="feed__card">
             {activeProject ? (
               <>
-                <h4>ACTIVE!!! </h4>
-                <p>{activeProject.projectCardTitle}</p>
-                <p> {activeProject.projectDescription}</p>
+                <ActivePost
+                  docId={activeProject.docId}
+                  projectCardTitle={activeProject.projectCardTitle}
+                  projectDescription={activeProject.projectDescription}
+                  projectDeadline={activeProject.projectDeadline}
+                  projectStatus={activeProject.projectStatus}
+                />
               </>
             ) : (
               <h4>not................!!!</h4>
             )}
-            {/* {!activeProject ? (
-              userProjects.map((project, index) => {
-                const {
-                  id,
-                  description,
-                  deadline,
-                  title,
-                  status,
-                  docId,
-                } = project;
-
-                return (
-                  <Post
-                    key={docId}
-                    id={id}
-                    index={index}
-                    description={description}
-                    deadline={deadline}
-                    projectTitle={title}
-                    status={status}
-                    docId={docId}
-                    showProjectDetails={showProjectDetails}
-                    setShowProjectDetails={setShowProjectDetails}
-                    activeProject={activeProject}
-                    setActiveProject={setActiveProject}
-                  />
-                );
-              })
-            ) : (
-              <>
-                <ActivePost
-                  key={userProjects.docId}
-                  id={userProjects.docId}
-                  title={userProjects.title}
-                />
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    setActiveProject("");
-                  }}
-                >
-                  reload.
-                </button>
-              </>
-            )} */}
           </div>
         </div>
       </div>

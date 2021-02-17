@@ -97,9 +97,16 @@ const Post = ({
         <p>{deadline || "No deadline set."}</p>
 
         <button
+          className="gradient__btn details__btn"
           onClick={(e) => {
             setShowProjectDetails((prevState) => !prevState);
-            setActiveProject({ projectCardTitle, projectDescription });
+            setActiveProject({
+              projectCardTitle,
+              projectDescription,
+              projectDeadline,
+              projectStatus,
+              docId,
+            });
             return expandDetails();
           }}
         >

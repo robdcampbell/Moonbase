@@ -81,7 +81,11 @@ const MessageSender = () => {
               placeholder="Deadline..."
             />
           </div>
-          <button onClick={handleSubmit} type="submit">
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="gradient__btn"
+          >
             Add Project
           </button>
           <p>*Field is required.</p>

@@ -19,7 +19,7 @@ function Header() {
     <header>
       <h2>MoonBase.</h2>
       {!!user && (
-        <button className="ui secondary button logout" onClick={logoutUser}>
+        <button className="ui gradient__btn button logout" onClick={logoutUser}>
           LOGOUT
         </button>
       )}
