@@ -1,0 +1,10 @@
+.activePost__container {
+  /* background-color: #c0c0c0; */
+  margin: 0 2rem;
+  margin-top: 0;
+}
+
+.active__title {
+  font-size: 2rem;
+  margin: 0;
+}

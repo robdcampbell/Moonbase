@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { firestore } from "../../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
+import "./ActivePost.css";
 
 const ActivePost = ({
   projectCardTitle,
@@ -39,8 +40,8 @@ const ActivePost = ({
   };
 
   return (
-    <div>
-      <h3 style={{ color: "red" }}>{projectCardTitle}</h3>
+    <section className="activePost__container">
+      <h4 className="active__title">{projectCardTitle}</h4>
       <p>{projectDescription}</p>
       <p>{projectDeadline}</p>
       <p>{projectStatus}</p>
@@ -63,7 +64,7 @@ const ActivePost = ({
         Update Project{" "}
       </button>
       {/* comments section*/}
-    </div>
+    </section>
   );
 };
 

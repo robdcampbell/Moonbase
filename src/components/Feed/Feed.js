@@ -75,7 +75,7 @@ const Feed = ({ userName }) => {
     const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
       const projects = querySnapshot.docs.map((doc) => doc.data());
       setUserProjects(projects);
-      setActiveProject(projects[2]);
+      setActiveProject(projects[0]);
     });
     return unsubscribe;
   }, [user.uid, params.id]);
@@ -187,22 +187,21 @@ const Feed = ({ userName }) => {
             {/*  */}
           </div>
         </div>
+
         <div className="feed__body">
-          <div className="feed__card">
-            {activeProject ? (
-              <>
-                <ActivePost
-                  docId={activeProject.docId}
-                  projectCardTitle={activeProject.title}
-                  projectDescription={activeProject.description}
-                  projectDeadline={activeProject.deadline}
-                  projectStatus={activeProject.status}
-                />
-              </>
-            ) : (
-              <h4>not................!!!</h4>
-            )}
-          </div>
+          {activeProject ? (
+            <>
+              <ActivePost
+                docId={activeProject.docId}
+                projectCardTitle={activeProject.title}
+                projectDescription={activeProject.description}
+                projectDeadline={activeProject.deadline}
+                projectStatus={activeProject.status}
+              />
+            </>
+          ) : (
+            <h4>not................!!!</h4>
+          )}
         </div>
       </div>
       {/*  */}
