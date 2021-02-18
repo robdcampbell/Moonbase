@@ -17,12 +17,17 @@ function Header() {
 
   return (
     <header>
-      <h2>MoonBase.</h2>
-      {!!user && (
-        <button className="ui gradient__btn button logout" onClick={logoutUser}>
-          LOGOUT
-        </button>
-      )}
+      <div className="header__wrapper">
+        <h2>MoonBase.</h2>
+        {!!user && (
+          <button
+            className="ui gradient__btn button logout"
+            onClick={logoutUser}
+          >
+            LOGOUT
+          </button>
+        )}
+      </div>
     </header>
   );
 }

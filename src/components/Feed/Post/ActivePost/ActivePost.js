@@ -88,7 +88,7 @@ const ActivePost = ({
             className="edit__btnToggle"
             onClick={(e) => setToggleEdit(!toggleEdit)}
           >
-            {toggleEdit ? "Show less" : "Edit Post"}
+            {toggleEdit ? "Show less" : "Edit Project"}
           </button>
         </div>
       </div>

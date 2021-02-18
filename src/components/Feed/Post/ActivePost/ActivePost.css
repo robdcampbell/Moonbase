@@ -8,6 +8,14 @@
   width: 100%;
   position: relative;
 }
+
+@media screen and (min-width: 1000px) {
+  .activePost__container {
+    width: 700px;
+    margin: 0;
+    /* padding-right: 0; */
+  }
+}
 .active__header {
   display: flex;
   flex-direction: column;
@@ -30,9 +38,9 @@
   border-bottom: #c0c0c0 solid 1px;
 }
 .edit__btnToggle {
-  background-color: #e0e0e0;
-  color: #292929;
-  /* width: 100%; */
+  background: linear-gradient(90deg, rgb(106, 57, 116), rgb(236, 128, 170));
+  color: #fff;
+  width: 10rem;
   outline: none;
   border: none;
   padding: 0.25rem;

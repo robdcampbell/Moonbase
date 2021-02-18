@@ -55,6 +55,12 @@ header {
   top: 0px;
   width: 100%;
   z-index: 1;
+  /* display: flex;
+  justify-content: center; */
+}
+.header__wrapper {
+  margin: 0 auto;
+  max-width: 1400px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -199,14 +205,18 @@ header h2 {
 }
 
 /* FOOTER */
-.footer__container {
-  width: 100%;
+.footer__wrapper {
   border-top: #c0c0c0 solid 1px;
+  width: 100%;
+}
+
+.footer__container {
+  max-width: 1400px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 2rem;
-  padding-top: 1rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
 .footer__container > * {
   margin: 0 3rem;

@@ -14,7 +14,8 @@ const Feed = ({ userName }) => {
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const params = useParams();
 
-  //ACTIVE POST *****************************
+  // LOAD ACTIVE POST ***************************** //
+  //
   useEffect(() => {
     const activeProjectRef = firestore
       .collection("users")
@@ -40,42 +41,11 @@ const Feed = ({ userName }) => {
     //   setUserProjects([...project]);
     // });
     // return unsubscribe;
-
-    // ORDERING POST BY TIMESTAMP, aka most recent. come back to this and use to update docID and updateProject function
-    // db.collection("posts")
-    //   .orderBy("timestamp", "desc")
-    //   .onSnapshot((snapshot) =>
-    //     setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-    //   );
   }, [activeProject]);
 
-  //User PROJECTS Collection (come back to after viewing how to display all Users from a collection)
-  // POST SIDEBAR *****************************
+  // LOAD PROJECTS LIST/SIDEBAR *****************************
+  //
   useEffect(() => {
-    // create a Firebase Document Reference to specific project from a user
-    /*
-      //ACTIVE POST
-      
-                  const activeProjectRef = firestore
-                    .collection("users")
-                    .doc(params.id)
-                    .collection("projects")
-                    .doc(activeProject);
-
-                  //Listen for realtime changes
-                  // projectsRef.onSnapshot((querySnapshot) => {
-                  //   querySnapshot.docs.map((doc) => console.log(doc));
-                  // });
-
-                  const unsubscribe = activeProjectRef.onSnapshot((querySnapshot) => {
-                    const project = querySnapshot.data();
-                    console.log(project);
-                    setUserProjects([...project]);
-                  });
-                  return unsubscribe;
-      */
-    // ON PAGE LOADING
-
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
@@ -87,8 +57,6 @@ const Feed = ({ userName }) => {
     //   querySnapshot.docs.map((doc) => console.log(doc));
     // });
 
-    //console.log(projectsRef);
-
     const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
       const projects = querySnapshot.docs.map((doc) => doc.data());
       setUserProjects(projects);
@@ -96,10 +64,6 @@ const Feed = ({ userName }) => {
     });
     return unsubscribe;
   }, [user.uid, params.id]);
-
-  const testProjectRef = () => {
-    console.log(activeProject.toString());
-  };
 
   return (
     <div className="feed">

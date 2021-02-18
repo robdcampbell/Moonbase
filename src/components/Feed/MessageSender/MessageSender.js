@@ -47,9 +47,9 @@ const MessageSender = () => {
 
   return (
     <>
-      <div className="messageSender">
+      <div className="">
         <form>
-          <div className="sender__inputTitle form__input">
+          <div className="sender__inputTitle">
             <label htmlFor="project-title">Project Title *</label>
             <input
               name="project-title"
@@ -71,8 +71,7 @@ const MessageSender = () => {
               placeholder="Deadline..."
             />
           </div>
-
-          <div className="input__description form__input">
+          <div className="input__description ">
             <label htmlFor="project-description">Project Description *</label>
             <textarea
               name="project-description"
@@ -80,7 +79,7 @@ const MessageSender = () => {
               rows="7"
               onChange={(e) => setDescription(e.target.value)}
               type="text"
-              placeholder={``}
+              placeholder={`Project description...`}
               className="sender__input"
               required
             />
