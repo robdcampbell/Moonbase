@@ -16,6 +16,9 @@ const ActivePost = ({
 }) => {
   const params = useParams();
   const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
+  const [activeDescriptionUpdate, setActiveDescriptionUpdate] = useState("");
+  const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
+  const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
   const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const titleUpdateRef = useRef();
@@ -31,10 +34,10 @@ const ActivePost = ({
       // deadline: projectDeadline,
       // status: projectStatus,
       // docId,
-      title: titleUpdateRef.current.value,
-      //  description,
-      //  deadline,
-      //  status,
+      title: activeTitleUpdate,
+      description: activeDescriptionUpdate,
+      deadline: activeDeadlineUpdate,
+      status: activeStatusUpdate,
       //  docId,
     });
 
@@ -48,9 +51,9 @@ const ActivePost = ({
       {
         docId,
         title: activeTitleUpdate,
-        description: projectDescription,
-        status: projectStatus,
-        deadline: projectDeadline,
+        description: activeDescriptionUpdate,
+        deadline: activeDeadlineUpdate,
+        status: activeStatusUpdate,
         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
       },
       { merge: true }
@@ -119,8 +122,8 @@ const ActivePost = ({
         <textarea
           name="project-description"
           rows="4"
-          // value={projectDescription}
-          // onChange={(e) => setProjectDescription(e.target.value)}
+          value={activeDescriptionUpdate}
+          onChange={(e) => setActiveDescriptionUpdate(e.target.value)}
           type="text"
           placeholder={projectDescription}
           className="active__textArea"
@@ -129,8 +132,8 @@ const ActivePost = ({
         <div className="bottom__inputItems">
           <label htmlFor="project-status">Update Project Status</label>
           <input
-            // value={projectStatus}
-            // onChange={(e) => setProjectStatus(e.target.value)}
+            value={activeStatusUpdate}
+            onChange={(e) => setActiveStatusUpdate(e.target.value)}
             type="text"
             placeholder="Project Status"
             className="active__input"
@@ -138,8 +141,10 @@ const ActivePost = ({
 
           <label htmlFor="project-deadline">Update Project Deadline</label>
           <input
-            // value={projectDeadline ? projectDeadline : "(No deadline set)"}
-            // onChange={(e) => setProjectDeadline(e.target.value)}
+            value={
+              activeDeadlineUpdate ? activeDeadlineUpdate : "(No deadline set)"
+            }
+            onChange={(e) => setActiveDeadlineUpdate(e.target.value)}
             type="text"
             placeholder="Deadline..."
             className="active__input"
@@ -157,12 +162,12 @@ const ActivePost = ({
             Update Project Info
           </button>
           <button
-            className=""
+            style={{ backgroundColor: "rgba(255, 0, 0, 0.6)", color: "#fff" }}
             onClick={(e) => {
               setDeleteModal(true);
             }}
           >
-            DELETE PROJECT
+            Delete Project
           </button>
         </div>
       </div>

@@ -1,14 +1,15 @@
 .messageSender__wrapper {
-  display: flex;
+  /* display: flex;
   margin: 0;
   padding: 2rem;
   margin-bottom: 2rem;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.5); */
+  padding: 1rem;
+  border-radius: 0.25rem;
   box-shadow: 0px 10px 30px 10px #dbdbdb;
   width: 100%;
-  max-width: 400px;
+  /* max-width: 400px; */
 }
 
 .sender__input {
@@ -88,5 +89,5 @@
   transition: 100ms ease-in-out;
 }
 .add__projectBtn:hover {
-  transform: scale(1.02);
+  transform: scale(1.008);
 }

@@ -85,7 +85,7 @@
 }
 
 .post__heading {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 0.5rem;
   padding: 0.25rem;
   height: 2rem;
@@ -97,7 +97,7 @@
   justify-content: flex-start;
 }
 .post__heading:hover {
-  background-color: #f3f3f3;
+  background-color: #f1f1f1;
 }
 .post__heading > * {
   margin: 0;

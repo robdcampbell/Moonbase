@@ -47,7 +47,7 @@ const MessageSender = () => {
 
   return (
     <>
-      <div className="">
+      <div className="messageSender__wrapper">
         <form>
           <div className="sender__inputTitle">
             <label htmlFor="project-title">Project Title *</label>
