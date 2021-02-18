@@ -3,6 +3,7 @@ import { firestore } from "../../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
 import "./ActivePost.css";
+import DeleteModal from "../DeleteModal";
 
 const ActivePost = ({
   projectCardTitle,
@@ -16,6 +17,7 @@ const ActivePost = ({
   const params = useParams();
   const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
   const [toggleEdit, setToggleEdit] = useState(true);
+  const [deleteModal, setDeleteModal] = useState(false);
   const titleUpdateRef = useRef();
 
   // EDIT PROJECT
@@ -55,8 +57,27 @@ const ActivePost = ({
     );
   };
 
+  const deleteProject = async () => {
+    console.log("PTERODACTYL");
+    const projectsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects");
+    setDeleteModal(false);
+
+    return projectsRef.doc(docId).delete();
+  };
+
   return (
     <section className="activePost__container">
+      {deleteModal && (
+        <DeleteModal
+          deleteModal={deleteModal}
+          setDeleteModal={setDeleteModal}
+          deleteProject={deleteProject}
+          projectCardTitle={projectCardTitle}
+        ></DeleteModal>
+      )}
       <div className="active__header">
         <h4 className="active__title">{projectCardTitle}</h4>
         <div className="active__headerBottm">
@@ -135,7 +156,12 @@ const ActivePost = ({
           >
             Update Project Info
           </button>
-          <button className="" onClick={(e) => {}}>
+          <button
+            className=""
+            onClick={(e) => {
+              setDeleteModal(true);
+            }}
+          >
             DELETE PROJECT
           </button>
         </div>

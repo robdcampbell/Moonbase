@@ -6,6 +6,7 @@
   border-radius: 0.5rem;
   padding: 1rem;
   width: 100%;
+  position: relative;
 }
 .active__header {
   display: flex;
@@ -37,26 +38,25 @@
   padding: 0.25rem;
   border-radius: 0.25rem;
 }
-.description__textArea {
-  width: 100%;
-  /* background-color: red; */
-}
-
 .active__editSection {
-  /* background-color: red; */
   padding-top: 1rem;
   border-top: #c0c0c0 solid 1px;
 }
 .hidden {
   display: none;
 }
-
 .active__input {
   border: #dadada solid 1px;
 }
-
 .active__textArea {
   border: #dadada solid 1px;
+}
+
+/* EDIT MODULE */
+
+.description__textArea {
+  width: 100%;
+  /* background-color: red; */
 }
 
 .active__btn__section {
@@ -66,8 +66,26 @@
   gap: 1rem;
   justify-content: space-around;
 }
-
 .active__btn__section > * {
   border: none;
   width: 100%;
+}
+
+/* DELETE MODAL */
+.delete__modal {
+  position: absolute;
+  display: flex;
+  box-shadow: 0px 10px 10px 10px #c0c0c0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 100;
+  padding: 2rem;
+  height: 100%;
+  top: 0;
+  bottom: 30%;
+  left: 0;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 1);
 }

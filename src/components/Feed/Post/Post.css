@@ -31,7 +31,7 @@
   background-color: rgba(255, 255, 255, 1);
 }
 
-.delete__modal {
+/* .delete__modal {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -46,7 +46,7 @@
   height: 100%;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 1);
-}
+} */
 
 .details__btn {
   padding: 0.5rem 1rem !important;
