@@ -80,7 +80,7 @@ const Post = ({
     >
       <div className="post__heading">
         <h4 className="project__title">{title}</h4>
-        <p>{deadline || "No deadline set."}</p>
+        {/* <p>{deadline || "No deadline set."}</p>
 
         <button
           className="gradient__btn details__btn hidden"
@@ -97,7 +97,7 @@ const Post = ({
           }}
         >
           View Project Details
-        </button>
+        </button> */}
       </div>
 
       <form>

@@ -3,13 +3,20 @@
   flex-direction: column;
   background: rgba(255, 255, 255);
   /* border: #c0c0c0 solid 1px; */
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   box-shadow: 0px 10px 10px 5px #dbdbdb;
   width: 100%;
   max-width: 800px;
   transition: 100ms ease-in;
   position: relative;
   cursor: pointer;
+  margin-bottom: 0.25rem;
+  transition: 100ms;
+}
+
+.post__card:hover {
+  transform: scale(1.03);
+  background-color: #c0c0c0;
 }
 
 .project__form {
@@ -27,7 +34,7 @@
   left: 0;
   width: 100%;
   height: 80%;
-  border-radius: 0 0 1rem 1rem;
+  /* border-radius: 0 0 1rem 1rem; */
   background-color: rgba(255, 255, 255, 1);
 }
 
@@ -73,19 +80,23 @@
 
 .post__card:hover {
   transform: scale(1.01);
+  background: linear-gradient(90deg, #e66465, #9198e5) !important;
 }
 
 .post__heading {
   background-color: #fff;
-  border-radius: 1rem;
-  padding: 1rem;
-  height: 5rem;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  /* height: 2rem; */
   overflow: hidden;
-  border-bottom: #292929 solid 1px;
+  /* border-bottom: #292929 solid 1px; */
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
+}
+.post__heading:hover {
+  background-color: #f3f3f3;
 }
 .post__heading > * {
   margin: 0;
@@ -98,8 +109,8 @@
   outline: none;
   border: none;
   border-top: #c0c0c0 solid 1px;
-  padding: 0.5rem 0;
-  margin-top: 1rem;
+  /* padding: 0.5rem 0; */
+  /* margin-top: 1rem; */
 }
 
 .post__heading > button:hover {
@@ -112,8 +123,9 @@
 
 .project__title {
   margin: 0;
+  padding: 0;
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .form__body {
@@ -212,7 +224,7 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #292929 transparent;
+  scrollbar-color: #424242 transparent;
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -225,7 +237,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #292929;
+  background-color: #424242;
   border-radius: 20px;
   border: 3px solid transparent;
 }
@@ -233,7 +245,7 @@
 @media screen and (max-width: 850px) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: #292929 transparent;
+    scrollbar-color: #424242 transparent;
   }
 
   /* Works on Chrome, Edge, and Safari */
@@ -246,7 +258,7 @@
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #292929;
+    background-color: #424242;
     border-radius: 20px;
     border: 3px solid transparent;
   }

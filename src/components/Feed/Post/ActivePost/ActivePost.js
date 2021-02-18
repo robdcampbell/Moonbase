@@ -16,7 +16,7 @@ const ActivePost = ({
 }) => {
   const params = useParams();
   const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
-  const [toggleEdit, setToggleEdit] = useState(true);
+  const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const titleUpdateRef = useRef();
 
