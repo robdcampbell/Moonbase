@@ -46,14 +46,14 @@ const MessageSender = () => {
   };
 
   return (
-    <div className="messageSender">
-      <div className="messageSender__top">
+    <>
+      <div className="messageSender">
         <form>
-          <div className="input__left form__input">
+          <div className="sender__inputTitle form__input">
             <label htmlFor="project-title">Project Title *</label>
             <input
               name="project-title"
-              className=""
+              className="sender__input"
               value={projectTitle}
               onChange={(e) => setProjectTitle(e.target.value)}
               type="text"
@@ -61,85 +61,42 @@ const MessageSender = () => {
               ref={projectTitleRef}
               required
             />
-            <label htmlFor="project-description">Project Description *</label>
-            <textarea
-              name="project-description"
-              value={description}
-              rows="10"
-              onChange={(e) => setDescription(e.target.value)}
-              type="text"
-              placeholder={``}
-              className="project-description"
-              required
-            />
-          </div>
-
-          <div className="input__right form__input">
             <label htmlFor="project-deadline">Project Deadline</label>
             <input
+              name="project-deadline"
+              className="sender__input"
               value={projectDeadline}
               onChange={(e) => setProjectDeadline(e.target.value)}
               type="text"
               placeholder="Deadline..."
             />
           </div>
+
+          <div className="input__description form__input">
+            <label htmlFor="project-description">Project Description *</label>
+            <textarea
+              name="project-description"
+              value={description}
+              rows="7"
+              onChange={(e) => setDescription(e.target.value)}
+              type="text"
+              placeholder={``}
+              className="sender__input"
+              required
+            />
+          </div>
           <button
             onClick={handleSubmit}
             type="submit"
-            className="gradient__btn"
+            className="gradient__btn add__projectBtn"
           >
             Add Project
           </button>
           <p>*Field is required.</p>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
 export default MessageSender;
-
-/*
-return (
-    <div className="messageSender">
-      <div className="messageSender__top">
-        <form>
-          <label htmlFor="project-title">Project Title *</label>
-          <input
-            name="project-title"
-            className=""
-            value={projectTitle}
-            onChange={(e) => setProjectTitle(e.target.value)}
-            type="text"
-            placeholder={`What's next ?`}
-            ref={projectTitleRef}
-            required
-          />
-          <label htmlFor="project-description">Project Description *</label>
-          <textarea
-            name="project-description"
-            value={description}
-            rows="4"
-            onChange={(e) => setDescription(e.target.value)}
-            type="text"
-            placeholder={``}
-            className="project-description"
-            required
-          />
-          <label htmlFor="project-deadline">Project Deadline</label>
-          <input
-            value={projectDeadline}
-            onChange={(e) => setProjectDeadline(e.target.value)}
-            type="text"
-            placeholder="Deadline..."
-          />
-          <button onClick={handleSubmit} type="submit">
-            Add Project
-          </button>
-          <p>*Field is required.</p>
-        </form>
-      </div>
-    </div>
-  );
-};
-*/

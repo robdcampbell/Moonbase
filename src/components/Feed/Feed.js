@@ -110,20 +110,9 @@ const Feed = ({ userName }) => {
       <MessageSender />
       <h2 className="projects__heading">{`Projects Dashboard:`}</h2>
 
-      {/* description, id, deadline */}
-
       <div className="feed__bottom">
         <div className="feed__sidebar">
-          <div
-            className="dashboard"
-            style={{
-              // maxWidth: "300px",
-              borderRight: "#c0c0c0 solid 1px",
-              paddingRight: "2rem",
-            }}
-          >
-            {/* <div className={showProjectDetails ? "dashboard__active" : "dashboard"}> */}
-            {/*  */}
+          <div className="dashboard">
             {userProjects.map((project, index) => {
               const {
                 id,
@@ -133,10 +122,6 @@ const Feed = ({ userName }) => {
                 status,
                 docId,
               } = project;
-
-              {
-                // index === 0 ? " " : "";
-              }
 
               return (
                 <Post
