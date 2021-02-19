@@ -207,7 +207,10 @@ header h2 {
 /* FOOTER */
 .footer__wrapper {
   border-top: #c0c0c0 solid 1px;
+
   width: 100%;
+  /* background-color: red; */
+  max-height: 5rem;
 }
 
 .footer__container {

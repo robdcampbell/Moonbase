@@ -20,35 +20,6 @@ const Feed = ({ userName }) => {
   const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
   const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
 
-  // LOAD ACTIVE POST ***************************** //
-  //
-  useEffect(() => {
-    const activeProjectRef = firestore
-      .collection("users")
-      .doc(params.id)
-      .collection("projects")
-      .doc(activeProject.docId);
-
-    const unsubscribe = activeProjectRef.onSnapshot((querySnapshot) => {
-      const project = querySnapshot.data();
-      console.log(project);
-      //  setUserProjects([...project]);
-    });
-    return unsubscribe;
-
-    ///Listen for realtime changes
-    // projectsRef.onSnapshot((querySnapshot) => {
-    //   querySnapshot.docs.map((doc) => console.log(doc));
-    // });
-
-    // const unsubscribe = activeProjectRef.onSnapshot((querySnapshot) => {
-    //   const project = querySnapshot.data();
-    //   console.log(project);
-    //   setUserProjects([...project]);
-    // });
-    // return unsubscribe;
-  }, [activeProject]);
-
   // LOAD PROJECTS LIST/SIDEBAR *****************************
   //
   useEffect(() => {
@@ -83,37 +54,38 @@ const Feed = ({ userName }) => {
       <div className="feed__bottom">
         <div className="feed__sidebar">
           <div className="dashboard">
-            {userProjects.map((project, index) => {
-              const {
-                id,
-                description,
-                deadline,
-                title,
-                status,
-                docId,
-              } = project;
+            {userProjects &&
+              userProjects.map((project, index) => {
+                const {
+                  id,
+                  description,
+                  deadline,
+                  title,
+                  status,
+                  docId,
+                } = project;
 
-              return (
-                <Post
-                  key={docId}
-                  id={id}
-                  index={index}
-                  description={description}
-                  deadline={deadline}
-                  title={title}
-                  status={status}
-                  docId={docId}
-                  showProjectDetails={showProjectDetails}
-                  setShowProjectDetails={setShowProjectDetails}
-                  activeProject={activeProject}
-                  setActiveProject={setActiveProject}
-                  setActiveTitleUpdate={setActiveTitleUpdate}
-                  setActiveDescriptionUpdate={setActiveDescriptionUpdate}
-                  setActiveDeadlineUpdate={setActiveDeadlineUpdate}
-                  setActiveStatusUpdate={setActiveStatusUpdate}
-                />
-              );
-            })}
+                return (
+                  <Post
+                    key={docId}
+                    id={id}
+                    index={index}
+                    description={description}
+                    deadline={deadline}
+                    title={title}
+                    status={status}
+                    docId={docId}
+                    showProjectDetails={showProjectDetails}
+                    setShowProjectDetails={setShowProjectDetails}
+                    activeProject={activeProject}
+                    setActiveProject={setActiveProject}
+                    setActiveTitleUpdate={setActiveTitleUpdate}
+                    setActiveDescriptionUpdate={setActiveDescriptionUpdate}
+                    setActiveDeadlineUpdate={setActiveDeadlineUpdate}
+                    setActiveStatusUpdate={setActiveStatusUpdate}
+                  />
+                );
+              })}
           </div>
         </div>
 
@@ -139,7 +111,7 @@ const Feed = ({ userName }) => {
               />
             </>
           ) : (
-            <h4>not................!!!</h4>
+            <h4>Time to start a project.</h4>
           )}
         </div>
       </div>

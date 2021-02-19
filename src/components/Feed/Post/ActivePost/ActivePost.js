@@ -25,13 +25,8 @@ const ActivePost = ({
   activeStatusUpdate,
 }) => {
   const params = useParams();
-  // const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
-  // const [activeDescriptionUpdate, setActiveDescriptionUpdate] = useState("");
-  // const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
-  // const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
   const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  // const titleUpdateRef = useRef();
 
   // EDIT PROJECT
   const updateProjectInfo = (e) => {
@@ -68,7 +63,6 @@ const ActivePost = ({
   };
 
   const deleteProject = async () => {
-    console.log("PTERODACTYL");
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
@@ -112,16 +106,12 @@ const ActivePost = ({
         <label htmlFor="project-title">Edit Title</label>
         <input
           type="text"
-          // ref={titleUpdateRef}
           value={activeTitleUpdate}
           onChange={(e) => {
             setActiveTitleUpdate(e.target.value);
-            // e.target.value = "";
           }}
-          placeholder={activeProject.title}
+          onClick={(e) => setActiveTitleUpdate(projectCardTitle)}
           name="project-title"
-          // value={projectCardTitle}
-          // onChange={(e) => setProjectCardTitle(e.target.value)}
           className="active__input"
         />
 
@@ -132,6 +122,7 @@ const ActivePost = ({
           value={activeDescriptionUpdate}
           onChange={(e) => setActiveDescriptionUpdate(e.target.value)}
           type="text"
+          onClick={(e) => setActiveDescriptionUpdate(projectDescription)}
           placeholder={projectDescription}
           className="active__textArea"
         />
@@ -141,19 +132,18 @@ const ActivePost = ({
           <input
             value={activeStatusUpdate}
             onChange={(e) => setActiveStatusUpdate(e.target.value)}
+            onClick={(e) => setActiveStatusUpdate(projectStatus)}
             type="text"
-            placeholder="Project Status"
+            placeholder={activeStatusUpdate || "Project Status"}
             className="active__input"
           />
 
           <label htmlFor="project-deadline">Update Project Deadline</label>
           <input
-            value={
-              activeDeadlineUpdate ? activeDeadlineUpdate : "(No deadline set)"
-            }
+            value={activeDeadlineUpdate}
             onChange={(e) => setActiveDeadlineUpdate(e.target.value)}
             type="text"
-            placeholder="Deadline..."
+            placeholder={activeDeadlineUpdate || "No deadline set"}
             className="active__input"
           />
         </div>
@@ -163,7 +153,6 @@ const ActivePost = ({
             className="gradient__btn"
             onClick={(e) => {
               updateProjectInfo();
-              setActiveTitleUpdate("");
             }}
           >
             Update Project Info

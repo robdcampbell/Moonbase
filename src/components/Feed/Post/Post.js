@@ -36,46 +36,46 @@ const Post = ({
   //   if (activeProject) {
   //     console.log(docId);
   //   }
+  // // };
+
+  // const updateProjectInfo = (e) => {
+  //   const projectsRef = firestore
+  //     .collection("users")
+  //     .doc(params.id)
+  //     .collection("projects")
+  //     .doc(docId);
+
+  //   return projectsRef.set(
+  //     {
+  //       docId,
+  //       title: projectCardTitle,
+  //       description: projectDescription,
+  //       status: projectStatus,
+  //       deadline: projectDeadline,
+  //       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+  //     },
+  //     { merge: true }
+  //   );
   // };
 
-  const updateProjectInfo = (e) => {
-    const projectsRef = firestore
-      .collection("users")
-      .doc(params.id)
-      .collection("projects")
-      .doc(docId);
+  // const deleteProject = async () => {
+  //   const projectsRef = firestore
+  //     .collection("users")
+  //     .doc(params.id)
+  //     .collection("projects");
 
-    return projectsRef.set(
-      {
-        docId,
-        title: projectCardTitle,
-        description: projectDescription,
-        status: projectStatus,
-        deadline: projectDeadline,
-        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-      },
-      { merge: true }
-    );
-  };
-
-  const deleteProject = async () => {
-    const projectsRef = firestore
-      .collection("users")
-      .doc(params.id)
-      .collection("projects");
-
-    return projectsRef.doc(docId).delete();
-  };
+  //   return projectsRef.doc(docId).delete();
+  // };
 
   return (
     <div
       className="post__card"
       onClick={(e) => {
         setShowProjectDetails((prevState) => !prevState);
-        setActiveTitleUpdate("");
-        setActiveDescriptionUpdate("");
-        setActiveDeadlineUpdate("");
-        setActiveStatusUpdate("");
+        setActiveTitleUpdate(title);
+        setActiveDescriptionUpdate(description);
+        setActiveDeadlineUpdate(deadline);
+        setActiveStatusUpdate(status);
         setActiveProject({
           title,
           description,
@@ -83,12 +83,11 @@ const Post = ({
           status,
           docId,
         });
-        // return expandDetails();
       }}
     >
       <div className="post__heading">
         <h4 className="project__title">{title}</h4>
-        {/* <p>{deadline || "No deadline set."}</p>
+        <p>{deadline || "No deadline set."}</p>
 
         <button
           className="gradient__btn details__btn hidden"
@@ -101,20 +100,25 @@ const Post = ({
               status,
               docId,
             });
-            // return expandDetails();
           }}
         >
           View Project Details
-        </button> */}
+        </button>
       </div>
+    </div>
+  );
+};
 
-      <form>
+export default Post;
+
+{
+  /* <form>
         {deleteModal && (
           <DeleteModal
-            deleteModal={deleteModal}
-            setDeleteModal={setDeleteModal}
-            deleteProject={deleteProject}
-            projectCardTitle={projectCardTitle}
+          deleteModal={deleteModal}
+          setDeleteModal={setDeleteModal}
+          deleteProject={deleteProject}
+          projectCardTitle={projectCardTitle}
           ></DeleteModal>
         )}
 
@@ -189,7 +193,7 @@ const Post = ({
                   }}
                   onClick={(e) => {
                     setUpdateModal(false);
-                    return updateProjectInfo();
+                    
                   }}
                   type="button"
                 >
@@ -208,9 +212,5 @@ const Post = ({
             )}
           </div>
         </div>
-      </form>
-    </div>
-  );
-};
-
-export default Post;
+      </form> */
+}
