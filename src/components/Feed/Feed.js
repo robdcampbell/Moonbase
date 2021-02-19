@@ -14,6 +14,12 @@ const Feed = ({ userName }) => {
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const params = useParams();
 
+  // active post state:
+  const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
+  const [activeDescriptionUpdate, setActiveDescriptionUpdate] = useState("");
+  const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
+  const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
+
   // LOAD ACTIVE POST ***************************** //
   //
   useEffect(() => {
@@ -101,6 +107,10 @@ const Feed = ({ userName }) => {
                   setShowProjectDetails={setShowProjectDetails}
                   activeProject={activeProject}
                   setActiveProject={setActiveProject}
+                  setActiveTitleUpdate={setActiveTitleUpdate}
+                  setActiveDescriptionUpdate={setActiveDescriptionUpdate}
+                  setActiveDeadlineUpdate={setActiveDeadlineUpdate}
+                  setActiveStatusUpdate={setActiveStatusUpdate}
                 />
               );
             })}
@@ -118,6 +128,14 @@ const Feed = ({ userName }) => {
                 projectStatus={activeProject.status}
                 activeProject={activeProject}
                 setActiveProject={setActiveProject}
+                activeTitleUpdate={activeTitleUpdate}
+                setActiveTitleUpdate={setActiveTitleUpdate}
+                activeDescriptionUpdate={activeDescriptionUpdate}
+                setActiveDescriptionUpdate={setActiveDescriptionUpdate}
+                activeDeadlineUpdate={activeDeadlineUpdate}
+                setActiveDeadlineUpdate={setActiveDeadlineUpdate}
+                activeStatusUpdate={activeStatusUpdate}
+                setActiveStatusUpdate={setActiveStatusUpdate}
               />
             </>
           ) : (

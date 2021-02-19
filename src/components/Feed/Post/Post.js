@@ -17,6 +17,10 @@ const Post = ({
   setShowProjectDetails,
   activeProject,
   setActiveProject,
+  setActiveTitleUpdate,
+  setActiveDescriptionUpdate,
+  setActiveDeadlineUpdate,
+  setActiveStatusUpdate,
 }) => {
   const params = useParams();
   const projectTitleRef = useRef(null);
@@ -68,6 +72,10 @@ const Post = ({
       className="post__card"
       onClick={(e) => {
         setShowProjectDetails((prevState) => !prevState);
+        setActiveTitleUpdate("");
+        setActiveDescriptionUpdate("");
+        setActiveDeadlineUpdate("");
+        setActiveStatusUpdate("");
         setActiveProject({
           title,
           description,

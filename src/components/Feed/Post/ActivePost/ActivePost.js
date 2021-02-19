@@ -12,22 +12,29 @@ const ActivePost = ({
   projectStatus,
   docId,
   activeProject,
+  showProjectDetails,
+  setShowProjectDetails,
   setActiveProject,
+  setActiveTitleUpdate,
+  setActiveDescriptionUpdate,
+  setActiveDeadlineUpdate,
+  setActiveStatusUpdate,
+  activeTitleUpdate,
+  activeDescriptionUpdate,
+  activeDeadlineUpdate,
+  activeStatusUpdate,
 }) => {
   const params = useParams();
-  const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
-  const [activeDescriptionUpdate, setActiveDescriptionUpdate] = useState("");
-  const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
-  const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
+  // const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
+  // const [activeDescriptionUpdate, setActiveDescriptionUpdate] = useState("");
+  // const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
+  // const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
   const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const titleUpdateRef = useRef();
+  // const titleUpdateRef = useRef();
 
   // EDIT PROJECT
   const updateProjectInfo = (e) => {
-    // Get current ProjectDoc Contents
-    // Edit select ones
-    // Re-set that doc
     setActiveProject({
       // title: projectCardTitle,
       // description: projectDescription,
@@ -105,7 +112,7 @@ const ActivePost = ({
         <label htmlFor="project-title">Edit Title</label>
         <input
           type="text"
-          ref={titleUpdateRef}
+          // ref={titleUpdateRef}
           value={activeTitleUpdate}
           onChange={(e) => {
             setActiveTitleUpdate(e.target.value);
