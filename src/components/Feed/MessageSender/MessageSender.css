@@ -1,15 +1,8 @@
 .messageSender__wrapper {
-  /* display: flex;
-  margin: 0;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.5); */
   padding: 1rem;
   border-radius: 0.25rem;
   box-shadow: 0px 10px 30px 10px #dbdbdb;
   width: 100%;
-  /* max-width: 400px; */
 }
 
 .sender__input {
@@ -19,6 +12,7 @@
   outline-width: 0;
   padding: 10px;
   margin: 10px 0px;
+  position: relative;
 }
 @media screen and (max-width: 850px) {
   .messageSender__top > form {

@@ -41,6 +41,16 @@ a {
   text-decoration: none;
 }
 
+button {
+  background-color: #fafafa;
+  border: #c0c0c0 solid 1px;
+  border-radius: 0.25;
+  outline: none;
+}
+button:hover {
+  background-color: #e4e4e4;
+}
+
 .ui.button,
 .ui.input,
 .ui.form input {

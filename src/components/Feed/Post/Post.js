@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Post.css";
 
 const Post = ({
@@ -18,17 +18,11 @@ const Post = ({
   setActiveDeadlineUpdate,
   setActiveStatusUpdate,
 }) => {
-  //let shorterTitle = "TEST PP";
-
   const shorterTitle = () => {
-    return title.toLowerCase().length > 20
+    return title.toLowerCase().length > 22
       ? `${title.split("").slice(0, 20).join("")}...`
       : title;
   };
-
-  useEffect(() => {
-    console.log(title.slice(0, 5));
-  }, []);
 
   return (
     <div

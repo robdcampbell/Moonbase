@@ -4,11 +4,13 @@ import "./MessageSender.css";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
+import AddModal from "./AddModal";
 
 const MessageSender = () => {
   const [projectTitle, setProjectTitle] = useState("");
   const [description, setDescription] = useState("");
   const [projectDeadline, setProjectDeadline] = useState("");
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
   const params = useParams();
   const projectTitleRef = useRef(null);
   // const { user } = useSession();
@@ -17,8 +19,9 @@ const MessageSender = () => {
     projectTitleRef.current.focus();
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    setShowUpdateModal(false);
+    // e.preventDefault();
     const docId = new Date().valueOf().toString();
     const timeStamp = firebase.firestore.FieldValue.serverTimestamp();
 
@@ -50,6 +53,13 @@ const MessageSender = () => {
       <div className="messageSender__wrapper">
         <form>
           <div className="sender__inputTitle">
+            {showUpdateModal && (
+              <AddModal
+                showUpdateModal={showUpdateModal}
+                setShowUpdateModal={setShowUpdateModal}
+                handleSubmit={handleSubmit}
+              />
+            )}
             <h3>Create a new project:</h3>
             <label htmlFor="project-title">Project Title *</label>
             <input
@@ -86,8 +96,9 @@ const MessageSender = () => {
             />
           </div>
           <button
-            onClick={handleSubmit}
-            type="submit"
+            // onClick={handleSubmit}
+            onClick={(e) => setShowUpdateModal((curr) => !curr)}
+            type="button"
             className="gradient__btn add__projectBtn"
           >
             Add Project

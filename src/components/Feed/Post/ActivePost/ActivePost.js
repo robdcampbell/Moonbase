@@ -123,20 +123,19 @@ const ActivePost = ({
 
         <div className="bottom__inputItems">
           <label htmlFor="project-status">Update Project Status</label>
-          <input
-            value={activeStatusUpdate}
+          <select
+            name="project-status"
             onChange={(e) => setActiveStatusUpdate(e.target.value)}
-            onClick={(e) => setActiveStatusUpdate(projectStatus)}
-            type="text"
-            placeholder={activeStatusUpdate || "Project Status"}
-            className="active__input"
-          />
+          >
+            <option value="In-Progress">In-Progress</option>
+            <option value="Done">Done</option>
+          </select>
 
           <label htmlFor="project-deadline">Update Project Deadline</label>
           <input
             value={activeDeadlineUpdate}
             onChange={(e) => setActiveDeadlineUpdate(e.target.value)}
-            type="text"
+            type=""
             placeholder={activeDeadlineUpdate || "No deadline set"}
             className="active__input"
           />
