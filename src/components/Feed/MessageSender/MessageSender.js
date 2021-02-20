@@ -50,6 +50,7 @@ const MessageSender = () => {
       <div className="messageSender__wrapper">
         <form>
           <div className="sender__inputTitle">
+            <h3>Create a new project:</h3>
             <label htmlFor="project-title">Project Title *</label>
             <input
               name="project-title"

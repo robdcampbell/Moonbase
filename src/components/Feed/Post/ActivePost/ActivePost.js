@@ -28,19 +28,13 @@ const ActivePost = ({
   const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
-  // EDIT PROJECT
+  // SAVING PROJECT EDITS
   const updateProjectInfo = (e) => {
     setActiveProject({
-      // title: projectCardTitle,
-      // description: projectDescription,
-      // deadline: projectDeadline,
-      // status: projectStatus,
-      // docId,
       title: activeTitleUpdate,
       description: activeDescriptionUpdate,
       deadline: activeDeadlineUpdate,
       status: activeStatusUpdate,
-      //  docId,
     });
 
     const projectsRef = firestore

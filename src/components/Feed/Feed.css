@@ -1,19 +1,22 @@
 .feed {
-  /* flex: 1; */
-  /* padding: 30px 150px; */
   min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   max-width: 1200px;
   margin-bottom: 2rem;
-  /* align-items: center; */
+}
+
+.welcome__heading {
+  box-shadow: 0px 10px 30px 10px #e1e1e1;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .add__heading {
   padding: 0;
-  margin-top: 2rem;
+  margin-top: 4rem;
   font-size: 4rem;
 }
 
@@ -30,15 +33,13 @@
 }
 
 .dashboard {
-  /* border-top: #c0c0c0 solid 1px; */
-  background-color: none;
-  padding: 0 0.5rem;
+  background-color: transparent;
+  box-shadow: 0px 10px 30px 10px #e1e1e1;
+  padding: 0.5rem;
   display: grid;
-  /* flex-direction: column; */
-  /* gap: 0.5rem; */
-  /* justify-content: flex-start; */
   max-height: 500px;
   overflow: scroll;
+  margin-right: 1rem;
 }
 
 .dashboard > * {
