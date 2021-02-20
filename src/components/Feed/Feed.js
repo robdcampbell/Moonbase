@@ -51,7 +51,9 @@ const Feed = ({ userName }) => {
       </div>
 
       <MessageSender />
-      <h2 className="projects__heading">{`Projects Dashboard:`}</h2>
+      <div className="projectsSection__header">
+        <h2 className="projects__heading">Projects Dashboard.</h2>
+      </div>
 
       <div className="feed__bottom">
         <div className="feed__sidebar">
