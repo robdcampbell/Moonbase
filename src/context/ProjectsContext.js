@@ -11,7 +11,33 @@ export const useActiveProject = () => {
 };
 
 export const ProjectsProvider = ({ children }) => {
-  value = {};
+  // ALL USER PROJECTS *****************************
+  const [userProjects, setUserProjects] = useState([]);
+  const [activeProject, setActiveProject] = useState("");
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
+
+  // ACTIVE POST STATE *****************************
+  const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
+  const [activeDescriptionUpdate, setActiveDescriptionUpdate] = useState("");
+  const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
+  const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
+
+  const value = {
+    userProjects,
+    setUserProjects,
+    activeProject,
+    setActiveProject,
+    showProjectDetails,
+    setShowProjectDetails,
+    activeTitleUpdate,
+    setActiveTitleUpdate,
+    activeDescriptionUpdate,
+    setActiveDescriptionUpdate,
+    activeDeadlineUpdate,
+    setActiveDeadlineUpdate,
+    activeStatusUpdate,
+    setActiveStatusUpdate,
+  };
 
   return (
     <ProjectsContext.Provider value={value}>

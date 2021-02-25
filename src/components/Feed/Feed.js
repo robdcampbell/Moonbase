@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSession } from "../../firebase/UserProvider";
+import { useProjects } from "../../context/ProjectsContext";
 import { firestore } from "../../firebase/config";
 import MessageSender from "./MessageSender/MessageSender";
 import ActivePost from "./Post/ActivePost/ActivePost";
@@ -11,16 +12,22 @@ const Feed = ({ userName }) => {
   const { user } = useSession();
   const params = useParams();
 
-  // ALL USER PROJECTS *****************************
-  const [userProjects, setUserProjects] = useState([]);
-  const [activeProject, setActiveProject] = useState("");
-  const [showProjectDetails, setShowProjectDetails] = useState(false);
-
-  // ACTIVE POST STATE *****************************
-  const [activeTitleUpdate, setActiveTitleUpdate] = useState("");
-  const [activeDescriptionUpdate, setActiveDescriptionUpdate] = useState("");
-  const [activeDeadlineUpdate, setActiveDeadlineUpdate] = useState("");
-  const [activeStatusUpdate, setActiveStatusUpdate] = useState("");
+  const {
+    userProjects,
+    setUserProjects,
+    activeProject,
+    setActiveProject,
+    showProjectDetails,
+    setShowProjectDetails,
+    activeTitleUpdate,
+    setActiveTitleUpdate,
+    activeDescriptionUpdate,
+    setActiveDescriptionUpdate,
+    activeDeadlineUpdate,
+    setActiveDeadlineUpdate,
+    activeStatusUpdate,
+    setActiveStatusUpdate,
+  } = useProjects();
 
   // LOAD PROJECTS LIST/SIDEBAR *****************************
   useEffect(() => {
