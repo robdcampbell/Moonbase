@@ -72,7 +72,9 @@ header h2 {
   padding: 0.25rem 0.75rem;
   border-radius: 5rem;
   color: #292929;
+  font-weight: 100;
   margin: 0;
+  /* background: linear-gradient(rgb(253, 179, 179), rgb(248, 98, 88)); */
   font-size: 2rem;
   letter-spacing: -0.1rem;
 }
