@@ -16,18 +16,15 @@ const Profile = (props) => {
   const [userProjects, setUserProjects] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
-  //User Data
+  // USER DATA
   useEffect(() => {
-    // create a Firebase Document Reference to speciic user
     const docRef = firestore.collection("users").doc(params.id);
-    //Listen for realtime changes
     const unsubscribe = docRef.onSnapshot((doc) => {
       if (doc.exists) {
         const documentData = doc.data();
         setUserDocument(documentData);
-        // Re-populate form data, will most likely remove
+
         for (const [key, value] of Object.entries(documentData)) {
-          //console.log(key, value);
           setValue(`${key}`, `${value}`);
         }
       }
@@ -35,14 +32,12 @@ const Profile = (props) => {
     return unsubscribe;
   }, [user.uid, setValue, params.id]);
 
-  //User PROJECTS Collection (come back to after viewing how to display all Users from a collection)
+  // USER PROJECTS
   useEffect(() => {
-    // create a Firebase Document Reference to speciic user
     const projectsRef = firestore
       .collection("users")
       .doc(params.id)
       .collection("projects");
-    //Listen for realtime changes
     const unsubscribe = projectsRef.onSnapshot((querySnapshot) => {
       const projects = querySnapshot.docs.map((doc) => doc.data());
       setUserProjects(projects);
@@ -67,9 +62,6 @@ const Profile = (props) => {
 
   return (
     <div className="profile__container">
-      {/* <h3 className="user__welcomeHeading" style={{ textAlign: "left" }}>
-        Welcome, {userDocument.name}.
-      </h3> */}
       <div className="feed__container">
         <Feed projects={userProjects} userName={userDocument.name} />
       </div>

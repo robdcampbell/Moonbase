@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MessageSender.css";
-//import { useSession } from "../../../firebase/UserProvider";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
@@ -21,7 +20,6 @@ const MessageSender = () => {
 
   const handleSubmit = () => {
     setShowUpdateModal(false);
-    // e.preventDefault();
     const docId = new Date().valueOf().toString();
     const timeStamp = firebase.firestore.FieldValue.serverTimestamp();
 
