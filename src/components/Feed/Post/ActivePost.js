@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { firestore } from "../../../../firebase/config";
+import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
-import { useProjects } from "../../../../context/ProjectsContext";
-import "./ActivePost.css";
-import DeleteModal from "../DeleteModal";
+import { useProjects } from "../../../context/ProjectsContext";
+import DeleteModal from "./DeleteModal";
 
 const ActivePost = () => {
   const {

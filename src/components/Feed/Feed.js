@@ -4,7 +4,7 @@ import { useSession } from "../../firebase/UserProvider";
 import { useProjects } from "../../context/ProjectsContext";
 import { firestore } from "../../firebase/config";
 import MessageSender from "./MessageSender/MessageSender";
-import ActivePost from "./Post/ActivePost/ActivePost";
+import ActivePost from "./Post/ActivePost.js";
 import Post from "./Post/Post";
 import "./Feed.css";
 
