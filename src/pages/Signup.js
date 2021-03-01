@@ -35,7 +35,7 @@ function Signup(props) {
 
   return (
     <div className="login-container">
-      <div className="login__landing">
+      <div className="signup__landing">
         <div className="account__card">
           <h1 style={{ textAlign: "center" }}>Sign Up</h1>
           <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>

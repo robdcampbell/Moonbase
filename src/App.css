@@ -61,6 +61,15 @@ CSS KeyFrame Animations
     opacity: 1;
   }
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* INCLUDE THIS IN ANIMATED CLASS */
 /* animation: 1.75s ease-in-out slideInFromLeft; */
 
@@ -136,7 +145,7 @@ LOGIN/SIGNUP/RESET MODALS
 }
 
 .login__left {
-  animation: 1.75s ease-in-out slideInFromLeft;
+  animation: 1.75s ease-in-out fadeIn;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -183,6 +192,13 @@ LOGIN/SIGNUP/RESET MODALS
   padding: 2rem;
   border: #d4d4d4 solid 1px;
   border-radius: 0.5rem;
+}
+.account__card__content > h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+.account__field {
+  margin-bottom: 2rem;
 }
 .account__cardBottom {
   margin-top: 3rem;

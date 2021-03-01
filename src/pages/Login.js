@@ -57,11 +57,11 @@ const Login = (props) => {
         </div>
         <div className="login__right">
           <div className="account__card">
-            <div className="">
-              <h1>Login</h1>
+            <div className="account__card__content">
+              <h2>Login</h2>
 
               <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
-                <div className="field">
+                <div className="account__field">
                   <label>
                     Email
                     <input
@@ -74,18 +74,16 @@ const Login = (props) => {
                     />
                   </label>
                 </div>
-                <div className="field">
-                  <label>
-                    Password
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      ref={register}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </label>
+                <div className="account__field">
+                  <label>Password</label>{" "}
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    ref={register}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
 
                 <div className="field actions">

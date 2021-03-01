@@ -37,7 +37,7 @@ const ForgotPassword = (props) => {
 
   return (
     <div className="login-container">
-      <div className="account__card">
+      <div className="account__card" s>
         <div className="content">
           <h1 style={{ textAlign: "center" }}>Forgot your Password?</h1>
           {message && (
