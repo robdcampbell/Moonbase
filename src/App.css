@@ -428,6 +428,15 @@ Active Project
   border: #dadada solid 1px;
 }
 
+.bottom__inputItems {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: #c0c0c0 solid 1px;
+}
+
 /* EDIT MODULE */
 
 .description__textArea {
@@ -463,6 +472,20 @@ Active Project
   width: 100%;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 1);
+}
+.delete__modalButtons > button {
+  outline-width: 0;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  border-radius: 0.25rem;
+  background-color: #4c4747;
+  cursor: pointer;
+}
+
+.delete__modalButtons > button:hover {
+  background-color: #cfcfcf;
 }
 
 /* 

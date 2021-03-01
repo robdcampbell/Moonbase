@@ -7,12 +7,6 @@
   margin-top: 5rem;
 }
 
-.welcome__heading {
-  padding: 2rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-}
-
 .add__heading {
   padding: 0;
   margin-top: 4rem;
@@ -28,15 +22,12 @@
   background-color: transparent;
   padding: 0.5rem;
   display: grid;
-  max-height: 500px;
+
   overflow: scroll;
   margin-right: 1rem;
 }
 
-.dashboard > * {
-}
-
-.feed__body {
+.feed__active {
   display: flex;
   flex-direction: column;
   width: 100%;

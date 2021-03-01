@@ -45,12 +45,6 @@ const Feed = ({ userName }) => {
 
   return (
     <div className="feed">
-      {/* <div className="welcome__heading">
-        <h3 className="user__welcomeHeading" style={{ textAlign: "left" }}>
-          Welcome, {userName}.
-        </h3>
-      </div> */}
-
       {/* <MessageSender /> */}
 
       <div className="feed__bottom">
@@ -73,7 +67,7 @@ const Feed = ({ userName }) => {
           </div>
         </div>
 
-        <div className="feed__body">
+        <div className="feed__active">
           {activeProject ? (
             <>
               <ActivePost />
