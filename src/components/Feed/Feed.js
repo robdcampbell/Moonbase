@@ -45,17 +45,13 @@ const Feed = ({ userName }) => {
 
   return (
     <div className="feed">
-      <div className="welcome__heading">
+      {/* <div className="welcome__heading">
         <h3 className="user__welcomeHeading" style={{ textAlign: "left" }}>
           Welcome, {userName}.
         </h3>
-      </div>
+      </div> */}
 
-      <MessageSender />
-
-      <div className="projectsSection__header">
-        {/* <h2 className="projects__heading">Projects Dashboard.</h2> */}
-      </div>
+      {/* <MessageSender /> */}
 
       <div className="feed__bottom">
         <div className="feed__sidebar">

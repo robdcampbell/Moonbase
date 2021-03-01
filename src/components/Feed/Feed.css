@@ -2,9 +2,9 @@
   min-height: 85vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 1200px;
-  margin-bottom: 2rem;
+  margin-top: 5rem;
 }
 
 .welcome__heading {
@@ -17,18 +17,6 @@
   padding: 0;
   margin-top: 4rem;
   font-size: 4rem;
-}
-
-.projectsSection__header {
-  border-radius: 0.25rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-  border-bottom: #c0c0c0 solid 1px;
-}
-
-.projects__heading {
-  padding-bottom: 0.5rem;
 }
 
 .feed__bottom {

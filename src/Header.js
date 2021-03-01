@@ -2,6 +2,7 @@ import React from "react";
 import { logout } from "./firebase/auth";
 import { useHistory } from "react-router-dom";
 import { useSession } from "./firebase/UserProvider";
+import { FaUserAlt } from "react-icons/fa";
 
 function Header() {
   // useHistory gives access to the history instance
@@ -23,14 +24,21 @@ function Header() {
     <header>
       <div className="header__wrapper">
         <h2>moonbase.</h2>
-        {!!user && (
-          <button
-            className="ui gradient__btn button logout"
-            onClick={logoutUser}
-          >
-            logout
-          </button>
-        )}
+        <div className="header__right">
+          {!!user && (
+            <>
+              <p>
+                <FaUserAlt /> {user.displayName}
+              </p>
+              <button
+                className="ui gradient__btn button logout"
+                onClick={logoutUser}
+              >
+                logout
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );
