@@ -96,7 +96,6 @@ const ActivePost = ({
           toggleEdit ? "active__editSection" : "active__editSection hidden"
         }
       >
-        {/*  */}
         <label htmlFor="project-title">Edit Title</label>
         <input
           type="text"

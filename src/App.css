@@ -26,7 +26,7 @@ body {
 
   background-attachment: fixed;
   font-size: 15px;
-  font-family: "Titillium Web", sans-serif !important;
+  font-family: "Noto Sans", sans-serif !important;
 }
 
 a {
@@ -46,12 +46,12 @@ button:hover {
 .ui.button,
 .ui.input,
 .ui.form input {
-  font-family: "Titillium Web", sans-serif !important;
+  font-family: "Noto Sans", sans-serif !important;
 }
 
 header {
   background: rgb(255, 255, 255);
-  box-shadow: 0px 1px 10px #d4d4d4;
+  /* box-shadow: 0px 1px 10px #d4d4d4; */
   position: fixed;
   top: 0px;
   width: 100%;
@@ -68,13 +68,12 @@ header {
 }
 
 header h2 {
-  border: #c0c0c0 solid 1px;
+  /* border: #c0c0c0 solid 1px; */
   padding: 0.25rem 0.75rem;
   border-radius: 5rem;
   color: #292929;
   font-weight: 100;
   margin: 0;
-  /* background: linear-gradient(rgb(253, 179, 179), rgb(248, 98, 88)); */
   font-size: 2rem;
   letter-spacing: -0.1rem;
 }
@@ -87,7 +86,6 @@ LOGIN/SIGNUP/RESET MODALS
 
 .login-container {
   min-height: 90vh;
-  /* margin-top: 5rem; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,6 +97,26 @@ LOGIN/SIGNUP/RESET MODALS
     padding-top: 2rem;
   }
 }
+
+.login__landing {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 800px) {
+  .login__landing {
+    grid-template-columns: 1fr;
+  }
+}
+
+.login__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login__right {
+}
+
 .under__container {
   display: inline-flex;
   flex-wrap: wrap;

@@ -44,7 +44,6 @@ function App() {
                 </Switch>
               </div>
             </div>
-            <Footer />
           </BrowserRouter>
         </ProjectsProvider>
       </UserProvider>
