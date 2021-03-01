@@ -54,7 +54,7 @@ const Feed = ({ userName }) => {
       <MessageSender />
 
       <div className="projectsSection__header">
-        <h2 className="projects__heading">Projects Dashboard.</h2>
+        {/* <h2 className="projects__heading">Projects Dashboard.</h2> */}
       </div>
 
       <div className="feed__bottom">
