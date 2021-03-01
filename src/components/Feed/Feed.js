@@ -17,15 +17,9 @@ const Feed = ({ userName }) => {
     setUserProjects,
     activeProject,
     setActiveProject,
-    showProjectDetails,
-    setShowProjectDetails,
-    activeTitleUpdate,
     setActiveTitleUpdate,
-    activeDescriptionUpdate,
     setActiveDescriptionUpdate,
-    activeDeadlineUpdate,
     setActiveDeadlineUpdate,
-    activeStatusUpdate,
     setActiveStatusUpdate,
   } = useProjects();
 
@@ -51,34 +45,24 @@ const Feed = ({ userName }) => {
 
   return (
     <div className="feed">
-      {/* <div className="welcome__heading">
+      <div className="welcome__heading">
         <h3 className="user__welcomeHeading" style={{ textAlign: "left" }}>
           Welcome, {userName}.
         </h3>
-      </div> */}
+      </div>
 
-      {/* 
       <MessageSender />
 
       <div className="projectsSection__header">
         <h2 className="projects__heading">Projects Dashboard.</h2>
       </div>
-         */}
 
       <div className="feed__bottom">
         <div className="feed__sidebar">
           <div className="dashboard">
             {userProjects &&
-              userProjects.map((project, index) => {
-                const {
-                  id,
-                  description,
-                  deadline,
-                  title,
-                  status,
-                  docId,
-                } = project;
-
+              userProjects.map((project) => {
+                const { description, deadline, title, status, docId } = project;
                 return (
                   <Post
                     key={docId}
@@ -96,23 +80,7 @@ const Feed = ({ userName }) => {
         <div className="feed__body">
           {activeProject ? (
             <>
-              <ActivePost
-                docId={activeProject.docId}
-                projectCardTitle={activeProject.title}
-                projectDescription={activeProject.description}
-                projectDeadline={activeProject.deadline}
-                projectStatus={activeProject.status}
-                activeProject={activeProject}
-                setActiveProject={setActiveProject}
-                activeTitleUpdate={activeTitleUpdate}
-                setActiveTitleUpdate={setActiveTitleUpdate}
-                activeDescriptionUpdate={activeDescriptionUpdate}
-                setActiveDescriptionUpdate={setActiveDescriptionUpdate}
-                activeDeadlineUpdate={activeDeadlineUpdate}
-                setActiveDeadlineUpdate={setActiveDeadlineUpdate}
-                activeStatusUpdate={activeStatusUpdate}
-                setActiveStatusUpdate={setActiveStatusUpdate}
-              />
+              <ActivePost />
             </>
           ) : (
             <h4>Time to start a project.</h4>

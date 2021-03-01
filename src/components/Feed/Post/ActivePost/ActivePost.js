@@ -1,36 +1,32 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { firestore } from "../../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
+import { useProjects } from "../../../../context/ProjectsContext";
 import "./ActivePost.css";
 import DeleteModal from "../DeleteModal";
 
-const ActivePost = ({
-  projectCardTitle,
-  projectDescription,
-  projectDeadline,
-  projectStatus,
-  docId,
-  activeProject,
-  showProjectDetails,
-  setShowProjectDetails,
-  setActiveProject,
-  setActiveTitleUpdate,
-  setActiveDescriptionUpdate,
-  setActiveDeadlineUpdate,
-  setActiveStatusUpdate,
-  activeTitleUpdate,
-  activeDescriptionUpdate,
-  activeDeadlineUpdate,
-  activeStatusUpdate,
-}) => {
+const ActivePost = () => {
+  const {
+    activeProject,
+    setActiveProject,
+    activeTitleUpdate,
+    setActiveTitleUpdate,
+    activeDescriptionUpdate,
+    setActiveDescriptionUpdate,
+    activeDeadlineUpdate,
+    setActiveDeadlineUpdate,
+    activeStatusUpdate,
+    setActiveStatusUpdate,
+  } = useProjects();
+
   const params = useParams();
   const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
   // SAVING PROJECT EDITS
-  const updateProjectInfo = (e) => {
-    setActiveProject({
+  const updateProjectInfo = async (e) => {
+    await setActiveProject({
       title: activeTitleUpdate,
       description: activeDescriptionUpdate,
       deadline: activeDeadlineUpdate,
@@ -41,11 +37,11 @@ const ActivePost = ({
       .collection("users")
       .doc(params.id)
       .collection("projects")
-      .doc(docId);
+      .doc(activeProject.docId);
 
     return projectsRef.set(
       {
-        docId,
+        docId: activeProject.docId,
         title: activeTitleUpdate,
         description: activeDescriptionUpdate,
         deadline: activeDeadlineUpdate,
@@ -63,7 +59,7 @@ const ActivePost = ({
       .collection("projects");
     setDeleteModal(false);
 
-    return projectsRef.doc(docId).delete();
+    return projectsRef.doc(activeProject.docId).delete();
   };
 
   return (
@@ -73,15 +69,15 @@ const ActivePost = ({
           deleteModal={deleteModal}
           setDeleteModal={setDeleteModal}
           deleteProject={deleteProject}
-          projectCardTitle={projectCardTitle}
+          projectCardTitle={activeProject.title}
         ></DeleteModal>
       )}
       <div className="active__header">
-        <h4 className="active__title">{projectCardTitle}</h4>
+        <h4 className="active__title">{activeProject.title}</h4>
         <div className="active__headerBottm">
-          <p>Status: {projectStatus}</p>
-          <p>Deadline: {projectDeadline}</p>
-          <p>Description: {projectDescription}</p>
+          <p>Status: {activeProject.status}</p>
+          <p>Deadline: {activeProject.deadline}</p>
+          <p>Description: {activeProject.description}</p>
           <button
             className="edit__btnToggle"
             onClick={(e) => setToggleEdit(!toggleEdit)}
@@ -103,7 +99,7 @@ const ActivePost = ({
           onChange={(e) => {
             setActiveTitleUpdate(e.target.value);
           }}
-          onClick={(e) => setActiveTitleUpdate(projectCardTitle)}
+          onClick={(e) => setActiveTitleUpdate(activeProject.title)}
           name="project-title"
           className="active__input"
         />
@@ -115,8 +111,8 @@ const ActivePost = ({
           value={activeDescriptionUpdate}
           onChange={(e) => setActiveDescriptionUpdate(e.target.value)}
           type="text"
-          onClick={(e) => setActiveDescriptionUpdate(projectDescription)}
-          placeholder={projectDescription}
+          onClick={(e) => setActiveDescriptionUpdate(activeProject.description)}
+          placeholder={activeProject.description}
           className="active__textArea"
         />
 

@@ -12,7 +12,6 @@ const MessageSender = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const params = useParams();
   const projectTitleRef = useRef(null);
-  // const { user } = useSession();
 
   useEffect(() => {
     projectTitleRef.current.focus();
@@ -94,7 +93,6 @@ const MessageSender = () => {
             />
           </div>
           <button
-            // onClick={handleSubmit}
             onClick={(e) => setShowUpdateModal((curr) => !curr)}
             type="button"
             className="gradient__btn add__projectBtn"

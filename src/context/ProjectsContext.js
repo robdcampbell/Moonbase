@@ -14,6 +14,7 @@ export const ProjectsProvider = ({ children }) => {
   // ALL USER PROJECTS *****************************
   const [userProjects, setUserProjects] = useState([]);
   const [activeProject, setActiveProject] = useState("");
+  // ALL ACTIVE PROJECT *****************************
   const [showProjectDetails, setShowProjectDetails] = useState(false);
 
   // ACTIVE POST STATE *****************************
