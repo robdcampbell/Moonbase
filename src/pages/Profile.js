@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { firestore } from "../firebase/config";
 import { updateUserDocument } from "../firebase/user";
 import Feed from "../components/Feed/Feed";
-import "./Profile.css";
 
 const Profile = (props) => {
   const { user } = useSession();
@@ -45,16 +44,16 @@ const Profile = (props) => {
     return unsubscribe;
   }, [user.uid, params.id]);
 
-  const onSubmit = async (data) => {
-    try {
-      setLoading(true);
-      await updateUserDocument({ uid: params.id, ...data });
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const onSubmit = async (data) => {
+  //   try {
+  //     setLoading(true);
+  //     await updateUserDocument({ uid: params.id, ...data });
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   if (!userDocument) {
     return null;

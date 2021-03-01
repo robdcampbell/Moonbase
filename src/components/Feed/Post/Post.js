@@ -1,23 +1,17 @@
 import React from "react";
+import { useProjects } from "../../../context/ProjectsContext";
 import "./Post.css";
 
-const Post = ({
-  id,
-  description,
-  deadline,
-  title,
-  status,
-  index,
-  docId,
-  showProjectDetails,
-  setShowProjectDetails,
-  activeProject,
-  setActiveProject,
-  setActiveTitleUpdate,
-  setActiveDescriptionUpdate,
-  setActiveDeadlineUpdate,
-  setActiveStatusUpdate,
-}) => {
+const Post = ({ description, deadline, title, status, docId }) => {
+  const {
+    setActiveProject,
+    setShowProjectDetails,
+    setActiveTitleUpdate,
+    setActiveDescriptionUpdate,
+    setActiveDeadlineUpdate,
+    setActiveStatusUpdate,
+  } = useProjects();
+
   const shorterTitle = () => {
     return title.toLowerCase().length > 22
       ? `${title.split("").slice(0, 20).join("")}...`

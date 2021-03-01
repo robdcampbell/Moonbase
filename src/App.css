@@ -288,7 +288,7 @@ LOGIN/SIGNUP/RESET MODALS
 }
 /* 
 ============================== 
-  PROILE UPLOADS/UPDATES
+  PROILE PAGE
 ==============================
 */
 
@@ -313,6 +313,27 @@ LOGIN/SIGNUP/RESET MODALS
     margin: 1rem;
   }
 }
+
+.profile__container {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.user__welcomeHeading {
+  font-size: 3rem;
+  color: #302e2e;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.feed__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* 
 ============================== 
 Footer

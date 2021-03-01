@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSession } from "../../firebase/UserProvider";
 import { useProjects } from "../../context/ProjectsContext";
@@ -51,16 +51,19 @@ const Feed = ({ userName }) => {
 
   return (
     <div className="feed">
-      <div className="welcome__heading">
+      {/* <div className="welcome__heading">
         <h3 className="user__welcomeHeading" style={{ textAlign: "left" }}>
           Welcome, {userName}.
         </h3>
-      </div>
+      </div> */}
 
+      {/* 
       <MessageSender />
+
       <div className="projectsSection__header">
         <h2 className="projects__heading">Projects Dashboard.</h2>
       </div>
+         */}
 
       <div className="feed__bottom">
         <div className="feed__sidebar">
@@ -79,21 +82,11 @@ const Feed = ({ userName }) => {
                 return (
                   <Post
                     key={docId}
-                    id={id}
-                    index={index}
                     description={description}
                     deadline={deadline}
                     title={title}
                     status={status}
                     docId={docId}
-                    showProjectDetails={showProjectDetails}
-                    setShowProjectDetails={setShowProjectDetails}
-                    activeProject={activeProject}
-                    setActiveProject={setActiveProject}
-                    setActiveTitleUpdate={setActiveTitleUpdate}
-                    setActiveDescriptionUpdate={setActiveDescriptionUpdate}
-                    setActiveDeadlineUpdate={setActiveDeadlineUpdate}
-                    setActiveStatusUpdate={setActiveStatusUpdate}
                   />
                 );
               })}
@@ -126,7 +119,6 @@ const Feed = ({ userName }) => {
           )}
         </div>
       </div>
-      {/*  */}
     </div>
   );
 };
