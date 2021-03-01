@@ -1,9 +1,6 @@
 .post__card {
   background: rgba(255, 255, 255);
   border-radius: 0.25rem;
-  border: rgb(223, 223, 223) solid 1px;
-  width: 100%;
-  max-width: 800px;
   transition: 100ms ease-in;
   position: relative;
   cursor: pointer;
@@ -22,8 +19,6 @@
 .post__heading {
   border-radius: 0.5rem;
   padding: 0.25rem;
-  height: 2rem;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -37,7 +32,6 @@
   bottom: 0;
   cursor: pointer;
   background: none;
-  width: fit-content;
   outline: none;
   border: none;
   border-top: #c0c0c0 solid 1px;

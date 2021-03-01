@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSession } from "../../firebase/UserProvider";
 import { useProjects } from "../../context/ProjectsContext";
@@ -11,6 +11,7 @@ import "./Feed.css";
 const Feed = ({ userName }) => {
   const { user } = useSession();
   const params = useParams();
+  const [showProjectAdd, setShowProjectAdd] = useState(false);
 
   const {
     userProjects,
@@ -45,26 +46,27 @@ const Feed = ({ userName }) => {
 
   return (
     <div className="feed">
-      {/* <MessageSender /> */}
+      <button onClick={() => setShowProjectAdd(!showProjectAdd)}>
+        {showProjectAdd ? "Cancel" : "Create New Project"}
+      </button>
+      {showProjectAdd && <MessageSender />}
 
-      <div className="feed__bottom">
-        <div className="feed__sidebar">
-          <div className="dashboard">
-            {userProjects &&
-              userProjects.map((project) => {
-                const { description, deadline, title, status, docId } = project;
-                return (
-                  <Post
-                    key={docId}
-                    description={description}
-                    deadline={deadline}
-                    title={title}
-                    status={status}
-                    docId={docId}
-                  />
-                );
-              })}
-          </div>
+      <div className="feed__body">
+        <div className="dashboard">
+          {userProjects &&
+            userProjects.map((project) => {
+              const { description, deadline, title, status, docId } = project;
+              return (
+                <Post
+                  key={docId}
+                  description={description}
+                  deadline={deadline}
+                  title={title}
+                  status={status}
+                  docId={docId}
+                />
+              );
+            })}
         </div>
 
         <div className="feed__active">
