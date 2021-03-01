@@ -46,7 +46,10 @@ const Feed = ({ userName }) => {
 
   return (
     <div className="feed">
-      <button onClick={() => setShowProjectAdd(!showProjectAdd)}>
+      <button
+        className="gradient__btn"
+        onClick={() => setShowProjectAdd(!showProjectAdd)}
+      >
         {showProjectAdd ? "Cancel" : "Create New Project"}
       </button>
       {showProjectAdd && <MessageSender />}
