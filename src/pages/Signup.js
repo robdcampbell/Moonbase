@@ -4,13 +4,9 @@ import { signup } from "../firebase/auth";
 import { login } from "../firebase/auth";
 import { Link } from "react-router-dom";
 
-// Because this componenet is being passed as a Prop (in Route) - it has access
-// to the *history prop* , and can be useful for re-routing/redirection
 function Signup(props) {
   const { register, handleSubmit } = useForm();
   const [isLoading, setLoading] = useState(false);
-  // const [password, setPassword] = useState(""); // TO REPLACE REACT HOOK FORMS
-  // const [email, setEmail] = useState("");
 
   const onSubmit = async (data) => {
     let newUser;

@@ -51,13 +51,14 @@ const Login = (props) => {
     <div className="login-container">
       <div className="login__landing">
         <div className="login__left">
-          <h1>Hello World.</h1>
-          <p>Welcome to MoonBase, keeping track of your ongoing projects.</p>
+          {/* <h3>Welcome to</h3> */}
+          <h1>moonbase.</h1>
+          <p>Keeping track of those ongoing projects.</p>
         </div>
         <div className="login__right">
-          <div className="ui card login-card">
+          <div className="account__card">
             <div className="content">
-              <h1 style={{ textAlign: "center" }}>Login</h1>
+              <h1>Login</h1>
               <div className="image__container"></div>
               <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
                 <div className="field">
@@ -106,28 +107,15 @@ const Login = (props) => {
                 </div>
               </form>
             </div>
-            <div
-              className="bottom__modal"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "baseline",
-                width: "80%",
-                margin: "0 auto",
-              }}
-            >
-              <p>Forgot password? </p>
-              <Link
-                style={{ marginLeft: "1rem", color: "#254aaf" }}
-                className="other-link"
-                to="/forgot-password"
-              >
-                Reset it via email here.
+            <div className="account__cardBottom">
+              <Link to="/forgot-password">
+                Reset password via email{" "}
+                <span className="reset__link">here.</span>
               </Link>
             </div>
           </div>
           <div className="under__container">
-            <p>Need an account? </p>
+            <p>Need an account?</p>
             <Link className="other-link" to="/signup">
               Sign up
             </Link>

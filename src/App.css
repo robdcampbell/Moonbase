@@ -49,9 +49,34 @@ button:hover {
   font-family: "Noto Sans", sans-serif !important;
 }
 
+/*
+=========================== 
+CSS KeyFrame Animations
+===========================
+*/
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* INCLUDE THIS IN ANIMATED CLASS */
+/* animation: 1.75s ease-in-out slideInFromLeft; */
+
+/* 
+============================== 
+Header / NavBar
+==============================
+*/
+
 header {
-  background: rgb(255, 255, 255);
-  /* box-shadow: 0px 1px 10px #d4d4d4; */
+  /* background: rgb(255, 255, 255); */
+  background: rgba(38, 38, 38, 0.7);
   position: fixed;
   top: 0px;
   width: 100%;
@@ -69,13 +94,13 @@ header {
 
 header h2 {
   /* border: #c0c0c0 solid 1px; */
-  padding: 0.25rem 0.75rem;
+  /* padding: 0.25rem 0.75rem; */
   border-radius: 5rem;
-  color: #292929;
+  color: #f4f4f4;
   font-weight: 100;
   margin: 0;
   font-size: 2rem;
-  letter-spacing: -0.1rem;
+  letter-spacing: -0.2rem;
 }
 
 /* 
@@ -85,6 +110,7 @@ LOGIN/SIGNUP/RESET MODALS
 */
 
 .login-container {
+  margin-top: 2rem;
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -95,42 +121,83 @@ LOGIN/SIGNUP/RESET MODALS
   .login-container {
     margin: 4rem 0;
     padding-top: 2rem;
+    max-width: 400px;
   }
 }
 
 .login__landing {
   display: grid;
-  gap: 3rem;
+  gap: 2rem;
   grid-template-columns: 1fr 1fr;
 }
 @media screen and (max-width: 800px) {
   .login__landing {
+    max-width: 400px;
     grid-template-columns: 1fr;
+    align-items: center;
   }
 }
 
 .login__left {
+  animation: 1.75s ease-in-out slideInFromLeft;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+.login__left > h1 {
+  letter-spacing: -0.1rem;
+  font-size: 6rem;
+  color: #262626;
+  margin: 0;
+  padding-top: 0;
+}
+.login__left > h3 {
+  letter-spacing: -0.1rem;
+  color: #292929;
+  margin: 0;
+  padding-bottom: 0;
 }
 .login__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 1000px) {
+  .login__left > h1 {
+    font-size: 4rem;
+  }
 }
 
+@media screen and (max-width: 800px) {
+  .login__landing {
+    max-width: 400px;
+    grid-template-columns: 1fr;
+  }
+  .login__left > h1 {
+    font-size: 4rem;
+  }
+}
+.account__card {
+  padding: 2rem;
+  border: #d4d4d4 solid 1px;
+  border-radius: 0.5rem;
+}
+.account__cardBottom {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.account__cardBottom > a {
+  color: #c0c0c0;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.reset__link {
+  color: #424242;
+}
 .under__container {
   display: inline-flex;
   flex-wrap: wrap;
-  margin: -12px 0 0 -12px;
-}
-
-.image__container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-.image__container > img {
-  height: 150px;
-  border-radius: 3rem;
 }
 
 .message__link {
@@ -139,7 +206,7 @@ LOGIN/SIGNUP/RESET MODALS
 }
 
 .under__container > * {
-  margin: 12px 0 0 12px;
+  margin: 1rem 0 0 1rem;
 }
 
 .under__container > a {
@@ -158,7 +225,7 @@ LOGIN/SIGNUP/RESET MODALS
 .ui.form input[type="text"],
 .ui.form input[type="password"],
 .ui.form select {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .actions {

@@ -15,16 +15,20 @@ function Header() {
     history.push("/login");
   };
 
+  console.log(
+    "Almost before we knew it, we had left the ground. See more of my work @: robcampbelldev.com"
+  );
+
   return (
     <header>
       <div className="header__wrapper">
-        <h2>MoonBase.</h2>
+        <h2>moonbase.</h2>
         {!!user && (
           <button
             className="ui gradient__btn button logout"
             onClick={logoutUser}
           >
-            LOGOUT
+            logout
           </button>
         )}
       </div>
