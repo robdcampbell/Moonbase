@@ -1,7 +1,7 @@
 import React from "react";
-import { logout } from "./firebase/auth";
+import { logout } from "../firebase/auth";
 import { useHistory } from "react-router-dom";
-import { useSession } from "./firebase/UserProvider";
+import { useSession } from "../firebase/UserProvider";
 import { FaUserAlt } from "react-icons/fa";
 
 function Header() {

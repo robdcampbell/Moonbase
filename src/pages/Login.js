@@ -36,12 +36,10 @@ const Login = (props) => {
 
   const loginGuest = async (e) => {
     e.preventDefault();
+
     let user;
     // STORE THIS IN .ENV !!!! HARDCODED JUST FOR DEVELOPMENT
-    user = login({
-      email: "guestuser@email.com",
-      password: "1234567",
-    });
+    user = login({ email: "guestuser@email.com", password: "1234567" });
     props.history.push(`/profile/${user.uid}`);
   };
 
@@ -51,7 +49,6 @@ const Login = (props) => {
     <div className="login-container">
       <div className="login__landing">
         <div className="login__left">
-          {/* <h3>Welcome to</h3> */}
           <h1>moonbase.</h1>
           <p>Keeping track of those ongoing projects.</p>
         </div>

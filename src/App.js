@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+import Header from "./components/Header";
 import "./App.css";
 import "./firebase/config";
 import "./pages/Signup";
@@ -15,7 +15,7 @@ import ProfileRedirect from "./router/ProfileRedirect";
 import PrivateRoute from "./router/PrivateRoute";
 import AdminRoute from "./router/AdminRoute";
 import Users from "./pages/Users";
-import Footer from "./components/Footer";
+
 import PostPage from "./pages/PostPage.js/PostPage";
 
 function App() {
