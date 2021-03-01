@@ -53,6 +53,7 @@ const Feed = ({ userName }) => {
 
       <div className="feed__body">
         <div className="dashboard">
+          <h4>Current Projects:</h4>
           {userProjects &&
             userProjects.map((project) => {
               const { description, deadline, title, status, docId } = project;
@@ -72,6 +73,7 @@ const Feed = ({ userName }) => {
         <div className="feed__active">
           {activeProject ? (
             <>
+              <h4>Active Project:</h4>
               <ActivePost />
             </>
           ) : (
