@@ -16,16 +16,12 @@ Global Styles
 ===============
 */
 
-html {
-  /* height: 1005; */
-}
-
 body {
   background-color: rgba(242, 250, 255, 0.3) !important;
   height: 100%;
 
   background-attachment: fixed;
-  font-size: 15px;
+  font-size: 1rem;
   font-family: "Noto Sans", sans-serif !important;
 }
 
@@ -75,8 +71,8 @@ Header / NavBar
 */
 
 header {
-  /* background: rgb(255, 255, 255); */
-  background: rgba(38, 38, 38, 0.7);
+  background: rgb(255, 255, 255);
+  /* background: rgba(38, 38, 38, 0.7); */
   position: fixed;
   top: 0px;
   width: 100%;
@@ -94,10 +90,8 @@ header {
 
 header h2 {
   /* border: #c0c0c0 solid 1px; */
-  /* padding: 0.25rem 0.75rem; */
-  border-radius: 5rem;
-  color: #f4f4f4;
-  font-weight: 100;
+  color: #292929;
+  font-weight: 200;
   margin: 0;
   font-size: 2rem;
   letter-spacing: -0.2rem;
@@ -137,17 +131,26 @@ LOGIN/SIGNUP/RESET MODALS
     align-items: center;
   }
 }
+.account__card {
+  background-color: rgba(240, 240, 240, 0.7);
+}
 
 .login__left {
   animation: 1.75s ease-in-out slideInFromLeft;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+}
+.login__left > * {
+  padding: 0;
+  margin: 0;
 }
 .login__left > h1 {
-  letter-spacing: -0.1rem;
+  font-weight: 200;
+  letter-spacing: -0.2rem;
   font-size: 6rem;
   color: #262626;
-  margin: 0;
+  margin-left: -0.3rem;
   padding-top: 0;
 }
 .login__left > h3 {

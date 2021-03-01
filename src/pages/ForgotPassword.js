@@ -4,31 +4,10 @@ import { useAuth } from "../firebase/AuthContext";
 import { login } from "../firebase/auth";
 import { Link } from "react-router-dom";
 
-// Because this componenet is being passed as a Prop (in Route) - it has access
-// to the *history prop* , and can be useful for re-routing/redirection  - here for the Demo route.
 const ForgotPassword = (props) => {
   const emailRef = useRef();
   const [message, setMessage] = useState("");
   const { resetPassword } = useAuth();
-
-  // const routeOnLogin = async (user) => {
-  //   // Get token of the user to see if they're an Admin
-  //   const token = await user.getIdTokenResult();
-  //   if (token.claims.admin) {
-  //     props.history.push("/users");
-  //   } else {
-  //     props.history.push(`/profile/${user.uid}`);
-  //   }
-  // };
-
-  // const resetPassword = (email) => {
-  //   setMessage("Check your email and return to login.");
-
-  //   console.log("Pterodactyl");
-
-  //   //firebase.auth.sendPasswordResetEmail()
-  //   //firebase.auth.sendPasswordResetEmail()
-  // };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -58,7 +37,7 @@ const ForgotPassword = (props) => {
 
   return (
     <div className="login-container">
-      <div className="ui card login-card">
+      <div className="account__card">
         <div className="content">
           <h1 style={{ textAlign: "center" }}>Forgot your Password?</h1>
           {message && (
