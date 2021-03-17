@@ -336,24 +336,17 @@ Login, Signup, Reset modals
   }
 }
 
-.profile__container {
+/* .profile__container {
   padding-top: 5rem;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .user__welcomeHeading {
   font-size: 3rem;
   color: #302e2e;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-}
-
-.feed__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 /* 

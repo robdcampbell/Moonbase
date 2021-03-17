@@ -25,24 +25,22 @@ function App() {
         <ProjectsProvider>
           <BrowserRouter>
             <Header></Header>
-            <div className="app">
-              <div className="ui grid container">
-                <Switch>
-                  <ProfileRedirect exact path="/signup" component={Signup} />
-                  <PrivateRoute exact path="/profile/:id" component={Profile} />
-                  <Route path="/post/:id" component={PostPage} />
-                  <ProfileRedirect exact path="/login" component={Login} />
-                  <ProfileRedirect
-                    exact
-                    path="/forgot-password"
-                    component={ForgotPassword}
-                  />
-                  <AdminRoute exat path="/users" component={Users} />
-                  <Route exact path="*">
-                    <Redirect to="/login" />
-                  </Route>
-                </Switch>
-              </div>
+            <div>
+              <Switch>
+                <ProfileRedirect exact path="/signup" component={Signup} />
+                <PrivateRoute exact path="/profile/:id" component={Profile} />
+                <Route path="/post/:id" component={PostPage} />
+                <ProfileRedirect exact path="/login" component={Login} />
+                <ProfileRedirect
+                  exact
+                  path="/forgot-password"
+                  component={ForgotPassword}
+                />
+                <AdminRoute exat path="/users" component={Users} />
+                <Route exact path="*">
+                  <Redirect to="/login" />
+                </Route>
+              </Switch>
             </div>
           </BrowserRouter>
         </ProjectsProvider>

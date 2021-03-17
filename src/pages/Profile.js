@@ -61,9 +61,7 @@ const Profile = (props) => {
 
   return (
     <div className="profile__container">
-      <div className="feed__container">
-        <Feed projects={userProjects} userName={userDocument.name} />
-      </div>
+      <Feed projects={userProjects} userName={userDocument.name} />
     </div>
   );
 };
