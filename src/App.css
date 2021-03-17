@@ -46,7 +46,7 @@ button:hover {
   font-family: "Noto Sans", sans-serif !important;
 }
 .app__wrapper {
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -361,11 +361,9 @@ Active Project
 */
 
 .activePost__container {
-  margin: 0 3rem;
   margin-top: 0;
-  /* border: #292929 solid 1px; */
   border-radius: 0.25rem;
-
+  padding-right: 1rem;
   width: 100%;
   position: relative;
 }

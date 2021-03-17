@@ -6,6 +6,7 @@ import { firestore } from "../../firebase/config";
 import MessageSender from "./MessageSender/MessageSender";
 import ActivePost from "./Post/ActivePost.js";
 import Post from "./Post/Post";
+
 import "./Feed.css";
 
 const Feed = ({ userName }) => {
