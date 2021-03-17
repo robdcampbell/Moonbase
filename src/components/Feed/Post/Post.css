@@ -1,6 +1,7 @@
 .post__card {
   background: rgba(255, 255, 255);
-  border-radius: 0.25rem;
+  border-bottom: #c0c0c0 solid 1px;
+  padding-bottom: 0.5rem;
   transition: 100ms ease-in;
   position: relative;
   cursor: pointer;

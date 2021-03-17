@@ -3,8 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 1200px;
-  margin-top: 10rem;
+  max-width: 1400px;
+  margin-top: 7rem;
 }
 
 .add__heading {
@@ -14,16 +14,19 @@
 }
 
 .feed__body {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  /* display: grid;
+  grid-template-columns: 1fr 3fr; */
+  display: flex;
 }
 
 .dashboard {
-  padding: 0.5rem;
   display: grid;
+  padding-right: 0.5rem;
 }
 
 .feed__active {
+  padding-left: 2rem;
+  border-left: #c0c0c0 solid 1px;
   display: flex;
   flex-direction: column;
   width: 100%;

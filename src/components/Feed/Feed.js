@@ -46,17 +46,17 @@ const Feed = ({ userName }) => {
 
   return (
     <div className="feed">
-      <button
+      {/* <button
         className="gradient__btn"
         onClick={() => setShowProjectAdd(!showProjectAdd)}
       >
         {showProjectAdd ? "Cancel" : "Create New Project"}
       </button>
-      {showProjectAdd && <MessageSender />}
+      {showProjectAdd && <MessageSender />} */}
 
       <div className="feed__body">
         <div className="dashboard">
-          <h4>Current Projects:</h4>
+          <h2>Current Projects:</h2>
           {userProjects &&
             userProjects.map((project) => {
               const { description, deadline, title, status, docId } = project;
@@ -76,7 +76,7 @@ const Feed = ({ userName }) => {
         <div className="feed__active">
           {activeProject ? (
             <>
-              <h4>Active Project:</h4>
+              <h2>Active Project:</h2>
               <ActivePost />
             </>
           ) : (

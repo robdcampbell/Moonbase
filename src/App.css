@@ -45,6 +45,17 @@ button:hover {
 .ui.form input {
   font-family: "Noto Sans", sans-serif !important;
 }
+.app__wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 500px) {
+  .app__wrapper {
+    padding: 0 1rem;
+  }
+}
 
 /*
 =========================== 
@@ -336,12 +347,6 @@ Login, Signup, Reset modals
   }
 }
 
-/* .profile__container {
-  padding-top: 5rem;
-  display: flex;
-  flex-direction: column;
-} */
-
 .user__welcomeHeading {
   font-size: 3rem;
   color: #302e2e;
@@ -356,11 +361,11 @@ Active Project
 */
 
 .activePost__container {
-  margin: 0 2rem;
+  margin: 0 3rem;
   margin-top: 0;
-  border: #292929 solid 1px;
+  /* border: #292929 solid 1px; */
   border-radius: 0.25rem;
-  padding: 1rem;
+
   width: 100%;
   position: relative;
 }

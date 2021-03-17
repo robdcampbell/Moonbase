@@ -25,7 +25,7 @@ function App() {
         <ProjectsProvider>
           <BrowserRouter>
             <Header></Header>
-            <div>
+            <div className="app__wrapper">
               <Switch>
                 <ProfileRedirect exact path="/signup" component={Signup} />
                 <PrivateRoute exact path="/profile/:id" component={Profile} />

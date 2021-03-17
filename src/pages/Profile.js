@@ -59,11 +59,7 @@ const Profile = (props) => {
     return null;
   }
 
-  return (
-    <div className="profile__container">
-      <Feed projects={userProjects} userName={userDocument.name} />
-    </div>
-  );
+  return <Feed projects={userProjects} userName={userDocument.name} />;
 };
 
 export default Profile;

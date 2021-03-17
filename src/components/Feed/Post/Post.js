@@ -38,7 +38,7 @@ const Post = ({ description, deadline, title, status, docId }) => {
     >
       <div className="post__heading">
         <h4 className="project__title">{shorterTitle()}</h4>
-        <p>{deadline || "No deadline set."}</p>
+        {/* <p>{deadline || "No deadline set."}</p> */}
 
         <button
           className="gradient__btn details__btn hidden"
