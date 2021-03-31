@@ -7,5 +7,8 @@ service cloud.firestore {
      match /users/{userId}/projects/{project} {
       allow read, write, update: if request.auth.uid == userId || request.auth.token.admin == true;
     }
+     match /users/{userId}/projects/{project}/comments/{comments} {
+      allow read, write, update: if request.auth.uid == userId || request.auth.token.admin == true;
+    }
   }
 }
