@@ -1,5 +1,5 @@
 .post__card {
-  background: rgba(255, 255, 255);
+  /* background: rgba(255, 255, 255); */
   border-bottom: #c0c0c0 solid 1px;
   padding-bottom: 0.5rem;
   transition: 100ms ease-in;
@@ -10,7 +10,7 @@
 
 .post__card:hover {
   transform: scale(1.03);
-  background-color: #c0c0c0;
+  background-color: #eeeeee;
 }
 
 .post__card:hover {

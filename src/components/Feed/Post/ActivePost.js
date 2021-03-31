@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import firebase from "firebase";
 import { useProjects } from "../../../context/ProjectsContext";
 import DeleteModal from "./DeleteModal";
+import ProjectCommentsFeed from "./ProjectCommentsFeed.js";
 
 const ActivePost = () => {
   const {
@@ -86,6 +87,7 @@ const ActivePost = () => {
         </div>
       </div>
 
+      {/* edit Project component */}
       <div
         className={
           toggleEdit ? "active__editSection" : "active__editSection hidden"
@@ -155,6 +157,8 @@ const ActivePost = () => {
         </div>
       </div>
       {/* comments section*/}
+      <h4>Comments: {`${activeProject.title}, ID:${activeProject.docId} `}</h4>
+      <ProjectCommentsFeed />
     </section>
   );
 };
