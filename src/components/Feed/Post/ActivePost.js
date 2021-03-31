@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import firebase from "firebase";
 import { useProjects } from "../../../context/ProjectsContext";
 import DeleteModal from "./DeleteModal";
-import ProjectCommentsFeed from "./ProjectCommentsFeed.js";
+import ProjectComments from "./ProjectComments.js";
+import ProjectCommentSender from "./ProjectCommentSender";
 
 const ActivePost = () => {
   const {
@@ -156,9 +157,15 @@ const ActivePost = () => {
           </button>
         </div>
       </div>
-      {/* comments section*/}
-      <h4>Comments: {`${activeProject.title}, ID:${activeProject.docId} `}</h4>
-      <ProjectCommentsFeed />
+      {/* comments section
+       - Map project comments component
+      */}
+      {!activeProject.projectComments ? (
+        <h2>No Updates/Comments on this project yet.</h2>
+      ) : (
+        <ProjectComments />
+      )}
+      <ProjectCommentSender />
     </section>
   );
 };

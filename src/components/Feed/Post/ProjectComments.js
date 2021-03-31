@@ -16,7 +16,7 @@ const ProjectCommentsFeed = () => {
   } = useProjects();
   return (
     <div>
-      <h2>Comments Feed for Active Project: {activeProject.docId}</h2>
+      <h2>Comments: {`${activeProject.title} - ${activeProject.docId}`}</h2>
     </div>
   );
 };
