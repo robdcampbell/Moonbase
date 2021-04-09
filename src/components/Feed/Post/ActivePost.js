@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
@@ -62,6 +62,27 @@ const ActivePost = () => {
 
     return projectsRef.doc(activeProject.docId).delete();
   };
+
+  useEffect(() => {
+    const commentsRef = firestore
+      .collection("users")
+      .doc(params.id)
+      .collection("projects")
+      .doc(activeProject.docId)
+      .collection("comments");
+
+    const unsubscribe = commentsRef.onSnapshot((querySnapshot) => {
+      const projects = querySnapshot.docs.map((doc) => doc.data());
+      // setUserProjects(projects);
+      // setActiveProject(projects[0]);
+      // setActiveTitleUpdate(projects[0].title);
+      // setActiveDescriptionUpdate(projects[0].description);
+      // setActiveStatusUpdate(projects[0].status);
+      // setActiveDeadlineUpdate(projects[0].deadline);
+      console.log(projects);
+    });
+    return unsubscribe;
+  }, [activeProject]);
 
   return (
     <section className="activePost__container">
