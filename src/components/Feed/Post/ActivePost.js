@@ -24,6 +24,8 @@ const ActivePost = () => {
   const params = useParams();
   const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [addCommentCount, setDddCommentCount] = useState(0);
 
   // SAVING PROJECT EDITS
   const updateProjectInfo = async (e) => {
@@ -63,6 +65,7 @@ const ActivePost = () => {
     return projectsRef.doc(activeProject.docId).delete();
   };
 
+  // get project comments
   useEffect(() => {
     const commentsRef = firestore
       .collection("users")
@@ -72,17 +75,20 @@ const ActivePost = () => {
       .collection("comments");
 
     const unsubscribe = commentsRef.onSnapshot((querySnapshot) => {
-      const projects = querySnapshot.docs.map((doc) => doc.data());
+      const projectUpdates = querySnapshot.docs.map((doc) => doc.data());
       // setUserProjects(projects);
       // setActiveProject(projects[0]);
       // setActiveTitleUpdate(projects[0].title);
       // setActiveDescriptionUpdate(projects[0].description);
       // setActiveStatusUpdate(projects[0].status);
       // setActiveDeadlineUpdate(projects[0].deadline);
-      console.log(projects);
+
+      setComments(projectUpdates);
+
+      console.log(projectUpdates);
     });
     return unsubscribe;
-  }, [activeProject]);
+  }, []);
 
   return (
     <section className="activePost__container">
@@ -180,11 +186,16 @@ const ActivePost = () => {
       </div>
       {/* comments section
        - Map project comments component
+      
+      !activeProject.projectComments ?
       */}
-      {!activeProject.projectComments ? (
+
+      {!comments ? (
         <h2>No Updates/Comments on this project yet.</h2>
       ) : (
-        <ProjectComments />
+        comments.map((comment, index) => (
+          <ProjectComments key={index} index={index} comment={comment} />
+        ))
       )}
       <ProjectCommentSender />
     </section>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useProjects } from "../../../context/ProjectsContext";
 
-const ProjectCommentsFeed = () => {
+const ProjectCommentsFeed = ({ comment, index }) => {
   const {
     activeProject,
     setActiveProject,
@@ -16,7 +16,9 @@ const ProjectCommentsFeed = () => {
   } = useProjects();
   return (
     <div>
-      <h2>Comments: {`${activeProject.title} - ${activeProject.docId}`}</h2>
+      <h4>Comment: {index + 1}</h4>
+      <p>{comment.description}</p>
+      <p>{JSON.stringify(comment.timeStamp)}</p>
     </div>
   );
 };
