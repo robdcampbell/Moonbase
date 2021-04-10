@@ -1,24 +1,24 @@
 import React from "react";
 
-const AddModal = ({ setShowUpdateModal, handleSubmit }) => {
+const AddCommentModal = ({ setShowUpdateModal, handleSubmit }) => {
   return (
     <div className="addModal__container">
-      <p>Ready to add this project?</p>
+      <p>Confirm: Add this update?</p>
       <button
         type="button"
         className="addModal__btn"
         onClick={(e) => handleSubmit()}
       >
-        Add Project
+        Add Project Comment
       </button>
       <button
         className="addModal__btn"
         onClick={(e) => setShowUpdateModal(false)}
       >
-        Continue adding details
+        Continue editing details
       </button>
     </div>
   );
 };
 
-export default AddModal;
+export default AddCommentModal;

@@ -4,8 +4,10 @@
 - Global Styles
 - CSS KeyFrame Animations
 - Header / NavBar
-- Login, Signup, Reset modals
+- Login, Signup, Reset Add modals
 - Profile Page
+- Active Project
+- Comments
 - Footer
 */
 
@@ -141,7 +143,7 @@ header h2 {
 }
 /* 
 ============================== 
-Login, Signup, Reset modals
+Login, Signup, Reset, Add modals
 ==============================
 */
 
@@ -319,6 +321,32 @@ Login, Signup, Reset modals
   border: none;
   cursor: pointer;
 }
+
+/* add modal */
+.addModal__container {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: #e1e1e1 solid 1px;
+  box-shadow: 0px 10px 30px 10px #e6e6e6;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20rem; /* Need a specific value to work */
+  z-index: 100;
+}
+
+.addModal__btn {
+  margin: 0.1rem;
+  padding: 0.25rem;
+}
+
 /* 
 ============================== 
   Profile Page
@@ -493,6 +521,19 @@ Active Project
     /* WILL FIX THIS */
     overflow: hidden;
   }
+}
+
+/* 
+============================== 
+Project Comments
+==============================
+*/
+
+.comment_container {
+  border: #c0c0c0 solid 1px;
+  border-radius: 0.25rem;
+  margin: 0.25rem 0;
+  padding: 0.5rem;
 }
 
 /* 

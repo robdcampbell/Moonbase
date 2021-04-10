@@ -15,11 +15,11 @@ const ProjectCommentsFeed = ({ comment, index }) => {
     setActiveStatusUpdate,
   } = useProjects();
   return (
-    <div>
+    <section class="comment_container">
       <h4>Comment: {index + 1}</h4>
       <p>{comment.description}</p>
       <p>{JSON.stringify(comment.timeStamp)}</p>
-    </div>
+    </section>
   );
 };
 

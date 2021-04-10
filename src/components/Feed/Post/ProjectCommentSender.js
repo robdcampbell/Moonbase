@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
-import AddModal from "../MessageSender/AddModal";
+import AddCommentModal from "./AddCommentModal";
 import { useProjects } from "../../../context/ProjectsContext";
 
 const ProjectCommentSender = () => {
   const {
     activeProject,
-    setActiveProject,
-    activeTitleUpdate,
-    setActiveTitleUpdate,
-    activeDescriptionUpdate,
-    setActiveDescriptionUpdate,
-    activeDeadlineUpdate,
-    setActiveDeadlineUpdate,
-    activeStatusUpdate,
-    setActiveStatusUpdate,
+    // setActiveProject,
+    // activeTitleUpdate,
+    // setActiveTitleUpdate,
+    // activeDescriptionUpdate,
+    // setActiveDescriptionUpdate,
+    // activeDeadlineUpdate,
+    // setActiveDeadlineUpdate,
+    // activeStatusUpdate,
+    // setActiveStatusUpdate,
   } = useProjects();
 
   const [projectTitle, setProjectTitle] = useState("");
@@ -24,8 +24,6 @@ const ProjectCommentSender = () => {
   const [projectDeadline, setProjectDeadline] = useState("");
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const params = useParams();
-
-  useEffect(() => {}, []);
 
   const handleSubmit = async () => {
     console.log(description);
@@ -62,7 +60,7 @@ const ProjectCommentSender = () => {
         <form>
           <div className="sender__inputTitle">
             {showUpdateModal && (
-              <AddModal
+              <AddCommentModal
                 showUpdateModal={showUpdateModal}
                 setShowUpdateModal={setShowUpdateModal}
                 handleSubmit={handleSubmit}
