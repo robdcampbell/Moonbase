@@ -88,7 +88,7 @@ const ActivePost = () => {
       console.log(projectUpdates);
     });
     return unsubscribe;
-  }, []);
+  }, [activeProject]);
 
   return (
     <section className="activePost__container">
@@ -190,7 +190,7 @@ const ActivePost = () => {
       !activeProject.projectComments ?
       */}
 
-      {!comments ? (
+      {comments.length < 1 ? (
         <h2>No Updates/Comments on this project yet.</h2>
       ) : (
         comments.map((comment, index) => (
