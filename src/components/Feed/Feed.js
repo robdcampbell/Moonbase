@@ -56,6 +56,7 @@ const Feed = ({ userName }) => {
       {showProjectAdd && <MessageSender />} */}
 
       <div className="dashboard">
+        <button>Add new project</button>
         <h2>Current Projects:</h2>
         {userProjects &&
           userProjects.map((project) => {

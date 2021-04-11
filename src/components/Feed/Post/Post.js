@@ -1,6 +1,5 @@
 import React from "react";
 import { useProjects } from "../../../context/ProjectsContext";
-import "./Post.css";
 
 const Post = ({ description, deadline, title, status, docId }) => {
   const {
@@ -38,8 +37,6 @@ const Post = ({ description, deadline, title, status, docId }) => {
     >
       <div className="post__heading">
         <h4 className="project__title">{shorterTitle()}</h4>
-        {/* <p>{deadline || "No deadline set."}</p> */}
-
         <button
           className="gradient__btn details__btn hidden"
           onClick={(e) => {
