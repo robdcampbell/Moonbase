@@ -55,35 +55,33 @@ const Feed = ({ userName }) => {
       </button>
       {showProjectAdd && <MessageSender />} */}
 
-      <div className="feed__body">
-        <div className="dashboard">
-          <h2>Current Projects:</h2>
-          {userProjects &&
-            userProjects.map((project) => {
-              const { description, deadline, title, status, docId } = project;
-              return (
-                <Post
-                  key={docId}
-                  description={description}
-                  deadline={deadline}
-                  title={title}
-                  status={status}
-                  docId={docId}
-                />
-              );
-            })}
-        </div>
+      <div className="dashboard">
+        <h2>Current Projects:</h2>
+        {userProjects &&
+          userProjects.map((project) => {
+            const { description, deadline, title, status, docId } = project;
+            return (
+              <Post
+                key={docId}
+                description={description}
+                deadline={deadline}
+                title={title}
+                status={status}
+                docId={docId}
+              />
+            );
+          })}
+      </div>
 
-        <div className="feed__active">
-          {activeProject ? (
-            <>
-              <h2>Active Project:</h2>
-              <ActivePost />
-            </>
-          ) : (
-            <h4>Time to start a project.</h4>
-          )}
-        </div>
+      <div className="feed__active">
+        {activeProject ? (
+          <>
+            <h2>Active Project:</h2>
+            <ActivePost />
+          </>
+        ) : (
+          <h4>Time to start a project.</h4>
+        )}
       </div>
     </div>
   );

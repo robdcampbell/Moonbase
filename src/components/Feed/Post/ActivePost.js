@@ -102,7 +102,7 @@ const ActivePost = () => {
       )}
       <div className="active__header">
         <h4 className="active__title">{activeProject.title}</h4>
-        <div className="active__headerBottm">
+        <div className="active__headerBottom">
           <p>Status: {activeProject.status}</p>
           <p>Deadline: {activeProject.deadline}</p>
           <p>Description: {activeProject.description}</p>
@@ -116,6 +116,7 @@ const ActivePost = () => {
       </div>
 
       {/* edit Project component */}
+      {/* Bring up as a modal instead? */}
       <div
         className={
           toggleEdit ? "active__editSection" : "active__editSection hidden"

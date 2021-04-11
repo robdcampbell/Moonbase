@@ -391,24 +391,27 @@ Active Project
 .activePost__container {
   margin-top: 0;
   border-radius: 0.25rem;
-  padding-right: 1rem;
-  width: 100%;
+  padding: 0.5rem;
   position: relative;
+  margin-right: 1rem;
 }
 .active__header {
+  border: #212121 solid 1px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
-.active__headerBottom {
+/* .active__headerBottom {
   display: flex;
   margin: 0;
   padding: 0;
   align-items: baseline;
-}
+} */
 .active__title {
   font-size: 3rem;
-  display: inline;
+
   margin: 0;
   padding: 0;
   padding-bottom: 0.25rem;
@@ -506,8 +509,8 @@ Active Project
 }
 @media screen and (min-width: 1000px) {
   .activePost__container {
-    width: 700px;
-    margin: 0;
+    /* width: 700px; */
+    margin: ;
   }
 }
 @media screen and (max-width: 480px) {
