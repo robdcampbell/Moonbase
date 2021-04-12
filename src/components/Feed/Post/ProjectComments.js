@@ -21,8 +21,16 @@ const ProjectCommentsFeed = ({ comment, index }) => {
     let seconds = comment.timeStamp.seconds;
     let commentDate = new Date(null);
     commentDate.setTime(Number(seconds) * 1000);
-    console.log(commentDate);
-    setCommentTime(commentDate);
+
+    let minutes = commentDate.getMinutes();
+    let hours = commentDate.getHours();
+    let time = commentDate.toLocaleTimeString();
+
+    const month = commentDate.getMonth();
+    const date = commentDate.getDate();
+    const year = commentDate.getFullYear();
+    const fullDate = `${time} - ${month}/${date}/${year}`;
+    setCommentTime(fullDate);
   };
 
   useEffect(() => {
@@ -33,7 +41,7 @@ const ProjectCommentsFeed = ({ comment, index }) => {
     <section className="comment_container">
       <h4>Update: {index + 1}</h4>
       <p>{comment.description}</p>
-      <p>{`Updated: ${commentTime}`}</p>
+      <p>{`Added: ${commentTime}`}</p>
       <button>...</button>
       <button>delete</button>
     </section>
