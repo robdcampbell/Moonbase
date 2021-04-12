@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./MessageSender.css";
+// import "./MessageSender.css";
 import { firestore } from "../../../firebase/config";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";

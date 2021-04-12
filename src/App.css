@@ -50,7 +50,6 @@ button:hover {
   font-family: "Noto Sans", sans-serif !important;
 }
 .app__wrapper {
-  /* max-width: 1400px; */
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -351,6 +350,97 @@ Login, Signup, Reset, Add modals
 
 /* 
 ============================== 
+  Message Sender / Create New Project
+==============================
+*/
+
+.messageSender__wrapper {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  border: #c0c0c0 solid 1px;
+}
+
+.sender__input {
+  background-color: #fff;
+  border: rgb(223, 223, 223) solid 1px;
+  border-radius: 0.25rem;
+  outline-width: 0;
+  padding: 10px;
+  margin: 10px 0px;
+  position: relative;
+}
+@media screen and (max-width: 850px) {
+  .messageSender__top > form {
+    grid-template-columns: 1fr;
+  }
+  .input__right {
+    margin-left: 0;
+  }
+}
+
+.sender__inputTitle {
+  display: grid;
+  align-items: baseline;
+}
+.input__description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input__section {
+  outline-width: 0;
+  border: none;
+  border-radius: 1rem;
+  background-color: #fff;
+}
+
+.project-description {
+  background-color: #fff;
+  border: #fff solid 1px;
+  border-radius: 0.35rem;
+  resize: none;
+}
+
+.messageSender__top > form > * {
+  margin-bottom: 0.25rem;
+}
+
+.messageSender__top > form > button:hover {
+  background-color: #cfcfcf;
+}
+
+.messageSender__bottom {
+  display: flex;
+  justify-content: space-evenly;
+}
+.messageSender__option {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  color: #808080;
+  margin: 5px;
+}
+
+.messageSender__option:hover {
+  background-color: #eff2f5;
+  border-radius: 1.25rem;
+}
+
+.add__projectBtn {
+  width: 100%;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  transition: 100ms ease-in-out;
+}
+.add__projectBtn:hover {
+  transform: scale(1.008);
+}
+
+/* 
+============================== 
   Profile Page
 ==============================
 */
@@ -390,14 +480,63 @@ Login, Signup, Reset, Add modals
 ==============================
 */
 
+.feed {
+  padding: 1rem;
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+  margin-top: 7rem;
+}
+
+.add__heading {
+  padding: 0;
+  margin-top: 4rem;
+  font-size: 4rem;
+}
+
+.dashboard {
+  margin-right: 1rem;
+  /* padding: 0 0.5rem; */
+}
+
+.feed__active {
+  /* border-left: #c0c0c0 solid 1px; */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .feed {
+  }
+
+  .dashboard {
+    margin: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .feed {
+    flex-direction: column;
+  }
+  .feed__active {
+    border: none;
+  }
+
+  .feed__bottom {
+  }
+}
+
 /* 
 ============================== 
   Projects Dashboard
 ==============================
 */
 .post__card {
-  /* background: rgba(255, 255, 255); */
-  border-bottom: #c0c0c0 solid 1px;
+  /* border-bottom: #c0c0c0 solid 1px; */
   padding-bottom: 0.5rem;
   transition: 100ms ease-in;
   position: relative;
@@ -406,13 +545,12 @@ Login, Signup, Reset, Add modals
 }
 
 .post__card:hover {
-  /* transform: scale(1.01); */
   background-color: #f3f3f3;
 }
 
 .post__heading {
   border-radius: 0.5rem;
-  padding: 0.25rem;
+  /* padding: 0.25rem; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -420,7 +558,7 @@ Login, Signup, Reset, Add modals
 }
 
 .post__heading > * {
-  margin: 0;
+  margin: 0.5rem 0;
 }
 .post__heading > button {
   bottom: 0;
@@ -446,10 +584,10 @@ Active Project
   border-radius: 0.25rem;
   padding: 0.5rem;
   position: relative;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 .active__header {
-  border: #212121 solid 1px;
+  border: #c0c0c0 solid 1px;
   border-radius: 0.25rem;
   padding: 0.5rem;
   display: flex;

@@ -25,7 +25,6 @@ const ActivePost = () => {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [comments, setComments] = useState([]);
-  const [addCommentCount, setDddCommentCount] = useState(0);
 
   // SAVING PROJECT EDITS
   const updateProjectInfo = async (e) => {
@@ -84,8 +83,6 @@ const ActivePost = () => {
       // setActiveDeadlineUpdate(projects[0].deadline);
 
       setComments(projectUpdates);
-
-      console.log(projectUpdates);
     });
     return unsubscribe;
   }, [activeProject]);
@@ -192,7 +189,9 @@ const ActivePost = () => {
       */}
 
       {comments.length < 1 ? (
-        <h2>No Updates/Comments on this project yet.</h2>
+        <h2 className="comment_container">
+          No Updates/Comments on this project yet.
+        </h2>
       ) : (
         comments.map((comment, index) => (
           <ProjectComments key={index} index={index} comment={comment} />

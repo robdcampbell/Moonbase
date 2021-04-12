@@ -3,11 +3,10 @@ import { useParams } from "react-router-dom";
 import { useSession } from "../../firebase/UserProvider";
 import { useProjects } from "../../context/ProjectsContext";
 import { firestore } from "../../firebase/config";
+// will be toggled
 import MessageSender from "./MessageSender/MessageSender";
 import ActivePost from "./Post/ActivePost.js";
 import Post from "./Post/Post";
-
-import "./Feed.css";
 
 const Feed = ({ userName }) => {
   const { user } = useSession();
@@ -56,7 +55,7 @@ const Feed = ({ userName }) => {
       {showProjectAdd && <MessageSender />} */}
 
       <div className="dashboard">
-        <button>Add new project</button>
+        {/* <button>Add new project</button> */}
         <h2>Current Projects:</h2>
         {userProjects &&
           userProjects.map((project) => {
@@ -77,7 +76,7 @@ const Feed = ({ userName }) => {
       <div className="feed__active">
         {activeProject ? (
           <>
-            <h2>Active Project:</h2>
+            {/* <MessageSender /> */}
             <ActivePost />
           </>
         ) : (
